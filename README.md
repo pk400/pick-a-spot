@@ -1,4 +1,5 @@
 <h1 align="center">pick-a-spot</h1>
+<p align="center">*Less thinking, more eating*</p>
 
 ## Structure
 \*`bin`, `include`, `lib`, and `local` are virtual environment folders, and are not related to the project at all.
