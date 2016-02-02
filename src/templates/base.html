@@ -1,0 +1,55 @@
+{% load staticfiles %}<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"></meta>
+	<!-- Configurable in admin cp -->
+	<title>{% block title %}{% endblock %} | Pick A Spot</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Pick A Spot</a>
+			</div><!-- navbar-header end -->
+			<div id="navbar">
+				<ul class="nav navbar-nav">
+					<li{% if title == 'Home' %} class="active"{% endif %}><a href="/">Home</a></li>
+					<li{% if title == 'Browse' %} class="active"{% endif %}><a href="/browse">Browse</a></li>
+					<li{% if title == 'Create Groups' %} class="active"{% endif %}><a href="/create">Create Groups</a></li>
+					<li{% if title == 'About' %} class="active"{% endif %}><a href="/about">About</a></li>
+					<li{% if title == 'Contact' %} class="active"{% endif %}><a href="/contact">Contact</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/login">Login</a></li>
+					<li><a href="/register">Register</a></li>
+				</ul>
+			</div><!-- navbar end -->
+		</div><!-- container end -->
+	</nav>
+
+	<div class="container content">
+	{% block content %}
+	{% endblock %}
+		<footer>
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>&copy; 2016 Pick A Spot <a href="#">Contact Us</a></p>
+		</footer>
+	</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="{% static 'scripts/holder.min.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'scripts/ie10-viewport-bug-workaround.js' %}"></script>
+</body>
+</html>
