@@ -1,4 +1,4 @@
-# pick-a-spot
+<h1 align="center">pick-a-spot</h1>
 
 ## Structure
 \*`bin`, `include`, `lib`, and `local` are virtual environment folders, and are not related to the project at all.
