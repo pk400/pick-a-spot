@@ -7,7 +7,7 @@ def home(request) :
 	}
 	return render(request, 'home.html', context)
 
-def browse(request):
+def browse(request) :
 	context = {
 		'title': 'Browse',
 		'data': [
@@ -17,3 +17,15 @@ def browse(request):
 		]
 	}
 	return render(request, 'browse.html', context)
+
+def login(request) :
+	context = {
+		'title': 'Login',
+	}
+	return render(request, 'login.html', context)
+
+def register(request) :
+	context = {
+		'title': 'Register',
+	}
+	return render(request, 'register.html', context)
