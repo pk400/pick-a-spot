@@ -19,18 +19,23 @@
 			"file": "src/app/views.py",
 			"settings":
 			{
-				"buffer_size": 555,
+				"buffer_size": 808,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "from __future__ import unicode_literals\n\nfrom django.db import models\n\n# Create your models here.\nclass Contact(models.Model):\n	fullname = models.CharField(max_length=120, blank=False, null=True)\n	email = models.EmailField()\n	timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)\n	updated = models.DateTimeField(auto_now_add=False, auto_now=True)\n\n	def __unicode__(self): #Python 3.3 is __str__\n		return self.email\n\nclass Register(model.Model)",
-			"file": "src/app/models.py",
-			"file_size": 428,
-			"file_write_time": 130988665731993248,
+			"file": "src/app/forms.py",
 			"settings":
 			{
-				"buffer_size": 457,
+				"buffer_size": 369,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/app/models.py",
+			"settings":
+			{
+				"buffer_size": 740,
 				"line_ending": "Unix"
 			}
 		},
@@ -38,32 +43,15 @@
 			"file": "src/templates/register.html",
 			"settings":
 			{
-				"buffer_size": 732,
+				"buffer_size": 596,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/templates/login.html",
-			"settings":
-			{
-				"buffer_size": 732,
-				"line_ending": "Unix",
-				"name": "{% extends 'base.html'}"
 			}
 		},
 		{
 			"file": "src/static/css/base.css",
 			"settings":
 			{
-				"buffer_size": 234,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/templates/base.html",
-			"settings":
-			{
-				"buffer_size": 2464,
+				"buffer_size": 280,
 				"line_ending": "Unix"
 			}
 		}
@@ -110,11 +98,12 @@
 	],
 	"file_history":
 	[
+		"/home/stratos/pickaspot/src/templates/base.html",
+		"/home/stratos/pickaspot/src/static/css/base.css",
+		"/home/stratos/pickaspot/src/templates/login.html",
 		"/home/stratos/pickaspot/src/templates/home.html",
 		"/home/stratos/pickaspot/src/app/views.py",
-		"/home/stratos/pickaspot/src/templates/base.html",
 		"/home/stratos/pickaspot/src/templates/browse.html",
-		"/home/stratos/pickaspot/src/static/css/base.css",
 		"/home/stratos/pickaspot/src/app/models.py",
 		"/home/stratos/pickaspot/src/app/forms.py",
 		"/home/stratos/pickaspot/src/app/admin.py",
@@ -163,7 +152,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -179,8 +168,8 @@
 						"selection":
 						[
 							[
-								376,
-								376
+								286,
+								286
 							]
 						],
 						"settings":
@@ -200,15 +189,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 555,
+						"buffer_size": 808,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								493,
-								493
+								713,
+								713
 							]
 						],
 						"settings":
@@ -220,24 +209,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/app/models.py",
+					"file": "src/app/forms.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 457,
+						"buffer_size": 369,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								457,
-								457
+								368,
+								368
 							]
 						],
 						"settings":
@@ -248,24 +237,52 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "src/templates/register.html",
+					"file": "src/app/models.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 732,
+						"buffer_size": 740,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								732,
-								732
+								599,
+								599
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/templates/register.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 596,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								221,
+								228
 							]
 						],
 						"settings":
@@ -278,37 +295,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/templates/login.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 732,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								732,
-								732
-							]
-						],
-						"settings":
-						{
-							"auto_name": "{% extends 'base.html'}",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -317,15 +304,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 234,
+						"buffer_size": 280,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								194,
-								194
+								260,
+								260
 							]
 						],
 						"settings":
@@ -336,35 +323,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/templates/base.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2464,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1513,
-								1513
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 102.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -447,7 +406,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 277.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

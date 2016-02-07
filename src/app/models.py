@@ -11,3 +11,9 @@ class Contact(models.Model):
 
 	def __unicode__(self): #Python 3.3 is __str__
 		return self.email
+
+class Register(models.Model):
+	username 	= models.CharField(max_length=100, blank=False, null=False)
+	password	= models.CharField(max_length=100, blank=False, null=False)
+	email 		= models.EmailField(max_length=100, blank=False, null=False)
+	timestamp 	= models.DateTimeField(auto_now_add=True, auto_now=False)
