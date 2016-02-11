@@ -10,7 +10,7 @@ urlpatterns = [
 	#url(r'^login/$', app.views.login, name='login'),
 	#url(r'^register/$', app.views.register, name='register'),
 	url(r'^admin/', admin.site.urls),
-	url(r'^accounts/', include('registration.backends.default.urls'))
+	url(r'^accounts/', include('registration.backends.simple.urls'))
 ]
 
 if settings.DEBUG:

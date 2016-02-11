@@ -1,4 +1,4 @@
-#!/home/stratos/pickaspot/bin/python
+#!/home/student/pickaspot/env/bin/python
 
 # -*- coding: utf-8 -*-
 import re
