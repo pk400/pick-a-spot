@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}{{ title }}
 {% endblock %}
 
-{% block content %}	<h1>Contact page</h1>
+
+{% block content %}
+<img src="{% static 'images/food1.jpg' %}" width=1000px>
 {% endblock %}

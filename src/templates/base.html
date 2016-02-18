@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
+	{% block nav %}
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -18,11 +19,10 @@
 			</div><!-- navbar-header end -->
 			<div id="navbar">
 				<ul class="nav navbar-nav">
-					<li{% if title == 'Home' %} 			class="active"{% endif %}><a href="/">Home</a></li>
-					<li{% if title == 'Browse' %} 			class="active"{% endif %}><a href="/browse">Browse</a></li>
 					<li{% if title == 'Create Groups' %} 	class="active"{% endif %}><a href="/create">Create Groups</a></li>
 					<li{% if title == 'About' %} 			class="active"{% endif %}><a href="/about">About</a></li>
 					<li{% if title == 'Contact' %} 			class="active"{% endif %}><a href="/contact">Contact</a></li>
+					<li{% if title == 'Map' %} 			class="active"{% endif %}><a href="/map">Map</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 				{% if user.is_authenticated %}
@@ -36,6 +36,7 @@
 			</div><!-- navbar end -->
 		</div><!-- container end -->
 	</nav>
+	{% endblock %}
 
 	<div class="container content">
 	{% block content %}

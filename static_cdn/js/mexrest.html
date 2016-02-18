@@ -4,6 +4,16 @@
     <title>Geolocation</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
     <div id="map"></div>
@@ -24,8 +34,8 @@
     places = new google.maps.places.PlacesService(map);
     
     // dummy data
-    search.keyword = "Pizza";
-    search.types = "restaurant";
+    search.keyword = "Mexican";
+    search.types = "Restaurants";
     search.rankBy = google.maps.places.RankBy.DISTANCE;
     search.location = map.getCenter();
     centerMarker = new google.maps.Marker({

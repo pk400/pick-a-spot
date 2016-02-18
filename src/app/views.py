@@ -3,6 +3,9 @@ from .forms import RegistrationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
+mapapikey = ('<script src="https://maps.googleapis.com/maps/api/'
+	'js?key=AIzaSyAvDRB7PnQbIVNtRHf3x-MTB5y-3OXD1xg&callback=initMap&libraries=places">async defer> </script>')
+
 # Create your views here.
 def home(request) :
 	context = {
@@ -42,3 +45,10 @@ def register(request) :
 	}
 
 	return render(request, 'register.html', context)
+
+def map(request) :
+	context = {
+		'title': 'map',
+		'mapapi': mapapikey,
+	}
+	return render(request, 'map.html', context)
