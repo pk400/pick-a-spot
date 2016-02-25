@@ -16,3 +16,6 @@ urlpatterns = [
 
 if settings.DEBUG:
 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = 'views.custom_404'
+handler500 = 'views.custom_500'

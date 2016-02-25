@@ -1,5 +1,4 @@
 body {
-	padding-top: 40px;
 	padding-bottom: 40px;
 }
 
@@ -8,7 +7,6 @@ body {
 }
 
 .footer {
-	position: absolute;
 	bottom: 0;
 	width: 100%;
 	background-color: #f5f5f5;
@@ -24,4 +22,22 @@ body {
 	max-width: 800px;
 	padding: 15px;
 	margin: 0 auto;
+}
+
+.paslogo_large {
+	height: 100px;
+	display: block;
+	margin: 0 auto;
+}
+
+.splashbanner {
+	margin: 0 auto;
+	display: block;
+}
+
+.splashintro {
+	width: 1000px;
+	margin: 0 auto;
+	margin-top: 3%;
+	line-height: 25px;
 }

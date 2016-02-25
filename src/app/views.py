@@ -6,6 +6,12 @@ from django.http import HttpResponseRedirect
 mapapikey = ('<script src="https://maps.googleapis.com/maps/api/'
 	'js?key=AIzaSyAvDRB7PnQbIVNtRHf3x-MTB5y-3OXD1xg&callback=initMap&libraries=places">async defer> </script>')
 
+def custom_404(request):
+	return render(request, '404.html')
+
+def custom_500request):
+	return render(request, '500.html')
+
 # Create your views here.
 def home(request) :
 	context = {
