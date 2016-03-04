@@ -3,23 +3,38 @@
 	{
 		"selected_items":
 		[
+			[
+				"bac",
+				"background-size"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/pickaspot/settings.py",
+			"file": "src/templates/home.html",
 			"settings":
 			{
-				"buffer_size": 3936,
+				"buffer_size": 879,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/pickaspot/urls.py",
+			"file": "src/app/views.py",
 			"settings":
 			{
-				"buffer_size": 594,
+				"buffer_size": 1531,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "{% extends \"base.html\" %}\n{% load i18n %}\n\n{% block content %}\n<form method=\"post\" action=\".\">\n  {% csrf_token %} \n  {{ form.as_p }}\n\n  <input type=\"submit\" value=\"{% trans 'Log in' %}\" />\n  <input type=\"hidden\" name=\"next\" value=\"{{ next }}\" />\n</form>\n\n<p>{% trans \"Forgot password\" %}? <a href=\"{% url 'auth_password_reset' %}\">{% trans \"Reset it\" %}</a>!</p>\n<p>{% trans \"Not member\" %}? <a href=\"{% url 'registration_register' %}\">{% trans \"Register\" %}</a>!</p>\n{% endblock %}\n",
+			"file": "src/templates/registration/login.html",
+			"file_size": 482,
+			"file_write_time": 131015207000000000,
+			"settings":
+			{
+				"buffer_size": 483,
 				"line_ending": "Unix"
 			}
 		},
@@ -27,15 +42,7 @@
 			"file": "src/templates/base.html",
 			"settings":
 			{
-				"buffer_size": 2705,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/static/css/base.css",
-			"settings":
-			{
-				"buffer_size": 313,
+				"buffer_size": 3144,
 				"line_ending": "Unix"
 			}
 		}
@@ -72,18 +79,30 @@
 	},
 	"expanded_folders":
 	[
-		"/home/stratos/pickaspot",
-		"/home/stratos/pickaspot/env/include/python2.7",
-		"/home/stratos/pickaspot/src",
-		"/home/stratos/pickaspot/src/app",
-		"/home/stratos/pickaspot/src/pickaspot",
-		"/home/stratos/pickaspot/src/static",
-		"/home/stratos/pickaspot/src/static/css",
-		"/home/stratos/pickaspot/src/templates",
-		"/home/stratos/pickaspot/src/templates/registration"
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/app",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/pickaspot",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/static",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/templates",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/templates/registration"
 	],
 	"file_history":
 	[
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/pickaspot/settings.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/env/lib/python2.7/site-packages/django/forms/formsets.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/static/css/base.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/templates/preferences.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/templates/base.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/app/views.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/pickaspot/urls.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/templates/registration/login.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/templates/verify.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/templates/login.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/app/forms.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-prod/src/static/css/base.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-prod/src/templates/base.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-prod/src/pickaspot/settings.py",
 		"/home/stratos/pickaspot/src/pickaspot/urls.py",
 		"/home/stratos/pickaspot/src/app/views.py",
 		"/home/stratos/pickaspot/src/app/forms.py",
@@ -144,77 +163,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/pickaspot/settings.py",
+					"file": "src/templates/home.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3936,
+						"buffer_size": 879,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3936,
-								3936
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1989.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/pickaspot/urls.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 594,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								279,
-								279
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/templates/base.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2705,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								677,
-								677
+								191,
+								191
 							]
 						],
 						"settings":
@@ -225,36 +186,93 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/static/css/base.css",
+					"buffer": 1,
+					"file": "src/app/views.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 313,
+						"buffer_size": 1531,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								75,
-								75
+								446,
+								446
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/Python/Python.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 102.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/templates/registration/login.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 483,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								132,
+								132
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/templates/base.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								485,
+								485
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import RegistrationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from registration.views import RegistrationView
 
 mapapikey = ('<script src="https://maps.googleapis.com/maps/api/'
 	'js?key=AIzaSyAvDRB7PnQbIVNtRHf3x-MTB5y-3OXD1xg&callback=initMap&libraries=places">async defer> </script>')
@@ -9,7 +10,7 @@ mapapikey = ('<script src="https://maps.googleapis.com/maps/api/'
 def custom_404(request):
 	return render(request, '404.html')
 
-def custom_500request):
+def custom_500(request):
 	return render(request, '500.html')
 
 # Create your views here.
@@ -30,27 +31,6 @@ def browse(request) :
 	}
 	return render(request, 'browse.html', context)
 
-def login(request) :
-	context = {
-		'title': 'Login',
-	}
-	return render(request, 'login.html', context)
-
-def register(request) :
-	if request.method == 'POST':
-		form = RegistrationForm(request.POST)
-		if form.is_valid():
-			users = User.objects.filter()
-			return HttpResponseRedirect('/')
-	else:
-		form = RegistrationForm()
-
-	context = {
-		'title': 'Register',
-		'form': form,
-	}
-
-	return render(request, 'register.html', context)
 
 def map(request) :
 	context = {
@@ -58,3 +38,9 @@ def map(request) :
 		'mapapi': mapapikey,
 	}
 	return render(request, 'map.html', context)
+
+def preferences(request):
+	context = {
+		'title': 'Preferences',
+	}
+	return render(request, 'preferences.html', context)

@@ -8,10 +8,13 @@ urlpatterns = [
 	url(r'^$', app.views.home, name='home'),
 	url(r'^browse/$', app.views.browse, name='browse'),
 	url(r'^map/$', app.views.map, name='map'),
+	url(r'^preferences/$', app.views.preferences, name='preferences'),
 	#url(r'^login/$', app.views.login, name='login'),
 	#url(r'^register/$', app.views.register, name='register'),
 	url(r'^admin/', admin.site.urls),
-	url(r'^accounts/', include('registration.backends.simple.urls'))
+	url(r'^accounts/', include('registration.backends.simple.urls')),
+	#url(r'^accounts/', include('registration.backends.default.urls')),
+    #url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:
