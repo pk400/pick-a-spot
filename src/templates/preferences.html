@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}{{ title }}
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/preferences.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-group">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <br> Price:
+      <br>
+      <div class="btn-group btn-group-vertical" data-toggle="buttons">
+        <label class="btn active">
+          <input type="radio" name='pricerad' value="low" checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Low</span>
+        </label>
+        <label class="btn">
+          <input type="radio" name='pricerad' value="high"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> High</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <br> Distance:
+      <br>
+      <div class="btn-group btn-group-vertical" data-toggle="buttons">
+        <label class="btn active">
+          <input type="radio" name='distance' value="walking" checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Walking</span>
+        </label>
+        <label class="btn">
+          <input type="radio" name='distance' value="driving"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Driving</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <hr> Types of Cuisine:
+      <br>
+      <div class="form-inline">
+        <div class="icon-addon addon-lg form-group">
+          <input id="search-add" type="text" placeholder="Example: Steak, Donut, etc" class="form-control">
+          <i class="fa fa-cutlery fa-2x"></i>
+        </div>
+        <button id="btn-add" class="btn btn-default" type="button">Add Choice</button>     
+      </div>
+      <div id="default-food-options" class="btn-group btn-group-vertical col-xs-6" data-toggle="buttons">
+        <hr> Cuisine Examples:
+        
+        <label class="btn">
+          <input type="checkbox" name='caribbeanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Caribbean Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='chinesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Chinese Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='frenchfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> French Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='greekfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Greek Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='indianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Indian Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='italianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Italian Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='japanesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Japanese Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='koreanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Korean Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='middleeasternfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Middle Eastern Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='spanishfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Spanish Eastern Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='thaifood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Thai Food</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='vietnamesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Vietnamese Food</span>
+        </label>           
+      </div>
+      
+      <div id="user-food-options" class="btn-group btn-group-vertical col-xs-6" data-toggle="buttons">
+        <hr> User Choices:    
+      
+      </div>
+
+      <div class="col-xs-12">
+        <button id="btn-save" class="btn btn-default" type="button">Save</button>   
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block custom-scripts %}
+<script src="{% static 'scripts/preferences.js' %}"></script>
+{% endblock %}
