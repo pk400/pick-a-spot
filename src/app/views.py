@@ -15,9 +15,13 @@ def custom_500(request):
 
 # Create your views here.
 def home(request) :
+	if request.user.is_authenticated():
+		return HttpResponseRedirect('/preferences')
+
 	context = {
 		'title': 'Home'
 	}
+
 	return render(request, 'home.html', context)
 
 def browse(request) :
@@ -34,13 +38,16 @@ def browse(request) :
 
 def map(request) :
 	context = {
-		'title': 'map',
+		'title': 'Map',
 		'mapapi': mapapikey,
 	}
 	return render(request, 'map.html', context)
 
 def preferences(request):
-	context = {
-		'title': 'Preferences',
-	}
-	return render(request, 'preferences.html', context)
+	if request.user.is_active:
+		context = {
+			'title': 'Preferences',
+		}
+		return render(request, 'preferences.html', context)
+	else:
+		return HttpResponseRedirect('/')

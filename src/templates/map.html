@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
+{% block title %}{{ title }}
+{% endblock %}
+
 {% block content %}
 <div id="map" style="height:500px;"></div>
-    <script>
+<script>
   var map, places, centerMarker, infowindow;
   var search = {};
   var markers = [];
@@ -113,6 +116,6 @@
     content += '</table>';
     return content;
   }
-    </script>
+</script>
     {{ mapapi|safe }}
 {% endblock %}

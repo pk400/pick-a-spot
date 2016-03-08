@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block redirects %}
+<script>
+	// After logging out, redirects user back to splash page
+	window.location="/";
+</script>
+{% endblock %}
+
 {% block content %}
 <p>{% trans "Logged out" %}</p>
 {% endblock %}

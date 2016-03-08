@@ -69,7 +69,6 @@ body {
   border-radius: 5px;
   padding: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  width: 350px;
 }
 
 .splash-box input{
@@ -105,4 +104,17 @@ body {
   border: #2C8BB0;
   background: #4FB7E0;
   font-weight: bold;
+}
+
+.splash-box .left {
+  display: inline-block;
+}
+
+.splash-box .right {
+  display: inline-block;
+}
+
+.nav-logo {
+  text-align: center;
+  background-image: url('../images/logo.png');
 }

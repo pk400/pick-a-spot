@@ -10,7 +10,7 @@ $("#btn-add").on("click", function(){
 
 function add_element_(){
 		var value = $("#search-add").val().trim();
-    var holditems = grab_all_user_choices();
+    var holditems = grab_all();
     if ($.inArray(value.toLowerCase(), holditems) == -1 || value != ""){
       // Making elements that will be added
       /* Format: <label>
@@ -49,25 +49,10 @@ function remove_from_list(element){
   });
 }
 
-function grab_all_user_choices(){
+function grab_all(){
 	var holditems = [];
    $(".user-food-option").each(function(){
         holditems.push($(this).text().trim().toLowerCase());
   });
   return holditems;
 }
-
-function return_pref_object(){
-  var preferences = {};
-  preferences.price = document.querySelector('input[name="pricerad"]:checked').value;
-  preferences.distance = document.querySelector('input[name="distance"]:checked').value;
-  var preferencesdefault = [];
-  $("#default-food-options").find(".active>input").each(function(){
-    preferencesdefault.push(this.name);
-  })
-  preferences.preferencesdefault = preferencesdefault;
-  preferences.userchoices = grab_all_user_choices();
-  return preferences;
-}
-
-$("#btn-save").on("click", function(){alert(JSON.stringify(return_pref_object())); console.log(return_pref_object())});

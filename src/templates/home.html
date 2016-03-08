@@ -5,26 +5,31 @@
 {% block title %}{{ title }}
 {% endblock %}
 
-{% block content-after %}
-<div class="splash-content" style="opacity: 0.1;">
+{% block content %}
 	{% if user.is_authenticated %}
-	{% else %}
-	<div class="splash-box" >
-		<h1>Let's get started!</h1>
-		<form method="post" action="{% url 'auth_login' %}">
-			{% csrf_token %} 
-			<input class="form-control" type="text" name="username" placeholder="Username">
-			<input class="form-control" type="password" name="password" placeholder="Password">
-			<input class="btn btn-default" type="submit" value="{% trans 'Log in' %}">
-  			<input type="hidden" name="next" value="{{ request.get_full_path }}" />
-		</form>
-		<p class="or">OR</p>
-		<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
-		<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+		Thanks for signing in!
+	{% endif %}
+{% endblock %}
+{% block content-after %}
+	{% if user.is_anonymous %}
+	<div class="splash-content" style="opacity: 0.1;">
+		<div class="splash-box" >
+			<h1>Let's get started!</h1>
+			<form method="post" action="{% url 'auth_login' %}">
+				{% csrf_token %} 
+				<input class="form-control" type="text" name="username" placeholder="Username">
+				<input class="form-control" type="password" name="password" placeholder="Password">
+				<input class="btn btn-default" type="submit" value="{% trans 'Log in' %}">
+	  			<input type="hidden" name="next" value="{{ request.get_full_path }}" />
+			</form>
+			<p class="or">OR</p>
+			<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+			<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+		</div>
 	</div>
 	{% endif %}
-</div>
 {% endblock %}
+
 {% block custom-scripts %}
 <script>
 $(".splash-content").animate({ opacity: 1 }, 1500);
