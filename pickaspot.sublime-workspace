@@ -12,10 +12,26 @@
 	"buffers":
 	[
 		{
-			"file": "src/templates/home.html",
+			"file": "src/templates/base.html",
 			"settings":
 			{
-				"buffer_size": 879,
+				"buffer_size": 3616,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/pickaspot/settings.py",
+			"settings":
+			{
+				"buffer_size": 4128,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/pickaspot/urls.py",
+			"settings":
+			{
+				"buffer_size": 949,
 				"line_ending": "Unix"
 			}
 		},
@@ -23,26 +39,7 @@
 			"file": "src/app/views.py",
 			"settings":
 			{
-				"buffer_size": 1531,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "{% extends \"base.html\" %}\n{% load i18n %}\n\n{% block content %}\n<form method=\"post\" action=\".\">\n  {% csrf_token %} \n  {{ form.as_p }}\n\n  <input type=\"submit\" value=\"{% trans 'Log in' %}\" />\n  <input type=\"hidden\" name=\"next\" value=\"{{ next }}\" />\n</form>\n\n<p>{% trans \"Forgot password\" %}? <a href=\"{% url 'auth_password_reset' %}\">{% trans \"Reset it\" %}</a>!</p>\n<p>{% trans \"Not member\" %}? <a href=\"{% url 'registration_register' %}\">{% trans \"Register\" %}</a>!</p>\n{% endblock %}\n",
-			"file": "src/templates/registration/login.html",
-			"file_size": 482,
-			"file_write_time": 131015207000000000,
-			"settings":
-			{
-				"buffer_size": 483,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/templates/base.html",
-			"settings":
-			{
-				"buffer_size": 3144,
+				"buffer_size": 1155,
 				"line_ending": "Unix"
 			}
 		}
@@ -79,16 +76,18 @@
 	},
 	"expanded_folders":
 	[
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/app",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/pickaspot",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/static",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/templates",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/templates/registration"
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/pickaspot"
 	],
 	"file_history":
 	[
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/pickaspot/settings.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/base.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/registration/login.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app/views.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/home.html",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/pickaspot/settings.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/env/lib/python2.7/site-packages/django/forms/formsets.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/static/css/base.css",
@@ -163,24 +162,25 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/templates/home.html",
+					"file": "src/templates/base.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 879,
+						"buffer_size": 3616,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								191,
-								191
+								37,
+								37
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -191,28 +191,29 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/app/views.py",
+					"file": "src/pickaspot/settings.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1531,
+						"buffer_size": 4128,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								446,
-								446
+								43,
+								43
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 102.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -220,24 +221,25 @@
 				},
 				{
 					"buffer": 2,
-					"file": "src/templates/registration/login.html",
+					"file": "src/pickaspot/urls.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 483,
+						"buffer_size": 949,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								132,
-								132
+								357,
+								357
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -248,28 +250,28 @@
 				},
 				{
 					"buffer": 3,
-					"file": "src/templates/base.html",
+					"file": "src/app/views.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3144,
+						"buffer_size": 1155,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								485,
-								485
+								703,
+								703
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/Python/Python.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 204.0,
+						"translation.y": 226.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,

@@ -10,9 +10,12 @@ body {
 }
 
 .content {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .footer {
+  padding-top: 20px;
 	bottom: 10px;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0);
@@ -42,15 +45,15 @@ body {
 }
 
 .splashintro {
-	width: 1000px;
-	margin: 0 auto;
-	margin-top: 3%;
-	line-height: 25px;
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 3%;
+  line-height: 25px;
 }
 
 .splash-content {
   padding-top: 150px;
-  min-height: 88vh;
+  height: 90vh;
   background-image: url('../images/splash1.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
@@ -63,11 +66,25 @@ body {
   color: #333;
 }
 
+.splash-box p {
+  margin: 0;
+  text-align: left;
+  color: #333;
+  opacity: 0.8;
+}
+
+.splash-box .or {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .splash-box {
-  background: rgba(200, 200, 200, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   display: inline-block;
   border-radius: 5px;
-  padding: 10px;
+  padding: 30px 25px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   width: 350px;
 }
@@ -105,4 +122,21 @@ body {
   border: #2C8BB0;
   background: #4FB7E0;
   font-weight: bold;
+}
+
+.nav-logo {
+  width: 20px;
+  margin: 0 auto;
+}
+
+.username {
+  color: green;
+}
+
+.nav .active {
+  border-bottom: 2px solid #333;
+}
+
+#map {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }

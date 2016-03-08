@@ -116,12 +116,11 @@ box-shadow: none;
     color: #7AA3CC;
 }
 
-.btn{
+#btn-add{
     color:#999;
-    padding: 10px 16px 10px 16px;
 }
 
-.btn:hover{
+#btn-add:hover{
     color: #7AA3CC;
 }
 

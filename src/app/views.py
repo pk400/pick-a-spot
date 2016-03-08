@@ -44,3 +44,9 @@ def preferences(request):
 		'title': 'Preferences',
 	}
 	return render(request, 'preferences.html', context)
+
+def chat(request):
+	context = {
+		'title': 'Chat',
+	}
+	return render(request, 'chat.html', context)
