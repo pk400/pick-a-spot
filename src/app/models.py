@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # Create your models here.
 class Contact(models.Model):
@@ -20,6 +21,9 @@ class Register(models.Model):
 	timestamp 	= models.DateTimeField(auto_now_add=True, auto_now=False)
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(User, unique=True)
-    url = models.URLField("Website", blank=True)
-    company = models.CharField(max_length=50, blank=True)
+    user = models.OneToOneField(User)
+    preferences = models.CharField(max_length=500, blank=False, null=False)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            UserProfile.objects.create(user=instance)
+    post_save.connect(create_user_profile, sender=User)

@@ -2,21 +2,17 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-import app.views
+from app.views import *
 
 urlpatterns = [
-	url(r'^$', app.views.home, name='home'),
-	url(r'^browse/$', app.views.browse, name='browse'),
-	url(r'^map/$', app.views.map, name='map'),
-	url(r'^preferences/$', app.views.preferences, name='preferences'),
-	url(r'^chat/$', app.views.chat, name='chat'),
-	#url(r'^login/$', app.views.login, name='login'),
-	#url(r'^register/$', app.views.register, name='register'),
-	url(r'^admin/', admin.site.urls),
-	url(r'^accounts/', include('registration.backends.simple.urls')),
-	#url(r'^accounts/', include('registration.backends.default.urls')),
-    #url(r'^accounts/', include('django.contrib.auth.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+	url(r'^$', 				home, 			name='home'),
+	url(r'^map/$', 			map, 			name='map'),
+	url(r'^preferences/$', 	preferences, 	name='preferences'),
+	url(r'^chat/', 			chat, 			name='chat'),
+	url(r'^admin/', 		admin.site.urls),
+	url(r'^accounts/', 		include('registration.backends.simple.urls')),
+	#url(r'^accounts/', 		include('registration.backends.default.urls')),
+] #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 #if settings.DEBUG:
 #	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -5,7 +5,27 @@
 {% block title %}{{ title }}
 {% endblock %}
 
-{% block content-after %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+        <div class="col-md-4"> 
+            <div class="panel panel-primary panel-chat">
+              <div class="panel-heading"><h3 class="panel-title"><b> Chat Window </b><small>last seen 10:38 am</small></h3>
+              </div>
+              <div id="panel-chat-box" class="panel-body" style="height: 300px; }">
+              </div>
+            </div>
+            <div class="form-group">
+			  <textarea class="form-control box-chat" rows="2" id="comment-box"></textarea>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
 {% block custom-scripts %}
+<script src="{% static 'scripts/chat.js' %}"></script>
 {% endblock %}

@@ -59,15 +59,59 @@ function grab_all_user_choices(){
 
 function return_pref_object(){
   var preferences = {};
-  preferences.price = document.querySelector('input[name="pricerad"]:checked').value;
-  preferences.distance = document.querySelector('input[name="distance"]:checked').value;
-  var preferencesdefault = [];
-  $("#default-food-options").find(".active>input").each(function(){
-    preferencesdefault.push(this.name);
-  })
-  preferences.preferencesdefault = preferencesdefault;
-  preferences.userchoices = grab_all_user_choices();
-  return preferences;
+  try{
+    preferences.price = document.querySelector('input[name="pricerad"]:checked').value;
+    preferences.distance = document.querySelector('input[name="distance"]:checked').value;
+    var preferencesdefault = [];
+    $("#default-food-options").find(".active>input").each(function(){
+      preferencesdefault.push(this.name);
+    })
+    preferences.preferencesdefault = preferencesdefault;
+    preferences.userchoices = grab_all_user_choices();
+    return preferences;
+  }
+  catch(err){
+    alert("Fill out Price and/or Distance");
+  }
 }
 
-$("#btn-save").on("click", function(){alert(JSON.stringify(return_pref_object())); console.log(return_pref_object())});
+$("#btn-save").on("click", function(e){
+  e.preventDefault();
+  updatePreferences();
+});
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+          var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+         var cookie = jQuery.trim(cookies[i]);
+    // Does this cookie string begin with the name we want?
+    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+       }
+    }
+  }
+ return cookieValue;
+}
+
+function updatePreferences() {
+  var pref = JSON.stringify(return_pref_object());
+  
+  $.ajax({
+    url: window.location.href,
+    type: "POST",
+    headers: { "X-CSRFToken": getCookie("csrftoken") },
+    contentType: 'application/json; charset=utf-8',
+    data: pref,
+    success: function(json) {
+      console.log('success');
+      $('.hidden-post-json').val('');
+      console.log(json);
+    },
+    error: function(xhr,errmsg,err) {
+      console.log(xhr); // provide a bit more info about the error to the console
+    }
+  })
+}

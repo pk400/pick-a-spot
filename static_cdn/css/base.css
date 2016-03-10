@@ -3,14 +3,24 @@ body {
   padding-bottom: 40px;
 }
 
-@media screen and (min-width: 768px) {
-  body {
-    padding-top: 51px;
-  }
+.joel {
+  background: #ccc;
+  border-radius: 3px;
+  padding: 3px;
+  color: #333;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.joey {
+  background: #ccc;
+  border-radius: 3px;
+  padding: 3px;
+  color: #333;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 .content {
-  margin-top: 20px;
+  margin-top: 25px;
   margin-bottom: 20px;
 }
 
@@ -19,6 +29,10 @@ body {
 	bottom: 10px;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0);
+}
+
+.footer .container {
+  vertical-align: top;
 }
 
 .form-signin {
@@ -139,4 +153,10 @@ body {
 
 #map {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    padding-top: 51px;
+  }
 }

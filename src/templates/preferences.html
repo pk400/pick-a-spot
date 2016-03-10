@@ -8,18 +8,21 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/preferences.css' %}">
 {% endblock %}
 
+{% block scripts %}
+
+{% endblock %}
 
 {% block content %}
 
 <div class="form-group">
-
+  {% csrf_token %}
   <div class="row">
     <div class="col-xs-12">
       <br> Price:
       <br>
       <div class="btn-group btn-group-vertical" data-toggle="buttons">
-        <label class="btn active">
-          <input type="radio" name='pricerad' value="low" checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Low</span>
+        <label class="btn">
+          <input type="radio" name='pricerad' value="low"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Low</span>
         </label>
         <label class="btn">
           <input type="radio" name='pricerad' value="high"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> High</span>
@@ -33,8 +36,8 @@
       <br> Distance:
       <br>
       <div class="btn-group btn-group-vertical" data-toggle="buttons">
-        <label class="btn active">
-          <input type="radio" name='distance' value="walking" checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Walking</span>
+        <label class="btn">
+          <input type="radio" name='distance' value="walking"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Walking</span>
         </label>
         <label class="btn">
           <input type="radio" name='distance' value="driving"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Driving</span>
@@ -104,10 +107,13 @@
       <div class="col-xs-12">
         <button id="btn-save" class="btn btn-default" type="button">Save</button>   
       </div>
+
     </div>
 </div>
-
+<label class="hidden-post-json">{{ postjson }}</label>
 {% endblock %}
 {% block custom-scripts %}
 <script src="{% static 'scripts/preferences.js' %}"></script>
+<script type="text/javascript">
+</script>
 {% endblock %}
