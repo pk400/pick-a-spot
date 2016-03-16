@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block title %}{{ title }}
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/friend.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container bootstrap snippet">
+
+  <div class="header">
+    <h3 class="text-muted prj-name">
+        <span class="fa fa-users fa-2x principal-title"></span>
+        {{ user }}'s Friend zone
+    </h3>
+    <form class="form-horizontal">
+    	<div class="form-group">
+			<input id="friend-name" class="form-control" type="text" placeholder="Friend's Username" autofocus>
+		</div>
+    	<div class="form-group">
+			<input id="btn-add" class="btn btn-default" type="submit" value="Add Friend">
+		</div>
+	</form>
+	</div>
+	<div id="frienderror"></div>
+
+
+	<div class="jumbotron list-content">
+	    <ul id="friendlist" class="list-group">
+			<li href="#" class="list-group-item title">
+			Your friend zone
+			</li>
+			<div class="scrollable">
+				{% for x in friends %}
+					{% if x.user2 != user %}
+					<li href="#" class="list-group-item text-left">
+						<label class="name">
+						    {{ x.user2 }}
+						</label>
+						<label class="pull-right">
+						    <a  class="btn btn-danger  btn-xs glyphicon glyphicon-trash" href="#" title="Delete"></a>
+						</label>
+						<div class="break"></div>
+					</li>
+					{% endif %}
+				{% endfor %}
+			</div>
+	    </ul>
+	</div>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block custom-scripts %}
+<script src="{% static 'scripts/friendlist.js' %}"></script>
+{% endblock %}

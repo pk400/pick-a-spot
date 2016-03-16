@@ -26,16 +26,18 @@
 					<li{% if title == 'About' %} class="active"{% endif %}><a href="#">About</a></li>
 					<li{% if title == 'Map' %} class="active"{% endif %}><a href="/map"><span class="glyphicon glyphicon-map-marker"></span> Map</a></li>
 				{% if user.is_authenticated %}
-					<li{% if title == 'Create Groups' %} class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-th-large"></span> Create Groups</a></li>
 					<li{% if title == 'Preferences' %} class="active"{% endif %}><a href="/preferences"><span class="glyphicon glyphicon-wrench"></span> Preferences</a></li>
+					<li{% if title == 'Create Groups' %} class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-th-large"></span> Groups</a></li>
+					<li{% if title == 'Add Friends' %} class="active"{% endif %}><a href="/friends"><i class="fa fa-users"></i> Friends</a></li>
 				{% endif %}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 				{% if user.is_authenticated %}
-					<li><a href=""><span id="username-dashboard" class="username"><span class="glyphicon glyphicon-user"></span> {{ user }}<span class="glyphicon glyphicon-triangle-bottom"></span></span></a></li>
+					<li><a href=""><span class="username"><span class="glyphicon glyphicon-user" id="username-dashboard"></span> {{ user }}<span class="glyphicon glyphicon-triangle-bottom"></span></span></a></li>
 					<li><a href="{% url 'auth_logout' %}?next=/">Logout</a></li>
 				{% else %}
 					{% if title != 'Home' %}
+					<li><a href=""><span class="username"><span class="glyphicon glyphicon-user" id="guest-dashboard"></span> <span class="glyphicon glyphicon-triangle-bottom"></span></span></a></li>
 					<li><a href="{% url 'auth_login' %}">Login</a></li>
 					<li><a href="{% url 'registration_register' %}">Register</a></li>
 					{% else %}
@@ -68,13 +70,10 @@
 	</footer>
 
 	{% block bootstrap-scripts %}
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'scripts/guestuser.js' %}"></script>
     <script src="{% static 'scripts/ie10-viewport-bug-workaround.js' %}"></script>
     {% endblock %}
     {% block custom-scripts %}{% endblock %}

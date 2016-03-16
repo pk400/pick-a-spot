@@ -12,14 +12,14 @@
 			<h1>Let's get started!</h1>
 			<form method="post" action="{% url 'auth_login' %}">
 				{% csrf_token %} 
-				<input class="form-control" type="text" name="username" placeholder="Username">
+				<input class="form-control" type="text" name="username" placeholder="Username" autofocus>
 				<input class="form-control" type="password" name="password" placeholder="Password">
 				<input class="btn btn-default" type="submit" value="{% trans 'Log in' %}">
-	  			<input type="hidden" name="next" value="{{ request.get_full_path }}" />
+	  			<input type="hidden" name="next" value="{{ next }}" />
 			</form>
 			<p class="or">OR</p>
 			<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
-			<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+			<p>{% trans "Not a member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
 		</div>
 	</div>
 	{% endif %}

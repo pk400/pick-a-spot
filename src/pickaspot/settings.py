@@ -100,26 +100,42 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static_cdn/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+STATICFILES_DIRS = [  
+    os.path.join(BASE_DIR,'static/'),
 ]
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
+if DEBUG:
+    MEDIA_URL = '/media/'
+    STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+    MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media")
+    STATICFILES_DIRS = [  
+        os.path.join(BASE_DIR,'static/'),
+    ]
+
+
+#STATIC_URL = '/static_cdn/'
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'static'),
+#]
+
+#STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+#STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
+#MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 REGISTRATION_OPEN = True        # If True, users can register
 ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
 REGISTRATION_AUTO_LOGIN = False  # If True, the user will be automatically logged in.
-LOGIN_REDIRECT_URL = '/preferences'        # The page you want users to arrive at after they successful log in
+LOGIN_REDIRECT_URL = '/hub'        # The page you want users to arrive at after they successful log in
 LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in, and are trying to access pages requiring authentication
 
 # https://django-websocket-redis.readthedocs.org/en/latest/installation.html
@@ -140,3 +156,5 @@ CHANNEL_LAYERS = {
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

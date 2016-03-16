@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from .forms import RegistrationForm
-from .models import UserProfile
+from .models import UserProfile, Friend, RoomInstance
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from registration.views import RegistrationView
+from django.db.models import Q
+from datetime import datetime,timedelta
 import json
 
 mapapikey = ('<script src="https://maps.googleapis.com/maps/api/'
@@ -21,8 +23,6 @@ def custom_500(request):
 SPLASH
 """
 def home(request):
-	if request.user.is_authenticated():
-		return HttpResponseRedirect('preferences/')
 
 	context = {
 		'title': 'Home'
@@ -39,16 +39,26 @@ def map(request):
 		'title': 'Map',
 		'mapapi': mapapikey,
 	}
+	check_expiry()
+	if request.method == 'POST':
+		result = json.loads(json.dumps(request.POST))
+		RoomInstance(roomname=result['roomname'])
+		RoomInstance.save()
 	return render(request, 'map.html', context)
-
+"""
+Removes old entries
+"""
+def check_expiry():
+	RoomInstance.objects.filter(expirydate__gt = datetime.now() ).delete()
 
 
 """
 PREFERENCES
 """
+@login_required
 def preferences(request):
 	user = UserProfile.objects.filter(user=request.user)
-	
+
 	if request.method == 'POST':
 		# UPDATE users in database
 		jsonsave = json.dumps(request.POST).replace("\\", "")
@@ -73,6 +83,43 @@ def preferences(request):
 
 
 """
+HUB
+"""
+def hub(request):
+	context = {
+		'title': 'User Hub',
+	}
+	return render(request, 'hub.html', context)
+
+
+"""
+FRIENDS
+"""
+@login_required
+def friends(request):
+	user = User.objects.get(id=request.user.id)
+	friendlist = Friend.objects.filter(Q(user1=user) | Q(user2=user)).order_by()
+
+	context = {
+		'title': 'Friends',
+		'friends': friendlist
+	}
+
+	if request.method == 'POST':
+		result = json.loads(json.dumps(request.POST))
+		friend_user = User.objects.get(username=result['friend'])
+		
+		if Friend.objects.filter(user1=user, user2=friend_user):
+			print friend_user
+		else:
+			addfriend = Friend(user1=user, user2=friend_user)
+			addfriend.save()
+
+	return render(request, 'friends.html', context)
+
+
+
+"""
 CHAT
 """
 def chat(request):
@@ -80,5 +127,3 @@ def chat(request):
 		'title': 'Chat',
 	}
 	return render(request, 'chat.html', context)
-
-

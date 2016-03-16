@@ -6,25 +6,150 @@
 {% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/preferences.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="container map-container">
-  <div class="col-md-8 map-left">
-    <div id="map" style="height:500px;"></div>
-  </div>
-  <div class="col-md-4 map-right"> 
-    <div class="panel panel-primary panel-chat">
-      <div class="panel-heading"><h3 class="panel-title"><b> Chat Window </b><small>last seen 10:38 am</small></h3>
-      </div>
-      <div id="panel-chat-box" class="panel-body" style="height: 300px; }">
-      </div>
+
+
+
+
+<div class="container">
+	<!-- OPTIONS -->
+	<div class="row optionschoice">
+		<div id="pickoption" class="col-xs-5 map-option">
+			<h1>Pick-A-Spot</h1>
+			<ul class="row ">
+				<li><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit</small></li>
+				<li><small>veniam quis nostrud exercitation ullamco</small></li>
+				<li><small>aboris nisi ut aliquip ex ea commodo consequat</small></li>
+			</ul>		
+		</div>
+		<div id="quickoption" class="col-xs-5 map-option">
+			<h1>Quick-Pick</h1>
+			<ul  class="row">
+				<li><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit</small></li>
+				<li><small>veniam quis nostrud exercitation ullamco</small></li>
+				<li><small>aboris nisi ut aliquip ex ea commodo consequat</small></li>
+			</ul>	
+		</div>
+	</div>
+	<div style="display: none;" class="container map-container">
+	  <!-- MAP -->
+	  <div class="col-md-8 map-left">
+	    <div id="map" style="height:500px;"></div>
+	  </div>
+	  <!-- CHAT -->
+	  <div class="col-md-4 map-right"> 
+	    <div class="panel panel-primary panel-chat">
+	      <div class="panel-heading"><h3 class="panel-title"><b> Chat Window </b><small>last seen 10:38 am</small></h3>
+	      </div>
+	      <div id="panel-chat-box" class="panel-body" style="height: 300px; }">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <textarea class="form-control box-chat" rows="2" id="comment-box"></textarea>
+	    </div>
+	  </div>	
+  	</div>
+  	<!-- PREFERENCES -->
+  	<div style="display: none;" class="container preferences-container">
+		<div class=" form-group">
+		  <div class="row">
+		    <div class="col-xs-12">
+		      <br> Price:
+		      <br>
+		      <div class="btn-group btn-group-vertical" data-toggle="buttons">
+		        <label class="btn">
+		          <input type="radio" name='pricerad' value="low"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Low</span>
+		        </label>
+		        <label class="btn">
+		          <input type="radio" name='pricerad' value="high"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> High</span>
+		        </label>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="row">
+		    <div class="col-xs-12">
+		      <br> Distance:
+		      <br>
+		      <div class="btn-group btn-group-vertical" data-toggle="buttons">
+		        <label class="btn">
+		          <input type="radio" name='distance' value="walking"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Walking</span>
+		        </label>
+		        <label class="btn">
+		          <input type="radio" name='distance' value="driving"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Driving</span>
+		        </label>
+		      </div>
+		    </div>
+		  </div>
+
+
+		  <div class="row">
+		    <div class="col-xs-12">
+		      <hr> Types of Cuisine:
+		      <br>
+		      <div class="form-inline">
+		        <div class="icon-addon addon-lg form-group">
+		          <input id="search-add" type="text" placeholder="Example: Steak, Donut, etc" class="form-control">
+		          <i class="fa fa-cutlery fa-2x"></i>
+		        </div>
+		        <button id="btn-add" class="btn btn-default" type="button">Add Choice</button>     
+		      </div>
+		      <div id="default-food-options" class="btn-group btn-group-vertical col-xs-6" data-toggle="buttons">
+		        <hr> Cuisine Examples:
+		        
+		        <label class="btn">
+		          <input type="checkbox" name='caribbeanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Caribbean Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='chinesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Chinese Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='frenchfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> French Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='greekfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Greek Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='indianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Indian Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='italianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Italian Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='japanesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Japanese Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='koreanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Korean Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='middleeasternfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Middle Eastern Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='spanishfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Spanish Eastern Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='thaifood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Thai Food</span>
+		        </label>
+		        <label class="btn">
+		          <input type="checkbox" name='vietnamesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Vietnamese Food</span>
+		        </label>           
+		      </div>
+		      
+		      <div id="user-food-options" class="btn-group btn-group-vertical col-xs-6" data-toggle="buttons">
+		        <hr> User Choices:    
+		      
+		      </div>
+
+		      <div class="col-xs-12">
+		        <button id="btn-preferences" class="btn btn-default" type="button">Ready</button>   
+		      </div>
     </div>
-    <div class="form-group">
-      <textarea class="form-control box-chat" rows="2" id="comment-box"></textarea>
     </div>
-  </div>
+</div>  	
 </div>
 <script src="{% static 'scripts/map.js' %}"></script>
 {{ mapapi|safe }}
@@ -32,4 +157,6 @@
 
 {% block custom-scripts %}
 <script src="{% static 'scripts/chat.js' %}"></script>
+<script src="{% static 'scripts/choices.js' %}"></script>
+<script src="{% static 'scripts/preferences.js' %}"></script>
 {% endblock %}

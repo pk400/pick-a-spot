@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"HttpRe",
+				"HttpResponseRedirect"
+			],
+			[
 				"User",
 				"UserProfile"
 			],
@@ -16,42 +20,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/app/models.py",
-			"settings":
-			{
-				"buffer_size": 932,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/pickaspot/settings.py",
-			"settings":
-			{
-				"buffer_size": 4060,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/static/scripts/preferences.js",
-			"settings":
-			{
-				"buffer_size": 2959,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "src/app/views.py",
 			"settings":
 			{
-				"buffer_size": 1323,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/templates/preferences.html",
-			"settings":
-			{
-				"buffer_size": 5614,
+				"buffer_size": 2293,
 				"line_ending": "Unix"
 			}
 		},
@@ -59,15 +31,39 @@
 			"file": "src/templates/base.html",
 			"settings":
 			{
-				"buffer_size": 3651,
+				"buffer_size": 3566,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/pickaspot/urls.py",
+			"file": "src/templates/home.html",
 			"settings":
 			{
-				"buffer_size": 922,
+				"buffer_size": 1090,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/templates/friends.html",
+			"settings":
+			{
+				"buffer_size": 582,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/static/scripts/friendlist.js",
+			"settings":
+			{
+				"buffer_size": 1797,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/templates/preferences.html",
+			"settings":
+			{
+				"buffer_size": 5045,
 				"line_ending": "Unix"
 			}
 		}
@@ -79,12 +75,12 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 392.0
 	},
 	"console":
 	{
@@ -105,24 +101,48 @@
 	"expanded_folders":
 	[
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7/site-packages",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7/site-packages/registration",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7/site-packages/registration/backends",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7/site-packages/registration/backends/default",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/pickaspot",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/scripts",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates"
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/registration"
 	],
 	"file_history":
 	[
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/base.html",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/preferences.html",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7/site-packages/django/contrib/gis/gdal/geomtype.py",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/home.html",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/scripts/preferences.js",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app/views.py",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/pickaspot/urls.py",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/pickaspot/settings.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/registration/login.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/hub.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/base.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/pickaspot/settings.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/pickaspot/urls.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/home.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app/forms.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app/admin.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app/models.py",
+		"/home/joel/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/joel/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/pickaspot/wsgi.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/css/base.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7/site-packages/registration/models.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/preferences.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/scripts/map.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/map.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7/site-packages/registration/backends/default/views.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/registration/registration_complete.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7/site-packages/registration/backends/simple/views.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/chat.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app/views.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/css/chat.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/scripts/chat.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/registration/registration_form.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/css/preferences.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/scripts/preferences.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/env/lib/python2.7/site-packages/django/contrib/gis/gdal/geomtype.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/pickaspot/settings.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/env/lib/python2.7/site-packages/django/forms/formsets.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pickaspot-prod/src/static/css/base.css",
@@ -161,7 +181,7 @@
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -175,6 +195,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"preferences",
 			"secure"
 		],
 		"highlight": true,
@@ -198,196 +219,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/app/models.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 932,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								837,
-								837
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/pickaspot/settings.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4060,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								51,
-								51
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/static/scripts/preferences.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2959,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2752,
-								2752
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1263.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "src/app/views.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1323,
+						"buffer_size": 2293,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1079,
-								1079
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 459.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/templates/preferences.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5614,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								253,
-								253
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/templates/base.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3651,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2975,
-								2975
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 646.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/pickaspot/urls.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 922,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								690,
-								690
+								1670,
+								1670
 							]
 						],
 						"settings":
@@ -401,13 +245,159 @@
 					},
 					"stack_index": 3,
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/templates/base.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3566,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3122,
+								3122
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 870.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/templates/home.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								446,
+								446
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/templates/friends.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 582,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								422,
+								422
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/static/scripts/friendlist.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1797,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								566,
+								566
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/templates/preferences.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5045,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4941,
+								4941
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1755.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -444,7 +434,7 @@
 	"project": "pickaspot.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
