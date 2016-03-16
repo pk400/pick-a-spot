@@ -69,4 +69,8 @@ function addfriend() {
       // on error: user does not exist
     })
   }
+
+  function deletefriend() {
+    var csrftoken = getCookie('csrftoken');
+  }
 }

@@ -31,7 +31,10 @@ class Friend(models.Model):
 
 class RoomInstance(models.Model):
     id = models.AutoField(primary_key=True)
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(User, null=True)
     listofusers = models.CharField(max_length=500, blank=True, null=True)
     roomname = models.CharField(max_length=25, blank=True, null=True)
     expirydate = models.DateTimeField(default=datetime.today() + timedelta(days=1), blank=True)
+
+    def __unicode__(self):
+        return str(self.id)

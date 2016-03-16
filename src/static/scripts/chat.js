@@ -1,5 +1,7 @@
-$( document ).ready(function() {
-	var socket = new WebSocket("ws://zenit.senecac.on.ca:9089/");
+function join_chat(){
+	var parameter = window.location.href.split("?")[1]
+	var socket = new WebSocket("ws://zenit.senecac.on.ca:9089/map?" + parameter);
+	console.log(socket)
 	socket.ping = setInterval(function(){
 		socket.send("");
 	}, 50000);
@@ -63,5 +65,4 @@ $( document ).ready(function() {
 	    div.append(blockquote);
 	    chatbox.append(div);
 	}
-
-});
+}

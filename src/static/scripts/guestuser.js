@@ -5,7 +5,7 @@ $( document ).ready(function() {
             $("#guest-dashboard").after( localStorage.getItem('guestuser') );
         }
         else if ($("#guest-dashboard").text() == ""){
-            var guestname = "Guest - " + Math.random().toString(36).substring(10);
+            var guestname = "Guest - " + makeid();
             localStorage.setItem('guestuser', guestname);
             $("#guest-dashboard").after( document.createTextNode( guestname ) );
         }
@@ -13,4 +13,14 @@ $( document ).ready(function() {
     else{
         localStorage.removeItem('guestuser');
     }
+
+    function makeid(){
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 5; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }    
 });

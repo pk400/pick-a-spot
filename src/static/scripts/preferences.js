@@ -144,5 +144,8 @@ function fill_form(){
 }
 
 $( document ).ready(function() {
-  fill_form();
+  try{
+    fill_form();
+  }catch(err){}
+
 });

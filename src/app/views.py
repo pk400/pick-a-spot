@@ -40,16 +40,23 @@ def map(request):
 		'mapapi': mapapikey,
 	}
 	check_expiry()
+	getrequest = request.GET.get('room','')
+
+	if getrequest:
+		ri = RoomInstance.objects.filter(roomname=getrequest)
+		if not ri:
+			return HttpResponseRedirect('/')
+
 	if request.method == 'POST':
 		result = json.loads(json.dumps(request.POST))
-		RoomInstance(roomname=result['roomname'])
-		RoomInstance.save()
+		ri = RoomInstance(roomname=result['roomname'])
+		ri.save()
 	return render(request, 'map.html', context)
 """
 Removes old entries
 """
 def check_expiry():
-	RoomInstance.objects.filter(expirydate__gt = datetime.now() ).delete()
+	RoomInstance.objects.filter(expirydate__lt = datetime.now() ).delete()
 
 
 """
