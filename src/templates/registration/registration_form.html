@@ -5,10 +5,41 @@
 {% endblock %}
 
 {% block content %}
-<form method="post" action=".">
-  {% csrf_token %}
-  {{ form.as_p }}
+<div class="row">
+	<form class="form-signin mg-btm"  method="post" action=".">
+		{% csrf_token %}
 
-  <input type="submit" value="{% trans 'Submit' %}" />
-</form>
+		<div class="main">
+			{{ form.errors }}
+	        <label>{{ form.username.label }}</label>    
+	        <div class="input-group">
+	            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	        	<input id="id_username" type="text" name="username" class="form-control" placeholder="{{ form.username.label }}" tabindex=1 autofocus>
+	        </div>
+	        <label>{{ form.email.label }}   <a href=""></a></label>
+	        <div class="input-group">
+	            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+	            <input id="id_email" type="email" name="email" class="form-control" placeholder="{{ form.email.label }}" tabindex=2>
+	        </div>
+	        <label>{{ form.password1.label }}</label>    
+	        <div class="input-group">
+	            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	        	<input id="id_password1" type="password" name="password1" class="form-control" placeholder="Password" tabindex=3>
+	        </div>	  
+	        <div class="input-group">
+	            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	        	<input id="id_password2" type="password" name="password2" class="form-control" placeholder="Confirm Password" tabindex=3 >
+	        </div>
+
+	    	<div class="row">
+	            <div class="col-xs-6 col-md-6">
+	                 
+	            </div>
+	            <div class="col-xs-6 col-md-6 pull-right">
+	                <button type="submit" class="btn btn-large btn-success pull-right" tabindex=4>{% trans 'Register' %}</button>
+	            </div>
+	        </div>
+		</div>
+  	</form>
+</div>
 {% endblock %}

@@ -12,6 +12,7 @@ $( document ).ready(function() {
     }
     else{
         localStorage.removeItem('guestuser');
+        localStorage.removeItem('listofpref');
     }
 
     function makeid(){

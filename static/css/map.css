@@ -23,8 +23,7 @@
 }
 
 .box-chat{
-    border-top-right-radius: 0em;
-    border-top-left-radius: 0em;
+    border-radius: 0em;
     border-top: 0;
     border-color: rgb(164, 199, 230);
 }
@@ -34,7 +33,7 @@
 }
 
 #panel-chat-box{
-    overflow: auto;
+    overflow-y: auto;
 }
 
 
@@ -54,12 +53,6 @@
 #panel-chat-box::-webkit-scrollbar-thumb
 {
     border-radius: 10px;
-    background-image: -webkit-gradient(linear,
-                                       left bottom,
-                                       left top,
-                                       color-stop(0.44, rgb(122,153,217)),
-                                       color-stop(0.72, rgb(73,125,189)),
-                                       color-stop(0.86, rgb(28,58,148)));
 }
 
 
@@ -75,5 +68,27 @@
 
 .map-option:hover{
     background-color: rgba(153, 204, 255, 0.2);
-    cursor: pointer;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+.panel-results, .panel-heading, .panel-chat{
+    border-radius: 0em;
+    margin: 0px;
+}
+
+#btn-ready-pick{
+    border-radius: 0em;
+    padding: 0px;
+    width: 100%;
+}
+
+#panel-results-box{
+    overflow-y: auto;
+}
+
+.chat-div{
+    width:100%;
 }

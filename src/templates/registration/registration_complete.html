@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block title %}Success!
+{% endblock %}
+
 {% block content %}
-<p>{% trans "You are now registered. Thanks for joining!" %}</p>
-<h2>Getting started</h2>
-<ul>
-	<li><a href="/preferences">Set your preferences</a></li>
-	<li><a href="/map">Browse the map</a></li>
-	<li>Invite your friends!</li>
-</ul>
+<p>{% trans "Registration successful. Thanks for joining!" %}</p>
+<p>You may now login <a href="/accounts/login">here</a>.</p>
 {% endblock %}

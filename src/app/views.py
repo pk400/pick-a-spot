@@ -9,7 +9,7 @@ from datetime import datetime,timedelta
 import json
 
 mapapikey = ('<script src="https://maps.googleapis.com/maps/api/'
-	'js?key=AIzaSyAvDRB7PnQbIVNtRHf3x-MTB5y-3OXD1xg&callback=initMap&libraries=places">async defer> </script>')
+	'js?key=AIzaSyAvDRB7PnQbIVNtRHf3x-MTB5y-3OXD1xg&libraries=places">async defer> </script>')
 
 def custom_404(request):
 	return render(request, '404.html')
@@ -20,14 +20,29 @@ def custom_500(request):
 
 
 """
-SPLASH
+HOME
 """
+@login_required(login_url='/splash/')
 def home(request):
-
 	context = {
-		'title': 'Home'
+		'title': 'User Hub',
 	}
 	return render(request, 'home.html', context)
+
+
+
+"""
+SPLASH
+"""
+def splash(request):
+	context = {
+		'title': 'Splash'
+	}
+	if request.user.is_authenticated():
+		print 'hello'
+		return HttpResponseRedirect('/')
+	else:
+		return render(request, 'splash.html', context)
 
 
 
@@ -35,9 +50,14 @@ def home(request):
 MAP
 """
 def map(request):
+	value = ""
+	if request.user.is_authenticated():
+		user = UserProfile.objects.filter(user=request.user)
+		value = user[0].preferences
 	context = {
 		'title': 'Map',
 		'mapapi': mapapikey,
+		'preferences' : value
 	}
 	check_expiry()
 	getrequest = request.GET.get('room','')
@@ -49,14 +69,25 @@ def map(request):
 
 	if request.method == 'POST':
 		result = json.loads(json.dumps(request.POST))
-		ri = RoomInstance(roomname=result['roomname'])
-		ri.save()
+		if result['type'] == "makeroom":
+			ri = RoomInstance(roomname=result['roomname'], listofpref=result['listofpref'], owner=result['owner'])
+			ri.save()
+		elif result['type'] == "grabpref":
+			# Returns the list of preferences
+			ri = RoomInstance.objects.get(roomname=result['roomname'])
+			return HttpResponse(ri.listofpref)
+		elif result['type'] == "updatepref":
+			# Updates preferences
+			ri = RoomInstance.objects.filter(roomname=result['roomname'])
+			ri.update(listofpref=result['listofpref'])
+
 	return render(request, 'map.html', context)
 """
 Removes old entries
 """
 def check_expiry():
-	RoomInstance.objects.filter(expirydate__lt = datetime.now() ).delete()
+	ri = RoomInstance.objects.filter(expirydate__lt = datetime.now() )
+	ri.update(isexpired = True)
 
 
 """
@@ -89,14 +120,6 @@ def preferences(request):
 
 
 
-"""
-HUB
-"""
-def hub(request):
-	context = {
-		'title': 'User Hub',
-	}
-	return render(request, 'hub.html', context)
 
 
 """
@@ -114,13 +137,18 @@ def friends(request):
 
 	if request.method == 'POST':
 		result = json.loads(json.dumps(request.POST))
-		friend_user = User.objects.get(username=result['friend'])
-		
-		if Friend.objects.filter(user1=user, user2=friend_user):
-			print friend_user
-		else:
-			addfriend = Friend(user1=user, user2=friend_user)
-			addfriend.save()
+		if result['addfriend']:
+			friend_user = User.objects.get(username=result['addfriend'])
+			
+			# If there is no relationship between users,
+			# create one
+			if not Friend.objects.filter(user1=user, user2=friend_user):
+				addfriend = Friend(user1=user, user2=friend_user)
+				addfriend.save()
+		elif result['delfriend']:
+			friend_user = User.objects.get(username=result['delfriend'])
+
+			Friend.objects.get(user1=user, user2=friend_user).delete()
 
 	return render(request, 'friends.html', context)
 

@@ -2,44 +2,200 @@ var map, places, centerMarker, infowindow;
 var search = {};
 var markers = [];
 var hostnameRegexp = new RegExp('^https?://.+?/');
+var priceList = [];
+var distanceList = [];
+var keywordList = [];
+var price;
+var distance;
+var keywords = [];
+var cords = {};
+var cordspromise = $.Deferred();
+$.getJSON("http://jsonip.com?callback=?", function (data) {
+  $.getJSON("http://freegeoip.net/json/" + data.ip, function (data) {
+      cords.latitude = data.latitude;
+      cords.longitude = data.longitude;
+      cordspromise.resolve();
+  });  
+});  
+
+function parsePreferences(){
+  var priceRnd = priceList[Math.floor(Math.random() * priceList.length)];
+  var distanceRnd = distanceList[Math.floor(Math.random() * distanceList.length)];
+
+  // Valid values are in the range from 0 (most affordable) 
+  // to 4 (most expensive), inclusive.
+  if (priceRnd == "low")
+    price = 1;
+  else
+    price = 4;
+
+  // Decides how far the search should be
+  if (distanceRnd == "walking")
+    // Based on average person's walking being 1km/10 mins
+    distance = 1500;
+  else
+    distance = 10000;
+
+  var length = 5;
+  // Just in case not enough entries
+  if (keywordList.length < 5)
+    length = keywordList.length;
+
+  for (var i = 0; i < length; i++){
+    var foundword = keywordList[Math.floor(Math.random() * keywordList.length)];
+    var parsedword = foundword.split("food")[0];
+    if( $.inArray(parsedword, keywords) == -1){
+      keywords.push(parsedword);
+    }
+  };
+  var parseobj = {
+    price : price,
+    distance : distance,
+    keywords: keywords,
+    cords: cords
+  }
+  return parseobj;
+}
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 43.7, lng: -79.4},
-    zoom: 13,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+  cordspromise.then(function(){
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: cords.latitude, lng: cords.longitude},
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    search.location = map.getCenter();
+    centerMarker = new google.maps.Marker({
+          position: search.location,
+          animation: google.maps.Animation.DROP,
+          map: map
+    });
   });
-
-  places = new google.maps.places.PlacesService(map);
-  
-  // dummy data
-  search.keyword = "Pizza";
-  search.types = "restaurant";
-  search.rankBy = google.maps.places.RankBy.DISTANCE;
-  search.location = map.getCenter();
-  centerMarker = new google.maps.Marker({
-        position: search.location,
-        animation: google.maps.Animation.DROP,
-        map: map
-      });
-
-
-places.search(search, function(results, status){
-  // dummy value
-  var i = Math.floor(Math.random() * (20 - 0 + 1)) + 1;
-  var icon = 'http://gmaps-samples-v3.googlecode.com/svn/trunk/places/icons/number_'+ (1) + '.png';
-  // Setting marker points
-  markers.push(new google.maps.Marker({
-    position: results[i].geometry.location,
-    animation: google.maps.Animation.DROP,
-    icon: icon
-  }));
-  google.maps.event.addListener(markers[0], 'click',
-  getDetails(results[i], i));
-  // Adds to screen with animation
-  window.setTimeout(markers[0].setMap(map), i * 100);
-}); 
 }
+
+function pickaspotmap(parseobj) {
+  // rewrite over so that the parseobj is the same for all clients
+  if (parseobj != undefined){
+    price = parseobj.price;
+    distance = parseobj.distance;
+    keywords = parseobj.keywords;
+    cords = parseobj.cords;
+  }
+  $("#table-body-results").empty();
+  clearMarkers();
+  var zoom = 12;
+  if (distance < 1500)
+    zoom = 10;
+  if (map == undefined){
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: cords.latitude, lng: cords.longitude},
+      zoom: zoom,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+  }
+  else{
+    map.setCenter({lat: cords.latitude, lng: cords.longitude});
+    map.setZoom(zoom);
+  }
+  places = new google.maps.places.PlacesService(map);
+  var length = keywords.length;
+  // keeps track of how many entries have been added
+  var current = 0;
+  // keeps track of IDs so the resturant isn't added twice
+  var trackid = [];
+  for (var i = 0; i < length; i++){
+    // Loop won't go pass 20 markers
+    if (current > 19)
+      break;
+    // set up search
+    search.minprice = 0
+    search.maxprice = price
+    // do a search once of each keyword
+    search.keyword = keywords[i];
+    search.radius = distance;
+    search.type = "restaurant";
+    search.rankBy = google.maps.places.RankBy.PROMINENCE;
+
+    search.location = map.getCenter();
+    centerMarker = new google.maps.Marker({
+          position: search.location,
+          animation: google.maps.Animation.DROP,
+          map: map
+        });
+
+    // go through data
+    // Since doing multiple searches, an outside number is needed to keep track
+    places.search(search, function(results, status){
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var j = 0; j < results.length; j++) {
+          // stops add results after 20
+          if (current>19){
+            break;
+          }            
+          if( $.inArray(results[j].place_id, trackid) == -1){
+            trackid.push(results[j].place_id);
+            var icon = 'http://gmaps-samples-v3.googlecode.com/svn/trunk/places/icons/number_'+ (current+1) + '.png';
+            markers.push(new google.maps.Marker({
+              position: results[j].geometry.location,
+              animation: google.maps.Animation.DROP,
+              icon: icon
+            }));
+            google.maps.event.addListener(markers[current], 'click', getDetails(results[j], current));
+            window.setTimeout(dropMarker(current), current * 100);
+            addResult(results[j], current);
+            current++;
+          }
+        }
+      }  
+    });
+  }
+  // Clear results for next search
+  keywords = [];    
+}
+
+function clearMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = [];
+  if (centerMarker) {
+    centerMarker.setMap(null);
+  }
+}
+
+function dropMarker(i) {
+  return function() {
+    if (markers[i]) {
+      markers[i].setMap(map);
+    }
+  }
+}
+
+function addResult(result, i) {
+  var resulttab = $("#table-body-results");
+  /* FORMAT
+    TABLE
+      TR
+        TD-IMG
+        TD-Text
+  */
+  var tr = $("<tr>");
+  var icon = 'http://gmaps-samples-v3.googlecode.com/svn/trunk/places/icons/number_'+ (i+1) + '.png';
+  var image = $("<img>",{
+    src : icon,
+  })
+  var tdicon = $("<td>").append(image);
+  var tdtext = $("<td>",{
+    text: result.name
+  })
+  tr.on("click", function(){
+    google.maps.event.trigger(markers[i], 'click');
+  });
+  tr.append(tdicon);
+  tr.append(tdtext);
+  resulttab.append(tr);
+}
+
 /*
 Details for the resturant markers
 */
@@ -66,7 +222,7 @@ function showInfoWindow(i) {
       infowindow = new google.maps.InfoWindow({
         content: getIWContent(place)
       });
-      infowindow.open(map, markers[0]);        
+      infowindow.open(map, markers[i]);        
     }
   }
 }

@@ -3,6 +3,33 @@ $("#btn-add").on("click", function(e){
   addfriend();
 });
 
+$(".btn-delete").one("click", function(e){
+  e.preventDefault();
+  deletefriend($(this));
+});
+
+function deletefriend(element) {
+  var self = element;
+  var friend = self.attr("del");
+  var csrftoken = getCookie('csrftoken');
+  console.log('friend');
+  
+  var postdata = {
+    csrfmiddlewaretoken: csrftoken,
+    addfriend: "",
+    delfriend: friend
+  };
+
+  $.ajax({
+    url: window.location.href,
+      type: "POST",
+      data: postdata,
+      success: function(json) {
+        self.parent().parent().hide("slow");
+      }
+  })
+}
+
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -23,16 +50,19 @@ function addfriend() {
   var csrftoken = getCookie('csrftoken');
   var get_friend = document.querySelector('#friend-name').value;
   
+  var postdata = {
+    csrfmiddlewaretoken: csrftoken,
+    addfriend: get_friend,
+    delfriend: ""
+  };
+
   if (get_friend != "") {
     document.querySelector('#friend-name').value = "";
 
     $.ajax({
       url: window.location.href,
       type: "POST",
-      data: {
-        csrfmiddlewaretoken: csrftoken,
-        friend: get_friend
-      },
+      data: postdata,
       success: function(json) {
         var li = $("<li>", {
           href: '#',
@@ -49,9 +79,11 @@ function addfriend() {
         });
 
         var a = $("<a>", {
-          class: 'btn btn-danger  btn-xs glyphicon glyphicon-trash',
+          id: 'delete-'+get_friend,
+          class: 'btn btn-danger btn-xs glyphicon glyphicon-trash btn-delete',
           href: '#',
-          title: 'Delete'
+          title: 'Delete',
+          del: get_friend
         });
 
         var br = $("<div>", {
@@ -63,14 +95,12 @@ function addfriend() {
         li.append(label2);
         li.append(br);
         $(".scrollable").prepend(li);
-
+        a.one("click",function(){
+          deletefriend($(this));
+        })
         //$("#friendlist").append("<li>"+get_friend+" <a href=\"#\">Remove</a></li>");
       }
       // on error: user does not exist
     })
-  }
-
-  function deletefriend() {
-    var csrftoken = getCookie('csrftoken');
   }
 }

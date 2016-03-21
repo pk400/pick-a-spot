@@ -7,7 +7,6 @@ DEBUG = True
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,7 +54,6 @@ WSGI_APPLICATION = 'pickaspot.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -66,7 +64,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -82,10 +79,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'EST'
@@ -94,11 +87,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
+USE_TZ = False
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
@@ -132,18 +121,16 @@ STATICFILES_FINDERS = (
     #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-REGISTRATION_OPEN = True        # If True, users can register
-ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
-REGISTRATION_AUTO_LOGIN = False  # If True, the user will be automatically logged in.
-LOGIN_REDIRECT_URL = '/hub'        # The page you want users to arrive at after they successful log in
-LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in, and are trying to access pages requiring authentication
+REGISTRATION_OPEN       = True                  # If True, users can register
+ACCOUNT_ACTIVATION_DAYS = 7                     # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = False                 # If True, the user will be automatically logged in.
+LOGIN_REDIRECT_URL      = '/'                # The page you want users to arrive at after they successful log in
+LOGIN_URL               = '/accounts/login/'    # The page users are directed to if they are not logged in, and are trying to access pages requiring authentication
 
-# https://django-websocket-redis.readthedocs.org/en/latest/installation.html
-WEBSOCKET_URL = '/ws/'
-WS4REDIS_EXPIRE = 7200
-WS4REDIS_PREFIX = 'spot'
+WEBSOCKET_URL           = '/ws/'
+WS4REDIS_EXPIRE         = 7200
+WS4REDIS_PREFIX         = 'spot'
 
-# In settings.py
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgi_redis.RedisChannelLayer",
@@ -154,7 +141,9 @@ CHANNEL_LAYERS = {
     },
 }
 
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
-
+SECURE_CONTENT_TYPE_NOSNIFF     = True
+SECURE_BROWSER_XSS_FILTER       = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'

@@ -35,6 +35,7 @@ body {
 .form-signin {
 	max-width: 330px;
 	padding: 15px;
+  padding-top: 0px;
 	margin: 0 auto;
 }
 
@@ -65,7 +66,8 @@ body {
 .splash-content {
   padding-top: 150px;
   height: 90vh;
-  background-image: url('../images/splash1.jpg');
+  /*background-image: url('../images/splash1.jpg');*/
+  background-image: url('../images/splashhires.jpeg');
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -92,12 +94,7 @@ body {
 }
 
 .splash-box {
-  background: rgba(255, 255, 255, 0.8);
-  display: inline-block;
-  border-radius: 5px;
   padding: 30px 25px;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-  width: 350px;
 }
 
 .splash-box input{
@@ -135,6 +132,24 @@ body {
   font-weight: bold;
 }
 
+.splash-box .leftbox {
+  display: inline-block;
+  width: 700px;
+}
+
+.splash-box .leftbox h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 84px;
+  font-weight: bold;
+  color: #BF2A23;
+}
+
+.splash-box .rightbox {
+  display: inline-block;
+  width: 350px;
+}
+
+
 .nav-logo {
   width: 20px;
   margin: 0 auto;
@@ -151,14 +166,10 @@ body {
 .form-signin {
   max-width: 400px; 
   display:block;
-  background-color: #f7f7f7;
-  -moz-box-shadow: 0 0 3px 3px #888;
-    -webkit-box-shadow: 0 0 3px 3px #888;
-  box-shadow: 0 0 3px 3px #888;
-  border-radius:2px;
 }
 .main{
   padding: 38px;
+  padding-top: 0px;
 }
 .social-box{
   margin: 0 auto;
@@ -191,7 +202,7 @@ body {
   position: relative;
   font-size: 16px;
   height: 20px;
-  padding: 20px;
+  padding: 8px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -200,10 +211,17 @@ body {
   z-index: 2;
 }
 .form-signin input[type="text"] {
+  height: 100%;
+  margin-bottom: 0px;
+  border-radius: 5px;
+}
+.form-signin input[type="email"] {
+  height: 100%;
   margin-bottom: 0px;
   border-radius: 5px;
 }
 .form-signin input[type="password"] {
+  height: 100%;
   margin-bottom: 0px;
   border-radius: 5px;
 }
@@ -211,7 +229,6 @@ body {
     margin-bottom: 15px;
 }
 .login-footer{
-  background:#f0f0f0;
   margin: 0 auto;
   border-top: 1px solid #dadada;
   padding:20px;
@@ -227,9 +244,5 @@ body {
 @media screen and (min-width: 768px) {
   body {
     padding-top: 51px;
-  }
-
-  #map {
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   }
 }
