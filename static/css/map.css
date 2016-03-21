@@ -1,0 +1,94 @@
+.me{
+    font-size: 14px;
+    margin: -4px;
+    border-right: 3px solid #60DF88 !important;
+    padding: 5px;
+    background-color: rgb(239, 255, 241);
+}
+
+.you{
+    font-size: 14px;
+    margin: -4px;
+    border-left: 3px solid rgb(255, 112, 0) !important;
+    padding: 5px;
+    padding-left:10px;
+    background-color: rgb(247, 247, 214);
+}
+
+.panel-chat{
+    margin-bottom: 0px;
+    border-bottom-right-radius: 0em;
+    border-bottom-left-radius: 0em;
+
+}
+
+.box-chat{
+    border-radius: 0em;
+    border-top: 0;
+    border-color: rgb(164, 199, 230);
+}
+
+.panel-title *{
+    color:white;
+}
+
+#panel-chat-box{
+    overflow-y: auto;
+}
+
+
+#panel-chat-box::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+#panel-chat-box::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#panel-chat-box::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+}
+
+
+.map-option{
+    background-color: rgba(51, 153, 255, 0.2);
+    height: 700px;
+    margin: 0px 10px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertically aligns items */
+    align-items: center; /* horizontally aligns items */
+}
+
+.map-option:hover{
+    background-color: rgba(153, 204, 255, 0.2);
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+.panel-results, .panel-heading, .panel-chat{
+    border-radius: 0em;
+    margin: 0px;
+}
+
+#btn-ready-pick{
+    border-radius: 0em;
+    padding: 0px;
+    width: 100%;
+}
+
+#panel-results-box{
+    overflow-y: auto;
+}
+
+.chat-div{
+    width:100%;
+}

@@ -1,12 +1,17 @@
 from django.contrib import admin
-from .models import Contact
-from .forms import ContactForm
+from .models import UserProfile, Friend, RoomInstance
 
-# Register your models here.
-class ContactAdmin(admin.ModelAdmin):
-	list_display = ['__unicode__', 'timestamp', 'updated']
-	form = ContactForm
-	#class Meta:
-	#	model = Contact
+class UserProfileAdmin(admin.ModelAdmin):
+	list_display = ['__unicode__', 'user', 'preferences']
+	class Meta:
+		model = UserProfile
 
-admin.site.register(Contact, ContactAdmin)
+class FriendAdmin(admin.ModelAdmin):
+	list_display = ['relationship_id', 'user1', 'user2']
+
+class RoomInstanceAdmin(admin.ModelAdmin):
+	list_display = ['id', 'owner','listofpref', 'listofusers', 'roomname', 'expirydate', 'isexpired']
+
+admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(Friend, FriendAdmin)
+admin.site.register(RoomInstance, RoomInstanceAdmin)

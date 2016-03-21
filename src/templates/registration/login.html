@@ -1,15 +1,49 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block title %}Login
+{% endblock %}
+
 {% block content %}
-<form method="post" action=".">
-  {% csrf_token %}
-  {{ form.as_p }}
+<div class="row">
+	<form class="form-signin mg-btm"  method="post" action="{% url 'auth_login' %}">
+		{% csrf_token %}
 
-  <input type="submit" value="{% trans 'Log in' %}" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
+	<div class="main">	
+        <label>{{ form.username.label }}</label>    
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        	<input id="id_username" type="text" name="username" class="form-control" placeholder="{{ form.username.label }}" tabindex=1 autofocus>
+        </div>
+        <label>{{ form.password.label }}   <a href="">(forgot password)</a></label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input id="id_password" type="password" name="password" class="form-control" placeholder="{{ form.password.label }}" tabindex=2>
+        </div>
 
-<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
-<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+    	<div class="row">
+            <div class="col-xs-6 col-md-6">
+                 
+            </div>
+            <div class="col-xs-6 col-md-6 pull-right">
+                <button type="submit" class="btn btn-large btn-success pull-right" tabindex=3>{% trans 'Log in' %}</button>
+            </div>
+        </div>
+	</div>
+    
+	<span class="clearfix"></span>	
+
+	<div class="login-footer">
+		<div class="row">
+            <div class="col-xs-6 col-md-6">
+                <div class="left-section">
+                    <a href="{% url 'registration_register' %}">Create an account</a>
+				</div>
+            </div>
+            <div class="col-xs-6 col-md-6 pull-right">
+            </div>
+        </div>
+	</div>
+  </form>
+</div>
 {% endblock %}
