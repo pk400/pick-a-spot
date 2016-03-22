@@ -1,11 +1,14 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load i18n %}
+{% load staticfiles %}
 
 {% block title %}Login
 {% endblock %}
 
-{% block content %}
-<div class="row">
+{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{% static 'css/loginregister.css' %}">
+{% endblock %}
+
+{% block content %}<div class="row">
 	<form class="form-signin mg-btm"  method="post" action="{% url 'auth_login' %}">
 		{% csrf_token %}
 

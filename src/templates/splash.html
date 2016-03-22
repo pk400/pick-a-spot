@@ -2,19 +2,20 @@
 {% load i18n %}
 {% load staticfiles %}
 
-{% block title %}{{ title }}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{% static 'css/splash.css' %}">
 {% endblock %}
 
 {% block content-after %}
 	{% if user.is_anonymous %}
 	<div class="splash-content" style="opacity: 0.1;">
-		<div class="splash-box" >
-			<div class="leftbox">
-				<h1>Pick A Spot</h1>
-				<p>Going to lunch with coworkers and don't want to spend precious lunch-time deciding where to eat? How about going out to the city with friends but no one can make up their minds on where to eat and you are starving? Don't you wish you could yell at them to simply pick a spot? Well now you can!</p>
+		<div class="splash-box">
+			<h1 id="title">Pick A Spot</h1>
+			<div class="splash-left">
+				<p>Going to lunch with coworkers and don't want to spend precious lunch-time deciding where to eat? How about going out to the city with friends but no one can make up their minds on where to eat and you are starving? Don't you wish you could yell at them to simply <i>pick a spot</i>? Well now you can!</p>
 			</div>
-			<div class="rightbox">
-				<h1>Let's get started!</h1>
+			<div class="splash-right">
 				<form method="post" action="{% url 'auth_login' %}">
 					{% csrf_token %} 
 					<input class="form-control" type="text" name="username" placeholder="Username" tabindex=1 autofocus>

@@ -1,0 +1,99 @@
+.splash-content {
+  padding-top: 50px;
+  height: 90vh;
+  /*background-image: url('../images/splash1.jpg');*/
+  background-image: url('../images/splashhires2.jpeg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-y: hidden;
+  text-align: center;
+}
+
+
+
+.splash-box {
+  padding: 10px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.5);
+  margin-top: 3%;
+}
+.splash-box #title {
+  padding: 15px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 7em;
+  font-weight: bold;
+  color: #BF2A23;
+  text-shadow: 2px 2px #8A211D;
+}
+
+
+
+.splash-left {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+}
+.splash-left p {
+  font-family: 'Imprima', sans-serif;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+
+.splash-right {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+}
+.splash-right a {
+  color: #BF2A23;
+}
+
+
+
+.splash-box input{
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  height:40px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  transition:0.2s ease-in-out;
+}
+.splash-box input:focus{
+  outline: 0;
+  background: #eee;
+}
+.splash-box input[type="text"]{
+  border-radius: 3px 3px;
+  margin-bottom: 3px;
+  text-transform: lowercase;
+}
+.splash-box input[type="password"]{
+  border-radius: 3px 3px;
+  border-top: 0;
+  text-transform: lowercase;
+}
+.splash-box input[type="submit"]{
+  margin-top:15px;
+  padding: 10px 20px;
+  color: #fafafa;
+  border: #8A211D;
+  background: #BF2A23;
+  font-weight: bold;
+}
+.splash-box p {
+  margin: 0;
+  text-align: left;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1em;
+}
+.splash-box .or {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

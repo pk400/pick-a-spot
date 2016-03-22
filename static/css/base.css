@@ -1,21 +1,169 @@
+/*
+COLOUR SCHEME
+http://www.colourlovers.com/palette/122168/Fuji_Apple
+Red:      BF2A23  191,42,35
+Green:    A6AD3C  166,173,60
+Yellow:   F0CE4E  240,206,78
+Orange:   CF872E  207,135,46
+Dark Red: 8A211D  138,33,29
+*/
+
+/*********************************
+  GLOBAL
+*********************************/
 body {
-  padding-top: 300px;
-  padding-bottom: 40px;
+  padding-top: 50px;
 }
 
-.joel {
-  margin-left: 15px;
-  margin-right: 15px;
+a {
+  color: #BF2A23;
 }
 
-.joey {
+
+
+
+
+
+
+
+/*********************************
+  SPLASH PAGE
+*********************************/
+.splash-content {
+  padding-top: 50px;
+  height: 90vh;
+  /*background-image: url('../images/splash1.jpg');*/
+  background-image: url('../images/splashhires2.jpeg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-y: hidden;
+  text-align: center;
 }
 
+
+
+.splash-box {
+  padding: 10px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.5);
+  margin-top: 3%;
+}
+.splash-box #title {
+  padding: 15px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 7em;
+  font-weight: bold;
+  color: #BF2A23;
+  text-shadow: 2px 2px #8A211D;
+}
+
+
+
+.splash-left {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+}
+.splash-left p {
+  font-family: 'Imprima', sans-serif;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+
+.splash-right {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+}
+.splash-right a {
+  color: #BF2A23;
+}
+
+
+
+.splash-box input{
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  height:40px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  transition:0.2s ease-in-out;
+}
+.splash-box input:focus{
+  outline: 0;
+  background: #eee;
+}
+.splash-box input[type="text"]{
+  border-radius: 3px 3px;
+  margin-bottom: 3px;
+  text-transform: lowercase;
+}
+.splash-box input[type="password"]{
+  border-radius: 3px 3px;
+  border-top: 0;
+  text-transform: lowercase;
+}
+.splash-box input[type="submit"]{
+  margin-top:15px;
+  padding: 10px 20px;
+  color: #fafafa;
+  border: #8A211D;
+  background: #BF2A23;
+  font-weight: bold;
+}
+.splash-box p {
+  margin: 0;
+  text-align: left;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1em;
+}
+.splash-box .or {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+
+
+
+/*********************************
+  BASE CONTENT PAGE
+*********************************/
 .content {
   margin-top: 25px;
   margin-bottom: 20px;
 }
 
+
+.username {
+  color: green;
+}
+
+.paslogo_large {
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+/*********************************
+  FOOTER
+*********************************/
 .footer {
   font-size: 1.2em;
   padding-top: 20px;
@@ -45,123 +193,31 @@ body {
 	margin: 0 auto;
 }
 
-.paslogo_large {
-	height: 100px;
-	display: block;
-	margin: 0 auto;
-}
-
-.splashbanner {
-	margin: 0 auto;
-	display: block;
-}
-
-.splashintro {
-  width: 1000px;
-  margin: 0 auto;
-  margin-top: 3%;
-  line-height: 25px;
-}
-
-.splash-content {
-  padding-top: 150px;
-  height: 90vh;
-  /*background-image: url('../images/splash1.jpg');*/
-  background-image: url('../images/splashhires.jpeg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow-y: hidden;
-  text-align: center;
-}
-
-.splash-content h1 {
-  color: #333;
-}
-
-.splash-box p {
-  margin: 0;
-  text-align: left;
-  color: #333;
-  opacity: 0.8;
-}
-
-.splash-box .or {
-  text-align: center;
-  font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.splash-box {
-  padding: 30px 25px;
-}
-
-.splash-box input{
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  height:40px;
-  border: 1px solid #ccc;;
-  background: #fafafa;
-  transition:0.2s ease-in-out;
-}
-
-.splash-box input:focus{
-  outline: 0;
-  background: #eee;
-}
-
-.splash-box input[type="text"]{
-  border-radius: 5px 5px 0 0;
-  text-transform: lowercase;
-}
-
-.splash-box input[type="password"]{
-  border-radius: 0 0 5px 5px;
-  border-top: 0;
-  text-transform: lowercase;
-}
-
-.splash-box input[type="submit"]{
-  margin-top:15px;
-  padding: 10px 20px;
-  color: #fafafa;
-  border: #2C8BB0;
-  background: #4FB7E0;
-  font-weight: bold;
-}
-
-.splash-box .leftbox {
-  display: inline-block;
-  width: 700px;
-}
-
-.splash-box .leftbox h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 84px;
-  font-weight: bold;
-  color: #BF2A23;
-}
-
-.splash-box .rightbox {
-  display: inline-block;
-  width: 350px;
-}
-
 
 .nav-logo {
   width: 20px;
   margin: 0 auto;
 }
 
-.username {
-  color: green;
+
+.nav {
+  color: #BF2A23;
 }
 
 .nav .active {
   border-bottom: 2px solid #333;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .form-signin {
   max-width: 400px; 
@@ -241,8 +297,11 @@ body {
   margin-bottom:20px;
 }
 
-@media screen and (min-width: 768px) {
+/*********************************
+  MOBILE SCREENS
+*********************************/
+@media screen and (max-width: 768px) {
   body {
-    padding-top: 51px;
+    padding-top: 300px;
   }
 }

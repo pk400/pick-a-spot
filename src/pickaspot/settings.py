@@ -16,7 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	'app',
     'registration',
-    'channels'
+#    'channels'
 ]
 
 MIDDLEWARE_CLASSES = [
