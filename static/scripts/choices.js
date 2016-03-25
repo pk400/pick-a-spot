@@ -5,27 +5,35 @@ $( document ).ready(function() {
   	// make room if it exists
 	if (checkpara == null){
 		$("#pickoption").one("click", function(){
-			$(".optionschoice").hide();
-			$(".map-container").show();
 			var data = $("#preferences-obj").text();
-			var prefobject = JSON.parse(data);
-			var listofpref = [prefobject];
-			listofpref = JSON.stringify(listofpref);
-			make_room(listofpref);
+
+			if(data == ""){
+				alert("Preferences not set. Redirecting now.");
+				window.location.replace("../preferences");				
+			}
+			else{
+				$(".optionschoice").hide();
+				$(".map-container").show();				
+				var prefobject = JSON.parse(data);
+				var listofpref = [prefobject];
+				listofpref = JSON.stringify(listofpref);
+				make_room(listofpref);
+			}	
 		});
 
 		$("#quickoption").one("click", function(){
 			$(".optionschoice").hide();
-			if ($("#preferences-obj").text() == ""){
+			if (localStorage.getItem("listofpref") == null){
 				$(".preferences-container").show();				
 				$("#btn-preferences").on("click", function(){
 					var prefobject = {};
 					prefobject.user = $(".username").text();
 					prefobject.preferences = {};
 					prefobject.preferences.preferences = return_pref_object();
+					console.log(prefobject)
 					var listofpref = [prefobject];
 					listofpref = JSON.stringify(listofpref);
-					if(prefobject != null){
+					if(prefobject.preferences.preferences != undefined){
 						// Saves in storage
 						// Save prefobject instead
 						var prefobjstr = JSON.stringify(prefobject)

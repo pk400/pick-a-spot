@@ -1,46 +1,75 @@
 function join_chat(){
 	var roomparameter = window.location.href.split("?")[1]
 	var socketid = "?=socketid" + makeid();
-	socket = new WebSocket("ws://zenit.senecac.on.ca:9089/map?" + roomparameter + socketid);
+	function make_socket(){
+		socket = new WebSocket("ws://zenit.senecac.on.ca:9089/map?" + roomparameter + socketid);
 
-	socket.onopen = function(e){
-		var preferencesObj = $("#preferences-obj").text();
-		// {preferences, user, typesent}
-		var data = JSON.parse(preferencesObj);
-		data.typesent = "mappref";
-		socket.send(JSON.stringify(data));
+		socket.onopen = function(e){
+			var preferencesObj = $("#preferences-obj").text();
+			// {preferences, user, typesent}
+			var data = JSON.parse(preferencesObj);
+			data.typesent = "mappref";
+			socket.send(JSON.stringify(data));
+		}
+		socket.onerror = function(e){
+			//console.log(e);
+		}
+
+		socket.onclose = function(e){
+			//console.log(e);
+		}
+		socket.onmessage  = function(e) {
+			var data = JSON.parse(e.data);
+			if(data.typesent == "chat")
+	    		chat_box_append(data.value, data.user, data.originaltime);
+	    	else if(data.typesent == "mappref"){
+				var user = data.user;
+				var preferences = data.preferences.preferences;
+				var preferencesObj = {user: user, preferences: preferences};
+				log_preferences(preferencesObj);
+	    	}
+	    	else if(data.typesent == "removepref"){
+				var user = data.user;
+				var preferences = data.preferences.preferences;
+				var preferencesObj = {user: user, preferences: preferences};	
+				remove_pref(preferencesObj);
+	    	}
+	    	else if(data.typesent == "syncmap"){
+	    		pickaspotmap(data);
+	    	}
+		}
 	}
-	socket.ping = setInterval(function(){
-		socket.send("----");
+
+	// Bug with dJango, on message stops working after a while
+	// Have to rejoin
+	make_socket();
+	setInterval(function(){
+		socket.close();
+		make_socket();
 	}, 50000);
-	socket.onerror = function(e){
-		console.log(e);
-	}
 
-	socket.onclose = function(e){
-		console.log(e);
-	}
-	socket.onmessage  = function(e) {
-		var data = JSON.parse(e.data);
-		if(data.typesent == "chat")
-    		chat_box_append(data.value, data.user);
-    	else if(data.typesent == "mappref"){
-			var user = data.user;
-			var preferences = data.preferences.preferences;
-			var preferencesObj = {user: user, preferences: preferences};
-			log_preferences(preferencesObj);
-    	}
-    	else if(data.typesent == "removepref"){
-			var user = data.user;
-			var preferences = data.preferences.preferences;
-			var preferencesObj = {user: user, preferences: preferences};	
-			remove_pref(preferencesObj);
-    	}
-    	else if(data.typesent == "syncmap"){
-    		pickaspotmap(data);
-    	}
-	}
-
+	// Adds how long the past time has been
+	function check_time(){
+		$(".time-passed").each(function(){
+			var element = $(this);
+		 	var originaltime = element.attr("data-time");
+		 	var currenttime = (new Date().getTime() / 1000)
+		 	// converted into minutes
+		 	var timepassed = parseInt((currenttime - originaltime) / 60);
+		 	if (timepassed == 0){
+		 		element.text("Less than a minute ago.");
+		 	}
+		 	else if (timepassed == 1){
+		 		element.text(timepassed + " minute ago.")
+		 	}
+		 	else{
+		 		element.text(timepassed + " minutes ago.")
+		 	}
+		});
+	}	
+	setInterval(function(){
+		check_time();
+	}, 10000);	
 	$("#btn-ready-pick").on("click", function(){
 	    var csrftoken = getCookie('csrftoken');
 	    var prefgrabpromise = $.ajax({
@@ -69,6 +98,15 @@ function join_chat(){
 	      }
 	      var parseobject = parsePreferences();
   		  parseobject.typesent = "syncmap";
+  		  parseobject.cords = []
+  		  if (localStorage['lng'] && localStorage['lat']){
+	  		  parseobject.cords[0] = localStorage['lng'];
+	  		  parseobject.cords[1] = localStorage['lat'];
+	  	  }
+	  	  else{
+	  	  	parseobject.cords[0] = JSON.parse($("#lonlat-obj").text())[0];
+	  	  	parseobject.cords[1] = JSON.parse($("#lonlat-obj").text())[1];
+	  	  }
 	      socket.send(JSON.stringify(parseobject));
 	    });
 	})
@@ -83,7 +121,8 @@ function join_chat(){
 					var sending = {
 						value: value,
 						user: username,
-						typesent: "chat"
+						typesent: "chat",
+						originaltime: parseInt(new Date().getTime() / 1000)
 					}
 					socket.send(JSON.stringify(sending));
 					// Scroll to Top
@@ -99,33 +138,68 @@ function join_chat(){
 	        }
 	});
 
-	function chat_box_append(stringinput, username){
+	function chat_box_append(stringinput, username, originaltime){
+		console.log(originaltime);
 		var chatbox = $("#panel-chat-box");
 
 		/*
-		FORMAT: <DIV>
-				<BLOCKQUOTE>TEXT
+		FORMAT: LI
+					DIV(CHAT-BODY)
+						DIV(HEADER)
+							STRONG(PRIMARY)
+							SPAN(ICON)
+							SMALL(TEXT-MUTED)
+						P(CONTENT)
 		*/
-		var div = $("<div>",{
-	        class: 'clearfix'
+		var li = $("<li>",{
+			class : "clearfix"
+		});
+		var strongprimary = $("<strong>",{
+			class : "primary-font",
+			text : username
+		});
+
+		var spanicon = $("<span>", {
+			class: "glyphicon glyphicon-time text-muted"
+		});
+
+		var smallmuted = $("<small>",{
+			class : "time-passed text-muted",
+			"data-time" : originaltime
+		});
+
+	    var chatbodydiv = $("<div>", {
+	    	class : "chat-body clearfix"
 	    });
-	    var blockquoteclass;
+
+	    var headerdiv = $("<div>",{
+	    	class : "header"
+	    }); 
+
+	    var pcontent = $("<p>",{
+	    	text : stringinput
+	    });
+
+	    li.append(chatbodydiv);
+	    chatbodydiv.append(headerdiv);
+	    chatbodydiv.append(pcontent);
+	    headerdiv.append(strongprimary);
+	    headerdiv.append(spanicon);
+	    headerdiv.append(smallmuted);
 
 	    // decides which side to put it on
 	    if(username == $(".username").text()){
-	    	blockquoteclass = "me pull-right";
+	    	li.addClass("me");
+	    	strongprimary.addClass("pull-right");
 	    }
 	    else{
-	    	blockquoteclass = "you pull-left";
+	    	li.addClass("you");
+	    	spanicon.addClass("pull-right");
+	    	smallmuted.addClass("pull-right");
 	    }
 
-	    var blockquote = $("<blockquote>",{
-	    	text: stringinput,
-	    	class: blockquoteclass
-	    });
-
-	    div.append(blockquote);
-	    chatbox.append(div);
+	    $("#chat-list").append(li);
+	    check_time();
 	}
 
 	function log_preferences(preferencesObj){

@@ -5,12 +5,14 @@
 {% endblock %}
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/preferences.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/preferences.css' %}"> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}">
 {% endblock %}
 {% block content %}
 {% csrf_token %}
-<label style="display: none;" id="preferences-obj">{% if user.is_authenticated %}{ "user" : "{{ user }}", "preferences" : {{ preferences }} }{% endif %}</label>
-<div class="container">
+<label style="display: none;" id="preferences-obj">{% if user.is_authenticated and preferences %}{ "user" : "{{ user }}", "preferences" : {{ preferences }} }{% endif %}</label>
+<label style="display: none;" id="lonlat-obj">[ {{ lon }}, {{lat}} ]</label>
+<div>
 <!-- OPTIONS -->
 <div class="row optionschoice">
     {% if user.is_authenticated %}
@@ -32,8 +34,80 @@
         </ul>
     </div>
 </div>
-<div style="display: none;" class="container map-container">
+<div style="display: none;" class="map-container">
+    <i data-toggle="modal" data-target="#location-modal" id="set-location" title="Set Your Own Location" class="fa fa-compass fa-2x"></i>
+    <i data-toggle="modal" data-target="#share-modal" id="share-link" title="Share This Room" class="fa fa-link fa-2x"></i>
     <div class="row">
+        <!-- ADDRESS MODAL -->
+        <div style="display: none;" class="modal fade" id="location-modal" tabindex="-1" role="dialog" aria-labelledby="location-modallabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="location-modallabel">Set Location</h4>
+              </div>
+              <div class="modal-body">
+                <button id="share-location-btn" type="button" class="btn btn-default" data-dismiss="modal">Share Current Location</button>
+                <div class="form-group">
+                    <label for="usr">Address or Postal/Zip Code:</label>
+                    <input type="text" class="form-control" id="locate-address-input">              
+                    <button id="locate-address-btn" type="button" class="btn btn-default" data-dismiss="modal">Locate Address</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button id="reset-location-btn" type="button" class="btn btn-primary" data-dismiss="modal">Reset Location</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SHARE MODAL -->
+        <div style="display: none;" class="modal fade" id="share-modal" tabindex="-1" role="dialog" aria-labelledby="share-modallabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="share-modallabel">Share</h4>
+              </div>
+              <div class="modal-body">
+                <h5>Give this URL to the people you want to invite (valid for 24 hours after creation): </h5>
+                <input type="text" class="form-control" id="share-link-url" readonly>
+                <i href="mailto:?subject=Pick%20A%20Spot&amp;body=Pick%20A%20Spot%20To%20Eat%20With%20Me%20"id="email-link" title="Share This Room With Friends" class="fa fa-envelope-o fa-2x"> Email To Others</i>
+                <script>
+                    document.getElementById("share-link-url").value = window.location.href;
+                    document.getElementById("email-link").setAttribute("href", document.getElementById("email-link").getAttribute("href") + window.location.href)
+                </script>                
+                {% if user.is_authenticated %}
+                <i id="email-link-auth" title="Share This Room With Friends" class="fa fa-envelope-o fa-2x"> Share This Room With PickASpot Friends</i>
+                <table id="friend-list-share" style="display: none;" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Friends</th>
+                        <th>Send Email?</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in friends %}
+                        {% if x.user2 != user %}
+                        <tr>
+                            <td class="friend-name">{{ x.user2 }}</td>
+                            <td><div class="checkbox"><label><input class="checkbox-friends" type="checkbox" value="{{ x.user2 }}"></label></div></td>      
+                        </tr>
+                        {% endif %} 
+                    {% endfor %}                      
+                    </tbody>
+                </table>
+                {% endif %}  
+              </div>
+              <div class="modal-footer">
+                {% if user.is_authenticated %}
+                <button style="display: none;" id="send-email-btn" type="button" class="btn btn-primary" data-dismiss="modal">Send Email</button>
+                {% endif %}                  
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>        
 	    <!-- MAP -->
         <div class="col-md-8 no-padding">
             <div id="map" style="height:500px;"></div>
@@ -57,18 +131,25 @@
     </div>
     <div class="row">
         <!-- CHAT -->
-        <div class="col-md-4 no-padding chat-div">
-            <div class="panel panel-primary panel-chat">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><b> Chat Window </b><small>last seen 10:38 am</small></h3>
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <div class="btn-group pull-right">
+                    </div>
                 </div>
-                <div id="panel-chat-box" class="panel-body" style="height: 200px; }">
+                <div class="panel-body">
+                    <ul id="chat-list" class="chat">
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="comment-box" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <textarea class="form-control box-chat" rows="2" id="comment-box"></textarea>
-            </div>
-        </div>
     </div>
 </div>
 <!-- PREFERENCES -->

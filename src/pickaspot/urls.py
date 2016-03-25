@@ -5,14 +5,18 @@ from django.conf.urls.static import static
 from app.views import *
 
 urlpatterns = [
-	url(r'^$', 				home),
-	url(r'^splash/', 			splash),
+	#url(r'^$', 				home),
+	#url(r'^splash/', 		splash),
+	url(r'^$', 				splash),
+	url(r'^home$', 			home),
 	url(r'^map/$', 			map),
 	url(r'^preferences/$', 	preferences),
 	url(r'^friends/', 		friends),
+	#url(r'^admin/',			adminredirect),
 	url(r'^admin/', 		admin.site.urls),
 	#url(r'^accounts/', 		include('registration.backends.simple.urls')),
 	url(r'^accounts/', 		include('registration.backends.default.urls')),
+	url(r'^profile/', 		profile),
 ]
 
 if settings.DEBUG:

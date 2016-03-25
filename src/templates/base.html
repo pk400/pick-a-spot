@@ -4,6 +4,28 @@
 	<meta charset="utf-8"></meta>
 	<!-- Configurable in admin cp -->
 	<title>{% block title %}{% endblock %} | Pick A Spot</title>
+	<!-- Favicon -->
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static 'images/apple-touch-icon-57x57.png' %}" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'images/apple-touch-icon-114x114.png' %}" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'images/apple-touch-icon-72x72.png' %}" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'images/apple-touch-icon-144x144.png' %}" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="{% static 'images/apple-touch-icon-60x60.png' %}" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{% static 'images/apple-touch-icon-120x120.png' %}" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="{% static 'images/apple-touch-icon-76x76.png' %}" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'images/apple-touch-icon-152x152.png' %}" />
+	<link rel="icon" type="image/png" href="{% static 'images/favicon-196x196.png'" sizes="196x196" />
+	<link rel="icon" type="image/png" href="{% static 'images/favicon-96x96.png' %}" sizes="96x96" />
+	<link rel="icon" type="image/png" href="{% static 'images/favicon-32x32.png' %}" sizes="32x32" />
+	<link rel="icon" type="image/png" href="{% static 'images/favicon-16x16.png' %}" sizes="16x16" />
+	<link rel="icon" type="image/png" href="{% static 'images/favicon-128.png' %}" sizes="128x128" />
+	<meta name="application-name" content="Pick A Spot"/>
+	<meta name="msapplication-TileColor" content="#BF2A23" />
+	<meta name="theme-color" content="#BF2A23">
+	<meta name="msapplication-TileImage" content="{% static 'images/mstile-144x144.png'" />
+	<meta name="msapplication-square70x70logo" content="{% static 'images/mstile-70x70.png'" />
+	<meta name="msapplication-square150x150logo" content="{% static 'images/mstile-150x150.png'" />
+	<meta name="msapplication-wide310x150logo" content="{% static 'images/mstile-310x150.png'" />
+	<meta name="msapplication-square310x310logo" content="{% static 'images/mstile-310x310.png'" />
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 	<!-- Bootstrap -->
@@ -22,25 +44,27 @@
 			</div><!-- navbar-header end -->
 			<div id="navbar">
 				<ul class="nav navbar-nav">
-					<li{% if title == 'About' %} class="active"{% endif %}><a href="#">About</a></li>
 					<li{% if title == 'Map' %} class="active"{% endif %}><a href="/map"><span class="glyphicon glyphicon-map-marker"></span> Map</a></li>
 				{% if user.is_authenticated %}
 					<li{% if title == 'Preferences' %} class="active"{% endif %}><a href="/preferences"><span class="glyphicon glyphicon-wrench"></span> Preferences</a></li>
-					<li{% if title == 'Create Groups' %} class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-th-large"></span> Groups</a></li>
-					<li{% if title == 'Add Friends' %} class="active"{% endif %}><a href="/friends"><i class="fa fa-users"></i> Friends</a></li>
+					<li{% if title == 'Friends' %} class="active"{% endif %}><a href="/friends"><i class="fa fa-users"></i> Friends</a></li>
 				{% endif %}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 				{% if user.is_authenticated %}
-					<li><a href="/"><span class="username"><span class="glyphicon glyphicon-user" id="username-dashboard"></span> {{ user }}<span class="glyphicon glyphicon-triangle-bottom"></span></span></a></li>
+					<li><a href="/profile"><span class="username"><span class="glyphicon glyphicon-user" id="username-dashboard"></span> {{ user }}</span></a></li>
+				{% for group in user.groups.all %}
+				{% if group.name == 'Admin' %}
+					<li><a href="/admin"><span class="glyphicon glyphicon-lock"></span> Admin CP</a></li>
+				{% endif %}
+				{% endfor %}
 					<li><a href="{% url 'auth_logout' %}?next=/">Logout</a></li>
 				{% else %}
 					{% if title != 'Splash' %}
 					<li><a href=""><span class="username"><span class="glyphicon glyphicon-user" id="guest-dashboard"></span> <span class="glyphicon glyphicon-triangle-bottom"></span></span></a></li>
 					{% endif %}
 					<li{% if title == 'Login' %} class="active"{% endif %}><a href="{% url 'auth_login' %}">Login</a></li>
-					<li{% if title == 'Register' %} class="active"{% endif %}><a href="{% url 'registration_register' %}">Register</a></li>
-					
+					<li{% if title == 'Register' %} class="active"{% endif %}><a href="{% url 'registration_register' %}">Register</a></li>	
 				{% endif %}
 				</ul>
 			</div><!-- navbar end -->
@@ -60,7 +84,7 @@
 
 	{% block content-after %}
 	{% endblock %}
-	<footer class="footer">
+	<footer class="footer col-md-12">
 		<div class="container">
 			<p class="pull-right"><a href="#">Back to top</a></p>
 			<p class="text-muted">&copy; 2016 <a class="joel" href="https://github.com/pk400"><i class="fa fa-github-alt"></i> Joel Aro</a> Giuseppe Ranieri</p>

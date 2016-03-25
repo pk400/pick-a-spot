@@ -1,11 +1,11 @@
 /*
 COLOUR SCHEME
 http://www.colourlovers.com/palette/122168/Fuji_Apple
-Red:      BF2A23  191,42,35
-Green:    A6AD3C  166,173,60
-Yellow:   F0CE4E  240,206,78
-Orange:   CF872E  207,135,46
-Dark Red: 8A211D  138,33,29
+Red       BF2A23  191,42,35
+Green     A6AD3C  166,173,60
+Yellow    F7F7D6  247, 247, 214
+Orange    CF872E  207,135,46
+Dark Red  8A211D  138,33,29
 */
 
 /*********************************
@@ -19,120 +19,6 @@ a {
   color: #BF2A23;
 }
 
-
-
-
-
-
-
-
-/*********************************
-  SPLASH PAGE
-*********************************/
-.splash-content {
-  padding-top: 50px;
-  height: 90vh;
-  /*background-image: url('../images/splash1.jpg');*/
-  background-image: url('../images/splashhires2.jpeg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow-y: hidden;
-  text-align: center;
-}
-
-
-
-.splash-box {
-  padding: 10px;
-  margin: 0 auto;
-  background: rgba(0, 0, 0, 0.5);
-  margin-top: 3%;
-}
-.splash-box #title {
-  padding: 15px;
-  font-family: 'Dancing Script', cursive;
-  font-size: 7em;
-  font-weight: bold;
-  color: #BF2A23;
-  text-shadow: 2px 2px #8A211D;
-}
-
-
-
-.splash-left {
-  display: inline-block;
-  width: 300px;
-  vertical-align: top;
-}
-.splash-left p {
-  font-family: 'Imprima', sans-serif;
-  color: #fff;
-  font-weight: bold;
-}
-
-
-
-.splash-right {
-  display: inline-block;
-  width: 300px;
-  vertical-align: top;
-}
-.splash-right a {
-  color: #BF2A23;
-}
-
-
-
-.splash-box input{
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  height:40px;
-  border: 1px solid #ccc;
-  background: #fafafa;
-  transition:0.2s ease-in-out;
-}
-.splash-box input:focus{
-  outline: 0;
-  background: #eee;
-}
-.splash-box input[type="text"]{
-  border-radius: 3px 3px;
-  margin-bottom: 3px;
-  text-transform: lowercase;
-}
-.splash-box input[type="password"]{
-  border-radius: 3px 3px;
-  border-top: 0;
-  text-transform: lowercase;
-}
-.splash-box input[type="submit"]{
-  margin-top:15px;
-  padding: 10px 20px;
-  color: #fafafa;
-  border: #8A211D;
-  background: #BF2A23;
-  font-weight: bold;
-}
-.splash-box p {
-  margin: 0;
-  text-align: left;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1em;
-}
-.splash-box .or {
-  text-align: center;
-  font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-
-
-
-
 /*********************************
   BASE CONTENT PAGE
 *********************************/
@@ -141,9 +27,8 @@ a {
   margin-bottom: 20px;
 }
 
-
 .username {
-  color: green;
+  color: #CF872E;
 }
 
 .paslogo_large {
@@ -151,15 +36,6 @@ a {
   display: block;
   margin: 0 auto;
 }
-
-
-
-
-
-
-
-
-
 
 /*********************************
   FOOTER
@@ -180,25 +56,13 @@ a {
   margin-right: 25px;
 }
 
-.form-signin {
-	max-width: 330px;
-	padding: 15px;
-  padding-top: 0px;
-	margin: 0 auto;
-}
-
-.registerform {
-	max-width: 800px;
-	padding: 15px;
-	margin: 0 auto;
-}
-
-
+/*********************************
+  NAVIGATION
+*********************************/
 .nav-logo {
   width: 20px;
   margin: 0 auto;
 }
-
 
 .nav {
   color: #BF2A23;
@@ -208,93 +72,20 @@ a {
   border-bottom: 2px solid #333;
 }
 
+/*********************************
+  FORMS
+*********************************/
+.errorlist {
+  list-style-type: none;
+  background: #8A211D;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+}
 
-
-
-
-
-
-
-
-
-
-
-.form-signin {
-  max-width: 400px; 
-  display:block;
-}
-.main{
-  padding: 38px;
-  padding-top: 0px;
-}
-.social-box{
-  margin: 0 auto;
-  padding: 38px;
-  border-bottom:1px #ccc solid;
-}
-.social-box a{
-  font-weight:bold;
-  font-size:18px;
-  padding:8px;
-}
-.social-box a i{
-  font-weight:bold;
-  font-size:20px;
-}
-.heading-desc{
-  font-size:20px;
-  font-weight:bold;
-  padding:38px 38px 0px 38px;
-  
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  font-size: 16px;
-  height: 20px;
-  padding: 8px;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="text"] {
-  height: 100%;
-  margin-bottom: 0px;
-  border-radius: 5px;
-}
-.form-signin input[type="email"] {
-  height: 100%;
-  margin-bottom: 0px;
-  border-radius: 5px;
-}
-.form-signin input[type="password"] {
-  height: 100%;
-  margin-bottom: 0px;
-  border-radius: 5px;
-}
-.input-group {
-    margin-bottom: 15px;
-}
-.login-footer{
-  margin: 0 auto;
-  border-top: 1px solid #dadada;
-  padding:20px;
-}
-.login-footer .left-section a{
-  font-weight:bold;
-  line-height:19px;
-}
-.mg-btm{
-  margin-bottom:20px;
+.errorlist li::before {
+  font-family: 'Glyphicons Halflings'; 
+  content:"\e107";
 }
 
 /*********************************
@@ -304,4 +95,26 @@ a {
   body {
     padding-top: 300px;
   }
+}
+
+
+/*********************************
+  PANELS
+*********************************/
+.panel{
+  color: #BF2A23;
+}
+
+.panel-primary>.panel-heading{
+  background-color: #BF2A23;
+  border-color: #BF2A23;
+}
+
+.panel-primary {
+  border-color: #BF2A23;
+}
+
+.btn-warning{
+  background-color: #CF872E;
+  border-color: #CF872E;
 }

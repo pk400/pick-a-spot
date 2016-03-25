@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Http",
+				"HttpResponseRedirect"
+			],
+			[
 				"HttpRe",
 				"HttpResponseRedirect"
 			],
@@ -20,13 +24,34 @@
 	"buffers":
 	[
 		{
-			"contents": "body {\n  padding-top: 300px;\n  padding-bottom: 40px;\n}\n\n.joel {\n  margin-left: 15px;\n  margin-right: 15px;\n}\n\n.joey {\n}\n\n.content {\n  margin-top: 25px;\n  margin-bottom: 20px;\n}\n\n.footer {\n  font-size: 1.2em;\n  padding-top: 20px;\n	bottom: 10px;\n	width: 100%;\n	background-color: rgba(0, 0, 0, 0);\n}\n\n.footer a {\n  vertical-align: top;\n}\n\n.footer img {\n  margin-right: 25px;\n}\n\n.form-signin {\n	max-width: 330px;\n	padding: 15px;\n  padding-top: 0px;\n	margin: 0 auto;\n}\n\n.registerform {\n	max-width: 800px;\n	padding: 15px;\n	margin: 0 auto;\n}\n\n.paslogo_large {\n	height: 100px;\n	display: block;\n	margin: 0 auto;\n}\n\n.splashbanner {\n	margin: 0 auto;\n	display: block;\n}\n\n.splashintro {\n  width: 1000px;\n  margin: 0 auto;\n  margin-top: 3%;\n  line-height: 25px;\n}\n\n.splash-content {\n  padding-top: 150px;\n  height: 90vh;\n  /*background-image: url('../images/splash1.jpg');*/\n  background-size: 100%;\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  overflow-y: hidden;\n  text-align: center;\n}\n\n.splash-content h1 {\n  color: #333;\n}\n\n.splash-box p {\n  margin: 0;\n  text-align: left;\n  color: #333;\n  opacity: 0.8;\n}\n\n.splash-box .or {\n  text-align: center;\n  font-weight: bold;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n\n.splash-box {\n  background: rgba(255, 255, 255, 0.8);\n  display: inline-block;\n  border-radius: 5px;\n  padding: 30px 25px;\n  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);\n  width: 350px;\n}\n\n.splash-box input{\n  width: 100%;\n  padding: 10px;\n  text-align: center;\n  height:40px;\n  border: 1px solid #ccc;;\n  background: #fafafa;\n  transition:0.2s ease-in-out;\n}\n\n.splash-box input:focus{\n  outline: 0;\n  background: #eee;\n}\n\n.splash-box input[type=\"text\"]{\n  border-radius: 5px 5px 0 0;\n  text-transform: lowercase;\n}\n\n.splash-box input[type=\"password\"]{\n  border-radius: 0 0 5px 5px;\n  border-top: 0;\n  text-transform: lowercase;\n}\n\n.splash-box input[type=\"submit\"]{\n  margin-top:15px;\n  padding: 10px 20px;\n  color: #fafafa;\n  border: #2C8BB0;\n  background: #4FB7E0;\n  font-weight: bold;\n}\n\n.nav-logo {\n  width: 20px;\n  margin: 0 auto;\n}\n\n.username {\n  color: green;\n}\n\n.nav .active {\n  border-bottom: 2px solid #333;\n}\n\n.form-signin {\n  max-width: 400px; \n  display:block;\n}\n.main{\n  padding: 38px;\n  padding-top: 0px;\n}\n.social-box{\n  margin: 0 auto;\n  padding: 38px;\n  border-bottom:1px #ccc solid;\n}\n.social-box a{\n  font-weight:bold;\n  font-size:18px;\n  padding:8px;\n}\n.social-box a i{\n  font-weight:bold;\n  font-size:20px;\n}\n.heading-desc{\n  font-size:20px;\n  font-weight:bold;\n  padding:38px 38px 0px 38px;\n  \n}\n.form-signin .form-signin-heading,\n.form-signin .checkbox {\n  margin-bottom: 10px;\n}\n.form-signin .checkbox {\n  font-weight: normal;\n}\n.form-signin .form-control {\n  position: relative;\n  font-size: 16px;\n  height: 20px;\n  padding: 8px;\n  -webkit-box-sizing: border-box;\n     -moz-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.form-signin .form-control:focus {\n  z-index: 2;\n}\n.form-signin input[type=\"text\"] {\n  height: 100%;\n  margin-bottom: 0px;\n  border-radius: 5px;\n}\n.form-signin input[type=\"email\"] {\n  height: 100%;\n  margin-bottom: 0px;\n  border-radius: 5px;\n}\n.form-signin input[type=\"password\"] {\n  height: 100%;\n  margin-bottom: 0px;\n  border-radius: 5px;\n}\n.input-group {\n    margin-bottom: 15px;\n}\n.login-footer{\n  margin: 0 auto;\n  border-top: 1px solid #dadada;\n  padding:20px;\n}\n.login-footer .left-section a{\n  font-weight:bold;\n  line-height:19px;\n}\n.mg-btm{\n  margin-bottom:20px;\n}\n\n@media screen and (min-width: 768px) {\n  body {\n    padding-top: 51px;\n  }\n}",
-			"file": "src/static/css/base.css",
-			"file_size": 3536,
-			"file_write_time": 131029800720000000,
+			"file": "src/pickaspot/urls.py",
 			"settings":
 			{
-				"buffer_size": 3540,
+				"buffer_size": 896,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/app/views.py",
+			"settings":
+			{
+				"buffer_size": 5816,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/templates/registration/password_reset_form.html",
+			"settings":
+			{
+				"buffer_size": 342,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/templates/registration/password_reset_done.html",
+			"settings":
+			{
+				"buffer_size": 153,
 				"line_ending": "Unix"
 			}
 		}
@@ -63,18 +88,48 @@
 	},
 	"expanded_folders":
 	[
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/pickaspot",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/css",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/scripts",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/templates/registration"
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/django",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/django/conf",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/registration",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/registration/backends",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/registration/backends/default",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/app",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/pickaspot",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/admin"
 	],
 	"file_history":
 	[
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/registration/registration_form.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/profile.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/map.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/friends.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/admin/login.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/app/views.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/pickaspot/urls.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/preferences.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/app/models.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/registration/login.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/base.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/registration/tests/urls.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/css/base.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/css/splash.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/scripts/friendlist.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/css/friend.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/splash.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/scripts/loginregister.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/scripts/map.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/map.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/guestuser.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/chat.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/preferences.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/friendlist.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/app/views.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/css/base.css",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app/admin.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/scripts/friendlist.js",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/css/base.css",
@@ -145,7 +200,7 @@
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -178,34 +233,118 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/static/css/base.css",
+					"file": "src/pickaspot/urls.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3540,
+						"buffer_size": 896,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								860,
-								860
+								255,
+								255
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/app/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5816,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1996,
+								1996
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": -0.0,
-						"translation.y": 826.0,
+						"translation.y": 2444.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/templates/registration/password_reset_form.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 342,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								197,
+								197
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/templates/registration/password_reset_done.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -216,7 +355,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 21.0
 	},
 	"input":
 	{
@@ -253,7 +392,7 @@
 	"project": "pickaspot.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":

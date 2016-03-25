@@ -8,45 +8,32 @@
 {% block stylesheets %}<link rel="stylesheet" type="text/css" href="{% static 'css/loginregister.css' %}">
 {% endblock %}
 
-{% block content %}<div class="row">
-	<form class="form-signin mg-btm"  method="post" action="{% url 'auth_login' %}">
-		{% csrf_token %}
-
-	<div class="main">	
-        <label>{{ form.username.label }}</label>    
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        	<input id="id_username" type="text" name="username" class="form-control" placeholder="{{ form.username.label }}" tabindex=1 autofocus>
+{% block content %}
+    <form class="login-form col-md-4" method="post" action="{% url 'auth_login' %}" data-toggle="validator" role="form">
+        {% csrf_token %}
+        {% for field, errors in form.errors.items %}
+        {{ errors }}
+        {% endfor %}
+        <div class="form-group">
+            <label for="id_username" class="control-label">Username</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" class="form-control" name="username" id="id_username" maxlength="15" required autofocus>
+           </div>
         </div>
-        <label>{{ form.password.label }}   <a href="">(forgot password)</a></label>
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-            <input id="id_password" type="password" name="password" class="form-control" placeholder="{{ form.password.label }}" tabindex=2>
+        <div class="form-group">
+            <label for="id_password" class="control-label">Password</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
+                <input type="password" class="form-control" name="password" id="id_password" maxlength="20" required>
+            </div>
+           <div class="help-block with-errors"></div>
         </div>
-
-    	<div class="row">
-            <div class="col-xs-6 col-md-6">
-                 
-            </div>
-            <div class="col-xs-6 col-md-6 pull-right">
-                <button type="submit" class="btn btn-large btn-success pull-right" tabindex=3>{% trans 'Log in' %}</button>
-            </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">{% trans 'Log in' %}</button>
         </div>
-	</div>
-    
-	<span class="clearfix"></span>	
-
-	<div class="login-footer">
-		<div class="row">
-            <div class="col-xs-6 col-md-6">
-                <div class="left-section">
-                    <a href="{% url 'registration_register' %}">Create an account</a>
-				</div>
-            </div>
-            <div class="col-xs-6 col-md-6 pull-right">
-            </div>
-        </div>
-	</div>
-  </form>
-</div>
+    </form>
 {% endblock %}
+
+
+{% block custom-scripts %}<script src="{% static 'scripts/validator.min.js' %}"></script>{% endblock %}

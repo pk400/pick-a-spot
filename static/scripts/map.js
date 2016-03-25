@@ -8,15 +8,14 @@ var keywordList = [];
 var price;
 var distance;
 var keywords = [];
-var cords = {};
-var cordspromise = $.Deferred();
-$.getJSON("http://jsonip.com?callback=?", function (data) {
-  $.getJSON("http://freegeoip.net/json/" + data.ip, function (data) {
-      cords.latitude = data.latitude;
-      cords.longitude = data.longitude;
-      cordspromise.resolve();
-  });  
-});  
+var cords = JSON.parse($("#lonlat-obj").text());
+
+document.getElementById("share-link-url").value = window.location.href;
+
+if (localStorage['lng'] && localStorage['lat']){
+  cords[0] = Number(localStorage['lng']);
+  cords[1] = Number(localStorage['lat']);
+}
 
 function parsePreferences(){
   var priceRnd = priceList[Math.floor(Math.random() * priceList.length)];
@@ -34,7 +33,7 @@ function parsePreferences(){
     // Based on average person's walking being 1km/10 mins
     distance = 1500;
   else
-    distance = 10000;
+    distance = 8000;
 
   var length = 5;
   // Just in case not enough entries
@@ -58,95 +57,108 @@ function parsePreferences(){
 }
 
 function initMap() {
-  cordspromise.then(function(){
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: cords.latitude, lng: cords.longitude},
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-    search.location = map.getCenter();
-    centerMarker = new google.maps.Marker({
-          position: search.location,
-          animation: google.maps.Animation.DROP,
-          map: map
-    });
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lng: cords[0], lat: cords[1]},
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  search.location = map.getCenter();
+  centerMarker = new google.maps.Marker({
+        position: search.location,
+        animation: google.maps.Animation.DROP,
+        map: map
   });
 }
 
 function pickaspotmap(parseobj) {
+  clearMarkers();
+  $("#table-body-results").empty();
   // rewrite over so that the parseobj is the same for all clients
   if (parseobj != undefined){
     price = parseobj.price;
     distance = parseobj.distance;
     keywords = parseobj.keywords;
-    cords = parseobj.cords;
+    cords[0] = Number(parseobj.cords[0]);
+    cords[1] = Number(parseobj.cords[1]);
   }
-  $("#table-body-results").empty();
-  clearMarkers();
-  var zoom = 12;
-  if (distance < 1500)
-    zoom = 10;
-  if (map == undefined){
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: cords.latitude, lng: cords.longitude},
-      zoom: zoom,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-  }
-  else{
-    map.setCenter({lat: cords.latitude, lng: cords.longitude});
-    map.setZoom(zoom);
-  }
+  var zoom = 11;
+  if (distance <= 1500)
+    zoom = 12;
+
+  // Creats map
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lng: cords[0], lat: cords[1]},
+    zoom: zoom,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  
+  // Sets center
+  search.location = map.getCenter();
+  centerMarker = new google.maps.Marker({
+        position: search.location,
+        animation: google.maps.Animation.DROP,
+        map: map
+  });    
+
+  // set up search
+  search.minprice = 0
+  search.maxprice = price
+  search.radius = distance;
+  search.type = "food";
+  search.rankBy = google.maps.places.RankBy.PROMINENCE;
+
   places = new google.maps.places.PlacesService(map);
-  var length = keywords.length;
-  // keeps track of how many entries have been added
-  var current = 0;
+
   // keeps track of IDs so the resturant isn't added twice
   var trackid = [];
-  for (var i = 0; i < length; i++){
-    // Loop won't go pass 20 markers
-    if (current > 19)
-      break;
-    // set up search
-    search.minprice = 0
-    search.maxprice = price
-    // do a search once of each keyword
-    search.keyword = keywords[i];
-    search.radius = distance;
-    search.type = "restaurant";
-    search.rankBy = google.maps.places.RankBy.PROMINENCE;
 
-    search.location = map.getCenter();
-    centerMarker = new google.maps.Marker({
-          position: search.location,
-          animation: google.maps.Animation.DROP,
-          map: map
-        });
+  var i = 0;
 
-    // go through data
-    // Since doing multiple searches, an outside number is needed to keep track
+  var loopkeywords = function(arr){
+    // call itself
+    callbacksearch(arr[i], function(){
+      // set i to next item
+      i++;
+      if (i < arr.length || markers.length > 19){
+        loopkeywords(arr);
+      }
+    })
+  }
+  loopkeywords(keywords);
+  function callbacksearch(keyword, callback){
+    // do callback when ready
+    var deferred = $.Deferred();
+    search.keyword = keyword;
+    console.log(keyword)
     places.search(search, function(results, status){
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var j = 0; j < results.length; j++) {
-          // stops add results after 20
-          if (current>19){
+          console.log(results[j]);
+          // stops adding results after 20
+          var found = markers.length;
+          if (found>19){
             break;
-          }            
-          if( $.inArray(results[j].place_id, trackid) == -1){
+          }
+          // Only adds if not already included or if resturant is in the types
+          if( $.inArray(results[j].place_id, trackid) == -1 && results[j].types.indexOf("restaurant") != -1){
             trackid.push(results[j].place_id);
-            var icon = 'http://gmaps-samples-v3.googlecode.com/svn/trunk/places/icons/number_'+ (current+1) + '.png';
+            var icon = 'http://gmaps-samples-v3.googlecode.com/svn/trunk/places/icons/number_'+ (found+1) + '.png';
             markers.push(new google.maps.Marker({
               position: results[j].geometry.location,
               animation: google.maps.Animation.DROP,
               icon: icon
             }));
-            google.maps.event.addListener(markers[current], 'click', getDetails(results[j], current));
-            window.setTimeout(dropMarker(current), current * 100);
-            addResult(results[j], current);
-            current++;
+            google.maps.event.addListener(markers[found], 'click', getDetails(results[j], found));
+            window.setTimeout(dropMarker(found), found * 100);
+            addResult(results[j], found);
           }
         }
+        deferred.resolve();
       }  
+    });
+    // callback when finished
+    deferred.done(function(){
+      callback()
     });
   }
   // Clear results for next search
@@ -235,7 +247,7 @@ function getIWContent(place) {
   content += '<table>';
   content += '<tr class="iw_table_row">';
   content += '<td style="text-align: right"><img class="hotelIcon" src="' + place.icon + '"/></td>';
-  content += '<td><b><a href="' + place.url + '">' + place.name + '</a></b></td></tr>';
+  content += '<td><b><a target="_blank" href="' + place.url + '">' + place.name + '</a></b></td></tr>';
   content += '<tr class="iw_table_row"><td class="iw_attribute_name">Address:</td><td>' + place.vicinity + '</td></tr>';
   if (place.formatted_phone_number) {
     content += '<tr class="iw_table_row"><td class="iw_attribute_name">Telephone:</td><td>' + place.formatted_phone_number + '</td></tr>';      
@@ -258,9 +270,93 @@ function getIWContent(place) {
       website = 'http://' + place.website + '/';
       fullUrl = website;
     }
-    content += '<tr class="iw_table_row"><td class="iw_attribute_name">Website:</td><td><a href="' + fullUrl + '">' + website + '</a></td></tr>';
+    content += '<tr class="iw_table_row"><td class="iw_attribute_name">Website:</td><td><a target="_blank" href="' + fullUrl + '">' + website + '</a></td></tr>';
   }
   content += '</table>';
   return content;
 }
 
+$("#set-location").one("click", function(){
+  var addressinput = document.getElementById('locate-address-input');
+  autocomplete = new google.maps.places.Autocomplete(addressinput);  
+});
+
+$("#share-location-btn").on("click", function(){
+  navigator.geolocation.getCurrentPosition(setgeolocation);
+});
+
+$("#reset-location-btn").on("click",function(){
+  $("#locate-address-input").val("");
+  localStorage.removeItem("lng");
+  localStorage.removeItem("lat");
+  cords = JSON.parse($("#lonlat-obj").text());
+  clearMarkers();
+  initMap();
+});
+
+$("#locate-address-btn").on("click", function(){
+  var csrftoken = getCookie('csrftoken');
+  $.ajax({
+    url: window.location.href,
+    type: "POST",
+    data: {
+      csrfmiddlewaretoken : csrftoken,
+      type : "getlocation",
+      address: $("#locate-address-input").val()
+    },
+    success : function(data){
+      var parseval = data;
+      // Occurs when user doesn't enter a correct address
+      if (data != "Error"){
+        parseval = JSON.parse(data);
+        localStorage['lng'] = cords[0] = parseval[0];
+        localStorage['lat'] = cords[1] = parseval[1];
+        $("#table-body-results").empty();
+        clearMarkers();
+        initMap();        
+      }
+      else{
+        alert("Please enter a correct address.");
+      }
+    }
+  })
+})
+
+function setgeolocation(position){
+  localStorage['lng'] = cords[0] = position.coords.longitude;
+  localStorage['lat'] = cords[1] = position.coords.latitude;
+  $("#table-body-results").empty();
+  clearMarkers();
+  initMap();
+}
+
+$("#email-link-auth").on("click", function(){
+  $("#friend-list-share").css("display", "block");
+  $("#send-email-btn").css("display", "block");
+
+});
+
+$("#send-email-btn").on("click", function(){
+  var csrftoken = getCookie('csrftoken');
+  var friendschecked = [];
+  $(".checkbox-friends:checked").each(function(){
+    friendschecked.push($(this).val());
+  })
+
+  $.ajax({
+    url: window.location.href,
+    type: "POST",
+    data: {
+      csrfmiddlewaretoken : csrftoken,
+      type : "sendemails",
+      roomlink : window.location.href,
+      friends : JSON.stringify(friendschecked)
+    },
+    success : function(data){
+        $("#friend-list-share").css("display", "none");
+        $("#send-email-btn").css("display", "none");
+        alert("Emails Sent");
+    },
+  });  
+
+})
