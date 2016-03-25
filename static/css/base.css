@@ -1,21 +1,45 @@
+/*
+COLOUR SCHEME
+http://www.colourlovers.com/palette/122168/Fuji_Apple
+Red       BF2A23  191,42,35
+Green     A6AD3C  166,173,60
+Yellow    F7F7D6  247, 247, 214
+Orange    CF872E  207,135,46
+Dark Red  8A211D  138,33,29
+*/
+
+/*********************************
+  GLOBAL
+*********************************/
 body {
-  padding-top: 300px;
-  padding-bottom: 40px;
+  padding-top: 50px;
 }
 
-.joel {
-  margin-left: 15px;
-  margin-right: 15px;
+a {
+  color: #BF2A23;
 }
 
-.joey {
-}
-
+/*********************************
+  BASE CONTENT PAGE
+*********************************/
 .content {
   margin-top: 25px;
   margin-bottom: 20px;
 }
 
+.username {
+  color: #CF872E;
+}
+
+.paslogo_large {
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+/*********************************
+  FOOTER
+*********************************/
 .footer {
   font-size: 1.2em;
   padding-top: 20px;
@@ -32,217 +56,65 @@ body {
   margin-right: 25px;
 }
 
-.form-signin {
-	max-width: 330px;
-	padding: 15px;
-  padding-top: 0px;
-	margin: 0 auto;
-}
-
-.registerform {
-	max-width: 800px;
-	padding: 15px;
-	margin: 0 auto;
-}
-
-.paslogo_large {
-	height: 100px;
-	display: block;
-	margin: 0 auto;
-}
-
-.splashbanner {
-	margin: 0 auto;
-	display: block;
-}
-
-.splashintro {
-  width: 1000px;
-  margin: 0 auto;
-  margin-top: 3%;
-  line-height: 25px;
-}
-
-.splash-content {
-  padding-top: 150px;
-  height: 90vh;
-  /*background-image: url('../images/splash1.jpg');*/
-  background-image: url('../images/splashhires.jpeg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow-y: hidden;
-  text-align: center;
-}
-
-.splash-content h1 {
-  color: #333;
-}
-
-.splash-box p {
-  margin: 0;
-  text-align: left;
-  color: #333;
-  opacity: 0.8;
-}
-
-.splash-box .or {
-  text-align: center;
-  font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.splash-box {
-  padding: 30px 25px;
-}
-
-.splash-box input{
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  height:40px;
-  border: 1px solid #ccc;;
-  background: #fafafa;
-  transition:0.2s ease-in-out;
-}
-
-.splash-box input:focus{
-  outline: 0;
-  background: #eee;
-}
-
-.splash-box input[type="text"]{
-  border-radius: 5px 5px 0 0;
-  text-transform: lowercase;
-}
-
-.splash-box input[type="password"]{
-  border-radius: 0 0 5px 5px;
-  border-top: 0;
-  text-transform: lowercase;
-}
-
-.splash-box input[type="submit"]{
-  margin-top:15px;
-  padding: 10px 20px;
-  color: #fafafa;
-  border: #2C8BB0;
-  background: #4FB7E0;
-  font-weight: bold;
-}
-
-.splash-box .leftbox {
-  display: inline-block;
-  width: 700px;
-}
-
-.splash-box .leftbox h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 84px;
-  font-weight: bold;
-  color: #BF2A23;
-}
-
-.splash-box .rightbox {
-  display: inline-block;
-  width: 350px;
-}
-
-
+/*********************************
+  NAVIGATION
+*********************************/
 .nav-logo {
   width: 20px;
   margin: 0 auto;
 }
 
-.username {
-  color: green;
+.nav {
+  color: #BF2A23;
 }
 
 .nav .active {
   border-bottom: 2px solid #333;
 }
 
-.form-signin {
-  max-width: 400px; 
-  display:block;
-}
-.main{
-  padding: 38px;
-  padding-top: 0px;
-}
-.social-box{
-  margin: 0 auto;
-  padding: 38px;
-  border-bottom:1px #ccc solid;
-}
-.social-box a{
-  font-weight:bold;
-  font-size:18px;
-  padding:8px;
-}
-.social-box a i{
-  font-weight:bold;
-  font-size:20px;
-}
-.heading-desc{
-  font-size:20px;
-  font-weight:bold;
-  padding:38px 38px 0px 38px;
-  
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  font-size: 16px;
-  height: 20px;
-  padding: 8px;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="text"] {
-  height: 100%;
-  margin-bottom: 0px;
-  border-radius: 5px;
-}
-.form-signin input[type="email"] {
-  height: 100%;
-  margin-bottom: 0px;
-  border-radius: 5px;
-}
-.form-signin input[type="password"] {
-  height: 100%;
-  margin-bottom: 0px;
-  border-radius: 5px;
-}
-.input-group {
-    margin-bottom: 15px;
-}
-.login-footer{
-  margin: 0 auto;
-  border-top: 1px solid #dadada;
-  padding:20px;
-}
-.login-footer .left-section a{
-  font-weight:bold;
-  line-height:19px;
-}
-.mg-btm{
-  margin-bottom:20px;
+/*********************************
+  FORMS
+*********************************/
+.errorlist {
+  list-style-type: none;
+  background: #8A211D;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
 }
 
-@media screen and (min-width: 768px) {
+.errorlist li::before {
+  font-family: 'Glyphicons Halflings'; 
+  content:"\e107";
+}
+
+/*********************************
+  MOBILE SCREENS
+*********************************/
+@media screen and (max-width: 768px) {
   body {
-    padding-top: 51px;
+    padding-top: 300px;
   }
+}
+
+
+/*********************************
+  PANELS
+*********************************/
+.panel{
+  color: #BF2A23;
+}
+
+.panel-primary>.panel-heading{
+  background-color: #BF2A23;
+  border-color: #BF2A23;
+}
+
+.panel-primary {
+  border-color: #BF2A23;
+}
+
+.btn-warning{
+  background-color: #CF872E;
+  border-color: #CF872E;
 }

@@ -6,7 +6,12 @@ from django.http import HttpResponseRedirect, HttpResponse
 from registration.views import RegistrationView
 from django.db.models import Q
 from datetime import datetime,timedelta
+from django.contrib.gis.geoip2 import GeoIP2
+from geopy import geocoders
+from registration.views import RegistrationView
+from django.core.mail import send_mail
 import json
+import ast
 
 mapapikey = ('<script src="https://maps.googleapis.com/maps/api/'
 	'js?key=AIzaSyAvDRB7PnQbIVNtRHf3x-MTB5y-3OXD1xg&libraries=places">async defer> </script>')
@@ -22,10 +27,10 @@ def custom_500(request):
 """
 HOME
 """
-@login_required(login_url='/splash/')
+@login_required(login_url='/')
 def home(request):
 	context = {
-		'title': 'User Hub',
+		'title': 'Home',
 	}
 	return render(request, 'home.html', context)
 
@@ -39,8 +44,7 @@ def splash(request):
 		'title': 'Splash'
 	}
 	if request.user.is_authenticated():
-		print 'hello'
-		return HttpResponseRedirect('/')
+		return HttpResponseRedirect('/home')
 	else:
 		return render(request, 'splash.html', context)
 
@@ -50,15 +54,31 @@ def splash(request):
 MAP
 """
 def map(request):
-	value = ""
+	prefval = ""
+	friendlist = ""
 	if request.user.is_authenticated():
 		user = UserProfile.objects.filter(user=request.user)
-		value = user[0].preferences
+		prefval = user[0].preferences
+		user = User.objects.get(id=request.user.id)
+		friendlist = Friend.objects.filter(Q(user1=user) | Q(user2=user)).order_by()
+
+	# Get IP then lat/long
+	g = GeoIP2()
+	ip = request.META.get('HTTP_X_REAL_IP', None)
+	try:
+		lonlat = g.lon_lat(ip)
+	except Exception as err:
+		# Private network
+		lonlat = [-79.4163000, 43.7001100]
 	context = {
 		'title': 'Map',
 		'mapapi': mapapikey,
-		'preferences' : value
+		'preferences' : prefval,
+		"lon": lonlat[0], 
+		"lat": lonlat[1],
+		"friends" : friendlist
 	}
+
 	check_expiry()
 	getrequest = request.GET.get('room','')
 
@@ -80,6 +100,33 @@ def map(request):
 			# Updates preferences
 			ri = RoomInstance.objects.filter(roomname=result['roomname'])
 			ri.update(listofpref=result['listofpref'])
+		elif result['type'] == "getlocation":
+			# Grabs lat/lng from address
+			value = ""
+			try:
+				geolocator = geocoders.GoogleV3('AIzaSyB_djldgwM0HGAg7opZpVx5StLQB1KDkQc')
+				location = geolocator.geocode(result["address"])
+				value = "[" + str(location.longitude) + ", " + str(location.latitude) + "]"
+			except Exception as err:
+				value = "Error"
+			return HttpResponse(value)
+		elif result['type'] == 'sendemails' and request.user.is_authenticated():
+				# Chosen users to send email to
+				chosenfriends = result['friends'].split()[0]
+				chosenfriends = ast.literal_eval(chosenfriends)
+				user = User.objects.get(id=request.user.id)
+				friendlist = Friend.objects.filter(Q(user1=user) | Q(user2=user)).order_by()
+				emaillist = []
+				for friend in friendlist:
+					# Grabs only one person
+					# If match exists and it's not the user sending the request
+					user = User.objects.get((Q(id=friend.user1_id) | Q(id=friend.user2_id)) & ~Q(id=request.user.id))
+					for chosen in chosenfriends:
+						# Since all friends are grabbed, only sends email to those picked
+						if chosen == user.username and user.email not in emaillist:
+							emaillist.append(user.email)
+				#TODO: Make this better					
+				send_mail('PickASpot Room', 'Hi, join my room!' + result['roomlink'], 'pickaspotmail@gmail.com', emaillist)
 
 	return render(request, 'map.html', context)
 """
@@ -128,7 +175,9 @@ FRIENDS
 @login_required
 def friends(request):
 	user = User.objects.get(id=request.user.id)
-	friendlist = Friend.objects.filter(Q(user1=user) | Q(user2=user)).order_by()
+	friendlist = Friend.objects.filter(Q(user1=user) | Q(user2=user))
+	for x in friendlist:
+		print x
 
 	context = {
 		'title': 'Friends',
@@ -157,8 +206,19 @@ def friends(request):
 """
 CHAT
 """
-def chat(request):
+def chat2(request):
 	context = {
-		'title': 'Chat',
+		'title': 'Chat2',
 	}
-	return render(request, 'chat.html', context)
+	return render(request, 'chat2.html', context)
+
+
+
+"""
+PROFILE
+"""
+def profile(request):
+	context = {
+		'title': 'Profile',
+	}
+	return render(request, 'profile.html', context)

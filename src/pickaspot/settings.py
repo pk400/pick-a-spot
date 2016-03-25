@@ -8,15 +8,16 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 # Application definition
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 	'app',
-    'registration',
-    'channels'
+    'channels',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -89,6 +90,8 @@ USE_L10N = True
 
 USE_TZ = False
 
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 STATICFILES_DIRS = [  
@@ -145,5 +148,10 @@ SECURE_CONTENT_TYPE_NOSNIFF     = True
 SECURE_BROWSER_XSS_FILTER       = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'pickaspotmail@gmail.com'
+EMAIL_HOST_PASSWORD = 'johncena4'
+EMAIL_USE_TLS = True
+
+SITE_ID = 1

@@ -1,9 +1,11 @@
 from __future__ import unicode_literals
 
+from django import forms   
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Group, User
 from django.db.models.signals import post_save
 from datetime import datetime, timedelta
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your models here.
 class UserProfile(models.Model):
@@ -16,7 +18,9 @@ class UserProfile(models.Model):
 
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
+            instance.groups.add(Group.objects.get(name='User'))
             UserProfile.objects.create(user=instance)
+            
     post_save.connect(create_user_profile, sender=User)
 
 # Contains relationships between two users

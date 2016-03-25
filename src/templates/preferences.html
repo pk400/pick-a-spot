@@ -8,11 +8,25 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/preferences.css' %}">
 {% endblock %}
 
-{% block scripts %}
-
-{% endblock %}
-
 {% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="form-group">
   {% csrf_token %}
@@ -53,7 +67,7 @@
       <br>
       <div class="form-inline">
         <div class="icon-addon addon-lg form-group">
-          <input id="search-add" type="text" placeholder="Example: Steak, Donut, etc" class="form-control">
+          <input id="search-add" type="text" placeholder="Example: Steak, Donut, etc" class="form-control" maxlength="40">
           <i class="fa fa-cutlery fa-2x"></i>
         </div>
         <button id="btn-add" class="btn btn-default" type="button">Add Choice</button>     

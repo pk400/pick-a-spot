@@ -3,7 +3,7 @@
  min-height:300px;
 }
 .list-content .list-group .title{
-  background:#5bc0de;
+  background:#BF2A23;
   border:2px solid #DDDDDD;
   font-weight:bold;
   color:#FFFFFF;
@@ -25,7 +25,7 @@
     margin:20px;
 }
 .name {
-    color:#5bc0de;    
+    color:#BF2A23;    
 }
 .bootstrap .jumbotron {
   padding: 5px;
@@ -33,8 +33,7 @@
 
 .scrollable {
   height: 300px;
-  overflow: scroll;
-  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .friend-name {
@@ -43,4 +42,47 @@
 
 .just-added {
   background: #C7FFB5;
+}
+
+
+
+
+
+
+
+
+
+.horizontal-addfriend {
+  vertical-align: middle;
+}
+
+.horizontal-addfriend .title {
+  padding: 0;
+}
+
+.horizontal-addfriend label {
+  margin: 0;
+}
+
+.horizontal-addfriend .addfriend-input {
+  padding: 0;
+}
+
+.horizontal-addfriend input[type="text"] {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.horizontal-addfriend input[type="submit"] {
+  background: #CF872E;
+  border-color: #CF872E;
+  margin-left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.list-content {
+  margin-top: 15px;
 }
