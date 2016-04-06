@@ -11,7 +11,9 @@ from django.contrib.auth.forms import UserCreationForm
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     preferences = models.CharField(max_length=500, blank=False, null=False)
-
+    pendingfriends = models.CharField(max_length=999999999, default="[]", null=True)
+    pendingnotifications = models.CharField(max_length=999999999, default="[]", null=True)
+    
     def __unicode__(self):
     	#return str(self.user)
     	return "{0}".format(self.user.id)
@@ -36,8 +38,11 @@ class Friend(models.Model):
 class RoomInstance(models.Model):
     id = models.AutoField(primary_key=True)
     owner = models.CharField(max_length=100, blank=True, null=True)
-    listofusers = models.CharField(max_length=500, blank=True, null=True)
+    roomsetting = models.CharField(max_length=9999999999999999, blank=True, null=True)
+    lastresult = models.CharField(max_length=999999999, blank=True, null=True)
+    listofusers = models.CharField(max_length=9999999999999999, blank=True, null=True)
     listofpref = models.CharField(max_length=9999999999999999, blank=True, null=True)
+    chathistory = models.CharField(max_length=9999999999999999, blank=True, null=True)
     roomname = models.CharField(max_length=25, blank=True, null=True)
     expirydate = models.DateTimeField(default=datetime.today() + timedelta(days=1), blank=True)
     isexpired = models.BooleanField(default=False)

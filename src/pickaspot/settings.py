@@ -3,7 +3,7 @@ import os
 # DJANGO BASE SETTINGS
 ALLOWED_HOSTS = ['*']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = True
+DEBUG = False
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Application definition
@@ -18,7 +18,13 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 	'app',
     'channels',
+    'lazysignup',
 ]
+
+AUTHENTICATION_BACKENDS = (
+  'django.contrib.auth.backends.ModelBackend',
+  'lazysignup.backends.LazySignupBackend',
+)
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -45,6 +51,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',                         
                 'django.contrib.auth.context_processors.auth', 
                 'django.contrib.messages.context_processors.messages',
+                'pickaspot.context_processors.default',
             ],
         },
     },

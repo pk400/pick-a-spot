@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<p>Sending password reset email to <b>{{ request.POST.values.1 }}</b>. Is this you?</p>
+<form method="post" action="{% url 'auth_password_reset' %}" style="display: inline-block;">
+  	{% csrf_token %} 
+	<input type="hidden" name="email" value="{{ request.POST.values.1 }}">
+	<input type="submit" value="Yes, send email to {{ request.POST.values.1 }}" class="btn btn-primary">
+</form>
+<form action="/resetpassword/" style="display: inline-block;">
+	<input type="submit" value="No, take me back" class="btn btn-warning">
+</form>
+{% endblock %}

@@ -1,6 +1,6 @@
 $("#btn-add").on("click", function(e){
   e.preventDefault();
-  addfriend();
+  sendInvite();
 });
 
 $(".btn-delete").one("click", function(e){
@@ -16,8 +16,8 @@ function deletefriend(element) {
   
   var postdata = {
     csrfmiddlewaretoken: csrftoken,
-    addfriend: "",
-    delfriend: friend
+    delfriend: friend,
+    type : "deletefriend"
   };
 
   $.ajax({
@@ -46,14 +46,14 @@ function getCookie(name) {
  return cookieValue;
 }
 
-function addfriend() {
+function sendInvite() {
   var csrftoken = getCookie('csrftoken');
   var get_friend = document.querySelector('#friend-name').value;
   
   var postdata = {
     csrfmiddlewaretoken: csrftoken,
-    addfriend: get_friend,
-    delfriend: ""
+    newfriend: get_friend,
+    type: "sendinvite"
   };
 
   if (get_friend != "") {
@@ -63,7 +63,19 @@ function addfriend() {
       url: window.location.href,
       type: "POST",
       data: postdata,
-      success: function(json) {
+      success: function(data) {
+        var data = JSON.parse(data);
+        var div = $("<div>", {
+          class: 'just-added list-group-item text-left'
+        });
+        var label = $("<label>", {
+          class: 'name',
+          text: data.message
+        });
+        div.append(label);
+        $("#friend-notification-label").empty();
+        $("#friend-notification-label").append(div);
+        /*
         var li = $("<li>", {
           href: '#',
           class: 'just-added list-group-item text-left '
@@ -98,7 +110,8 @@ function addfriend() {
         a.one("click",function(){
           deletefriend($(this));
         })
-        //$("#friendlist").append("<li>"+get_friend+" <a href=\"#\">Remove</a></li>");
+        //$("#friendlist").append("<li>"+get_friend+" <a href=\"#\">Remove</a></li>");*/
+
       }
       // on error: user does not exist
     })

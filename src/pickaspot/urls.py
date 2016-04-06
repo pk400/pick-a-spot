@@ -12,11 +12,14 @@ urlpatterns = [
 	url(r'^map/$', 			map),
 	url(r'^preferences/$', 	preferences),
 	url(r'^friends/', 		friends),
+	url(r'^resetpassword/', 		resetpassword),
+	url(r'^confirmreset/', 		confirmreset),
 	#url(r'^admin/',			adminredirect),
 	url(r'^admin/', 		admin.site.urls),
 	#url(r'^accounts/', 		include('registration.backends.simple.urls')),
 	url(r'^accounts/', 		include('registration.backends.default.urls')),
 	url(r'^profile/', 		profile),
+	url(r'^convert/', 			include('lazysignup.urls')),
 ]
 
 if settings.DEBUG:

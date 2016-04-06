@@ -93,11 +93,15 @@ box-shadow: none;
     top: 1px
 }
 
-.icon-addon.addon-lg .form-control, .btn {
+.icon-addon.addon-lg .form-control {
     line-height: 1.33;
     height: 46px;
     font-size: 18px;
     padding: 10px 16px 10px 40px;
+}
+
+.btn {
+    padding: 10px 20px;
 }
 
 
@@ -128,4 +132,14 @@ box-shadow: none;
     position: absolute !important;
     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
     clip: rect(1px, 1px, 1px, 1px);
+}
+
+.form-container {
+    background: #fff;
+}
+
+.form-container .form-group {
+    float: none;
+    display: inline-block;
+    vertical-align: top;
 }

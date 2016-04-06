@@ -1,9 +1,11 @@
 /*
 COLOUR SCHEME
 http://www.colourlovers.com/palette/122168/Fuji_Apple
+BG        F7F7D6  247,247,214
+Dotted    B3A9A9  179,169,169
 Red       BF2A23  191,42,35
 Green     A6AD3C  166,173,60
-Yellow    F7F7D6  247, 247, 214
+Yellow    F0CE4E  240,206,78
 Orange    CF872E  207,135,46
 Dark Red  8A211D  138,33,29
 */
@@ -11,8 +13,12 @@ Dark Red  8A211D  138,33,29
 /*********************************
   GLOBAL
 *********************************/
+html, body {
+  height: 100%;
+}
+
 body {
-  padding-top: 50px;
+  background-color: #F7F7D6;
 }
 
 a {
@@ -23,8 +29,8 @@ a {
   BASE CONTENT PAGE
 *********************************/
 .content {
-  margin-top: 25px;
-  margin-bottom: 20px;
+  padding-top: 75px;
+  height: 100vh;
 }
 
 .username {
@@ -40,12 +46,23 @@ a {
 /*********************************
   FOOTER
 *********************************/
+.content footer {
+  padding-top: 25px;
+}
+
 .footer {
+  font-weight: bold;
+  position: absolute;
   font-size: 1.2em;
-  padding-top: 20px;
-	bottom: 10px;
+	bottom: 0;
+  height: 25px;
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  text-shadow: 1px 1px 1px #666;
+}
+
+.footer .text-muted {
+  color: #333;
 }
 
 .footer a {
@@ -59,6 +76,7 @@ a {
 /*********************************
   NAVIGATION
 *********************************/
+/*
 .nav-logo {
   width: 20px;
   margin: 0 auto;
@@ -71,7 +89,31 @@ a {
 .nav .active {
   border-bottom: 2px solid #333;
 }
-
+*/
+nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
+nav.navbar-findcond a { color: #BF2A23; }
+nav.navbar-findcond ul.navbar-nav a { color: #BF2A23; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
+nav.navbar-findcond ul.navbar-nav a:hover,
+nav.navbar-findcond ul.navbar-nav a:visited,
+nav.navbar-findcond ul.navbar-nav a:focus,
+nav.navbar-findcond ul.navbar-nav a:active { background: #fff; }
+nav.navbar-findcond ul.navbar-nav a:hover { border-color: #BF2A23; }
+nav.navbar-findcond li.divider { background: #ccc; }
+nav.navbar-findcond button.navbar-toggle { background: #BF2A23; border-radius: 2px; }
+nav.navbar-findcond button.navbar-toggle:hover { background: #999; }
+nav.navbar-findcond button.navbar-toggle > span.icon-bar { background: #fff; }
+nav.navbar-findcond ul.dropdown-menu { border: 0; background: #fff; border-radius: 4px; margin: 4px 0; box-shadow: 0 0 4px 0 #ccc; }
+nav.navbar-findcond ul.dropdown-menu > li > a { color: #444; }
+nav.navbar-findcond ul.dropdown-menu > li > a:hover { background: #BF2A23; color: #fff; }
+nav.navbar-findcond ul.dropdown-menu > li > a:hover .notification-button { background: #BF2A23; color: #fff; }
+nav.navbar-findcond ul.dropdown-menu > li > a > .notification-button { color: #BF2A23; }
+nav.navbar-findcond ul.dropdown-menu > li > a > .notification-button:hover { cursor:pointer; }
+nav.navbar-findcond span.badge { background: #BF2A23; font-weight: normal; font-size: 11px; margin: 0 4px; }
+nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff; }
+/*a.navbar-brand{font-family: 'Dancing Script', cursive; font-weight: bold;color: #BF2A23;text-shadow: 2px 2px #8A211D; font-size: 2.8em;}*/
+a.navbar-brand{font-family: 'Dancing Script', cursive; font-weight: bold;color: #BF2A23;text-shadow: 1px 1px 1px #8A211D; font-size: 2.8em;}
+nav.navbar-findcond ul.dropdown-menu { max-height: 200px; overflow: auto;}
+nav.navbar-findcond ul.navbar-nav > li:hover { cursor:pointer; }
 /*********************************
   FORMS
 *********************************/
@@ -93,28 +135,46 @@ a {
 *********************************/
 @media screen and (max-width: 768px) {
   body {
-    padding-top: 300px;
   }
 }
 
+.wordwrap{
+  word-wrap: break-word;
+}
+/********************************
+  SCROLL BAR
+********************************/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
 
 /*********************************
   PANELS
 *********************************/
 .panel{
   color: #BF2A23;
+  border: 0px;
 }
 
 .panel-primary>.panel-heading{
   background-color: #BF2A23;
-  border-color: #BF2A23;
-}
-
-.panel-primary {
-  border-color: #BF2A23;
+  border: 0px;
 }
 
 .btn-warning{
   background-color: #CF872E;
-  border-color: #CF872E;
 }
