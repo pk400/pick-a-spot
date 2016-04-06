@@ -1,56 +1,52 @@
 $( document ).ready(function() {
-	$("#preferences-obj").text(localStorage.listofpref);
+	window.onpopstate = function(e){
+		console.log(e.state);
+	    if(e.state == null) { 
+	    	// state data not available
+	    	// reloads page
+	        location.reload();
+	    }
+	    else{
+	    	var data = e.state;
+	    	var pageUrl = 'http://zenit.senecac.on.ca:9089/map/?room=' + data.roomname;
+	    	window.location.href = pageUrl;
+	    }
+	}
   	var csrftoken = getCookie('csrftoken');
   	var checkpara = window.location.href.split("?room=")[1]
   	// make room if it exists
+
+  	// When user clicks the save button on the preferences modal
+  	$('#btn-save').on('click', function() {
+		var prefobject = {};
+		prefobject.user = $(".username").text();
+		prefobject.preferences = return_pref_object();
+		updatePreferences();
+
+		$(".map-container").show();
+		make_room(JSON.stringify(prefobject));
+		$(".optionschoice").hide();
+		slideLeft.close();
+	})
+
 	if (checkpara == null){
-		$("#pickoption").one("click", function(){
-			var data = $("#preferences-obj").text();
-
-			if(data == ""){
-				alert("Preferences not set. Redirecting now.");
-				window.location.replace("../preferences");				
+		$("#createroom-btn").on("click", function(){
+			var hiddenpref = $('#preferences-obj').text();
+			if(hiddenpref == "") {
+				slideLeft.open();
 			}
-			else{
+			else {
+				var prefobject = {};
+				prefobject.user = $(".username").text();
+				prefobject.preferences = return_pref_object();
+				updatePreferences();
+
+				$(".map-container").show();
+				make_room(JSON.stringify(prefobject));
 				$(".optionschoice").hide();
-				$(".map-container").show();				
-				var prefobject = JSON.parse(data);
-				var listofpref = [prefobject];
-				listofpref = JSON.stringify(listofpref);
-				make_room(listofpref);
-			}	
-		});
-
-		$("#quickoption").one("click", function(){
-			$(".optionschoice").hide();
-			if (localStorage.getItem("listofpref") == null){
-				$(".preferences-container").show();				
-				$("#btn-preferences").on("click", function(){
-					var prefobject = {};
-					prefobject.user = $(".username").text();
-					prefobject.preferences = {};
-					prefobject.preferences.preferences = return_pref_object();
-					console.log(prefobject)
-					var listofpref = [prefobject];
-					listofpref = JSON.stringify(listofpref);
-					if(prefobject.preferences.preferences != undefined){
-						// Saves in storage
-						// Save prefobject instead
-						var prefobjstr = JSON.stringify(prefobject)
-						localStorage.setItem("listofpref", prefobjstr);
-						$(".preferences-container").hide();
-						$(".map-container").show();
-						$("#preferences-obj").text(prefobjstr);		
-						make_room(listofpref);
-					}
-				})
+				slideLeft.close();
 			}
-			else{
-				var listofpref = $("#preferences-obj").text();
-				$(".map-container").show();					
-				make_room(listofpref);				
-			}
-		});
+		})
 	}
 	// if room exists, join with preferences
 	else{
@@ -86,6 +82,10 @@ $( document ).ready(function() {
 		}
 	}
 
+	function fill_pref() {
+  		var jsonvalues = JSON.parse($(".hidden-post-json").text());
+	}
+
 	function make_room(listofpref){
 		initMap();
 		var roomname = makeid();
@@ -101,8 +101,41 @@ $( document ).ready(function() {
 			},
 			success: function(json) {
 				var pageUrl = '?room=' + roomname;
-				window.history.pushState('', '', pageUrl);
+				window.history.pushState({'roomname' : roomname }, "", pageUrl);
 				join_chat();
+
+				if ($("#room-instances-dropdown").length == 0){
+					var ul = $("<ul>",{
+						id : "room-instances-dropdown",
+						class : "dropdown-menu",
+						role : "menu"
+					});
+					console.log(ul);
+					$("#room-instances-li").append(ul);
+				}
+				/* FORMAT
+					LI
+						A
+							SPAN
+				*/
+				var anchor = $("<a>",{
+					href : "/map?room=" + roomname,
+				});
+
+				var span = $("<span>",{
+					"data-duration" : "86400", // 24 hours in seconds
+					class : "badge room-time-left"
+				})
+
+				var li = $("<li>");
+
+				li.append(anchor);
+				anchor.append(span);
+				span.after("Room-" + roomname)
+				$("#room-instances-dropdown").append(li);
+
+				var count = parseInt($("#room-instances-badge-count").text()) + 1;
+				$("#room-instances-badge-count").text(count);
 			},
 			error: function(json) {
 			}
@@ -117,5 +150,5 @@ $( document ).ready(function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
 
         return text;
-    }   
+    }
 });

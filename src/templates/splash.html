@@ -5,28 +5,32 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block stylesheets %}<link rel="stylesheet" type="text/css" href="{% static 'css/splash.css' %}">
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
 {% endblock %}
 
 {% block content-after %}
 	{% if user.is_anonymous %}
-	<div class="splash-content">
+	<div class="splash-content" title="Splash Background">
 		<div class="splash-box">
-			<h1 id="title">Pick A Spot</h1>
+			<h1 id="title" class="animated tada">Pick A Spot</h1>
 			<div class="splash-left">
-				<p>Going to lunch with coworkers and don't want to spend precious lunch-time deciding where to eat? How about going out to the city with friends but no one can make up their minds on where to eat and your stomach is telling them to decide already? Don't you wish you could yell at them to simply <i>pick a spot</i>? Well now you can!</p>
+				<p>Going out to the city with friends and looking for places to eat, but no one can make up their minds? When it comes to food, decision-making is a constant back-and-forth battle with no end in sight. Don't stress yourself out, and organize your next group food adventure! Let's <i>Pick A Spot!</i></p>
 			</div>
 			<div class="splash-right">
 				<form method="post" action="{% url 'auth_login' %}">
 					{% csrf_token %} 
-					<input class="form-control" type="text" name="username" placeholder="Username" tabindex=1 required autofocus>
-					<input class="form-control" type="password" name="password" placeholder="Password" tabindex=2 required>
+					<input maxlength="15" class="form-control" type="text" name="username" placeholder="Username" tabindex=1 required autofocus>
+					<input maxlength="20" class="form-control" type="password" name="password" placeholder="Password" tabindex=2 required>
 					<input class="btn btn-default" type="submit" value="{% trans 'Log in' %}" tabindex=3>
 		  			<input type="hidden" name="next" value="{{ next }}" />
 				</form>
 				<p class="center">OR</p>
-				<p class="center">{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+				<!--<p class="center">{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>-->
+				<p class="center">{% trans "Forgot password" %}? <a href="/resetpassword">{% trans "Reset it" %}</a>!</p>
 				<p class="center">{% trans "Not a member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
 			</div>
+
+			<a href="/map/" class="btn btn-info" role="button">Enter as Guest</a>
 		</div>
 	</div>
 	{% endif %}

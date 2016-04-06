@@ -1,7 +1,11 @@
 {% load staticfiles %}<!doctype html>
+{% load i18n lazysignup_tags %}
 <html lang="en">
 <head>
-	<meta charset="utf-8"></meta>
+	<meta charset="utf-8">
+	<meta name="description" content="PickASpot is a web site that makes it easier to organize group dinings">
+	<!-- Fixes mobile devices not resizing page -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<!-- Configurable in admin cp -->
 	<title>{% block title %}{% endblock %} | Pick A Spot</title>
 	<!-- Favicon -->
@@ -13,7 +17,7 @@
 	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{% static 'images/apple-touch-icon-120x120.png' %}" />
 	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="{% static 'images/apple-touch-icon-76x76.png' %}" />
 	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'images/apple-touch-icon-152x152.png' %}" />
-	<link rel="icon" type="image/png" href="{% static 'images/favicon-196x196.png'" sizes="196x196" />
+	<link rel="icon" type="image/png" href="{% static 'images/favicon-196x196.png'%}" sizes="196x196" />
 	<link rel="icon" type="image/png" href="{% static 'images/favicon-96x96.png' %}" sizes="96x96" />
 	<link rel="icon" type="image/png" href="{% static 'images/favicon-32x32.png' %}" sizes="32x32" />
 	<link rel="icon" type="image/png" href="{% static 'images/favicon-16x16.png' %}" sizes="16x16" />
@@ -37,65 +41,112 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 	{% block stylesheets %}{% endblock %}{% block scripts %}{% endblock %}{% block redirects %}{% endblock %}</head>
 <body>
-	{% block nav %}<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
+	{% block nav %}
+	{% if title != 'Splash' %}
+	<nav class="navbar navbar-findcond navbar-fixed-top" style="z-index: 2;">
+	    <div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/"><img class="nav-logo" src="{% static 'images/logo.png' %}"></a>
-			</div><!-- navbar-header end -->
-			<div id="navbar">
-				<ul class="nav navbar-nav">
-					<li{% if title == 'Map' %} class="active"{% endif %}><a href="/map"><span class="glyphicon glyphicon-map-marker"></span> Map</a></li>
-				{% if user.is_authenticated %}
-					<li{% if title == 'Preferences' %} class="active"{% endif %}><a href="/preferences"><span class="glyphicon glyphicon-wrench"></span> Preferences</a></li>
-					<li{% if title == 'Friends' %} class="active"{% endif %}><a href="/friends"><i class="fa fa-users"></i> Friends</a></li>
-				{% endif %}
-				</ul>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">Pick A Spot</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav navbar-right">
-				{% if user.is_authenticated %}
-					<li><a href="/profile"><span class="username"><span class="glyphicon glyphicon-user" id="username-dashboard"></span> {{ user }}</span></a></li>
-				{% for group in user.groups.all %}
-				{% if group.name == 'Admin' %}
-					<li><a href="/admin"><span class="glyphicon glyphicon-lock"></span> Admin CP</a></li>
-				{% endif %}
-				{% endfor %}
-					<li><a href="{% url 'auth_logout' %}?next=/">Logout</a></li>
-				{% else %}
-					{% if title != 'Splash' %}
-					<li><a href=""><span class="username"><span class="glyphicon glyphicon-user" id="guest-dashboard"></span> <span class="glyphicon glyphicon-triangle-bottom"></span></span></a></li>
+					{% if user.is_authenticated %}
+					<li class="dropdown" id="room-instances-li">
+						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-home"></i> Room Instances <span id="room-instances-badge-count" class="badge">{{ rooms|length }}</span></a>
+						{% if rooms %}
+						<ul id="room-instances-dropdown" class="dropdown-menu" role="menu">
+							{% for room in rooms %}
+           	 					<li><a href="/map/?room={{room.roomname}}"><span data-duration='{{room.expirydate}}' class="badge room-time-left"> </span>Room-{{room.roomname}}</a></li>
+           	 				{% endfor %}
+						</ul>
+           	 			{% endif %}						
+					</li>
 					{% endif %}
-					<li{% if title == 'Login' %} class="active"{% endif %}><a href="{% url 'auth_login' %}">Login</a></li>
-					<li{% if title == 'Register' %} class="active"{% endif %}><a href="{% url 'registration_register' %}">Register</a></li>	
-				{% endif %}
+					{% if user.is_authenticated and not user|is_lazy_user  %}
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-bell-o"></i> Notifications <span id="notifications-badge-count" class="badge">{{ notificationslength }}</span></a>
+						{% if friendinvites or pendingnotifications %}
+						<ul id="friend-notifications-dropdown" class="dropdown-menu" role="menu">
+							{% for notification in pendingnotifications %}
+	   	 					<li><a>
+	   	 						<span> {{notification.message}} </span>
+	   	 						<i data-notificationid='{{notification.notificationid}}' class="fa fa-times-circle-o fa-lg notification-button notification-button-decline"></i> 
+	   	 					</a></li>
+	   	 					{% endfor %}							
+							{% for friend in friendinvites %}
+	   	 					<li><a>
+	   	 						<i data-username='{{friend.username}}' class="fa fa-check-circle-o fa-lg notification-button friend-button-accept"></i>
+	   	 						<span> {{friend.username}}, has sent an invite to be your friend! </span>
+	   	 						<i data-username='{{friend.username}}' class="fa fa-times-circle-o fa-lg notification-button friend-button-decline"></i> 
+	   	 					</a></li>
+	   	 					{% endfor %}
+						</ul>
+						{% endif %}
+					</li>
+					{% endif %}
+					<li><a href="/map/"><i class="fa fa-cutlery"></i> Create Room</a></li>
+					{% for group in user.groups.all %}
+					{% if group.name == 'Admin' %}
+					<li><a href="/admin/"><i class="fa fa-fw fa-lock"></i>Admin CP</a></li>
+					{% endif %}
+					{% endfor %}
+					{% if user.is_authenticated %}
+					<li class="dropdown">
+						<a class="dropdown-toggle username" data-toggle="dropdown" role="button" aria-expanded="false">{{user}}<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/profile/">Manage Profile</a></li>
+							<li><a href="{% url 'auth_logout' %}?next=/">Logout</a></li>
+						</ul>
+					</li>
+					{% endif %}
+					{% if not user.is_authenticated %}
+					<li><a href="{% url 'auth_login' %}"> Login</a></li>
+					<li><a href="{% url 'registration_register' %}"> Register</a></li>
+					{% endif %}
 				</ul>
-			</div><!-- navbar end -->
-		</div><!-- container end -->
+			</div>
+		</div>
 	</nav>
+	{% endif %}
 	{% endblock %}
 
+	<!-- Used for content that needs to be placed before the main content container -->
 	{% block content-before %}
 	{% endblock %}
 
+	<!-- Main content container -->
 	{% if title != 'Splash' %}
 	<div class="container content">
 	{% block content %}
-	</div>
  	{% endblock %}
+	<footer class="col-md-12">
+	</footer>
+	</div>
 	{% endif %}
 
+	<!-- Used for content that needs to be placed after the main content container -->
 	{% block content-after %}
 	{% endblock %}
+
+	<!-- Only used for the splash page -->
+	{% if title == 'Splash' %}
 	<footer class="footer col-md-12">
-		<div class="container">
-			<p class="pull-right"><a href="#">Back to top</a></p>
-			<p class="text-muted">&copy; 2016 <a class="joel" href="https://github.com/pk400"><i class="fa fa-github-alt"></i> Joel Aro</a> Giuseppe Ranieri</p>
-		</div>
 	</footer>
+	{% endif %}
 
 	{% block bootstrap-scripts %}
+	<!-- Bootstrap default scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
     <script src="{% static 'scripts/guestuser.js' %}"></script>
+    <script src="{% static 'scripts/base.js' %}"></script>
     <script src="{% static 'scripts/ie10-viewport-bug-workaround.js' %}"></script>
     {% endblock %}
     {% block custom-scripts %}{% endblock %}

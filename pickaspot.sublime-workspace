@@ -24,34 +24,42 @@
 	"buffers":
 	[
 		{
-			"file": "src/pickaspot/urls.py",
+			"file": "src/templates/preferences.html",
 			"settings":
 			{
-				"buffer_size": 896,
+				"buffer_size": 10105,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/app/views.py",
+			"file": "src/static/css/preferences.css",
 			"settings":
 			{
-				"buffer_size": 5816,
+				"buffer_size": 2789,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/templates/registration/password_reset_form.html",
+			"file": "static/scripts/choices.js",
 			"settings":
 			{
-				"buffer_size": 342,
+				"buffer_size": 3998,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/templates/registration/password_reset_done.html",
+			"file": "src/templates/map.html",
 			"settings":
 			{
-				"buffer_size": 153,
+				"buffer_size": 22701,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/templates/base.html",
+			"settings":
+			{
+				"buffer_size": 7924,
 				"line_ending": "Unix"
 			}
 		}
@@ -89,21 +97,18 @@
 	"expanded_folders":
 	[
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/django",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/django/conf",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/registration",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/registration/backends",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/env/lib/python2.7/site-packages/registration/backends/default",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/app",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/pickaspot",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/admin"
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/static",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/static/scripts"
 	],
 	"file_history":
 	[
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/scripts/map.js",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/css/map.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/css/preferences.css",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/templates/registration/password_reset_done.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/templates/registration/password_reset_form.html",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/app/views.py",
+		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/pickaspot/urls.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/registration/registration_form.html",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/profile.html",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/map.html",
@@ -122,13 +127,11 @@
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/css/friend.css",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/templates/splash.html",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/scripts/loginregister.js",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pick-a-spot/src/static/scripts/map.js",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/map.js",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/guestuser.js",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/chat.js",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/preferences.js",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/scripts/friendlist.js",
-		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/app/views.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090/home/student/pick-a-spot/src/static/css/base.css",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/app/admin.py",
 		"/run/user/1000/gvfs/sftp:host=zenit.senecac.on.ca,port=9090,user=student/home/student/pickaspot-backup/src/static/scripts/friendlist.js",
@@ -233,121 +236,161 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/pickaspot/urls.py",
+					"file": "src/templates/preferences.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 896,
+						"buffer_size": 10105,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								255,
-								255
+								25,
+								25
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/app/views.py",
+					"file": "src/static/css/preferences.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5816,
+						"buffer_size": 2789,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1996,
-								1996
+								2786,
+								2786
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": -0.0,
-						"translation.y": 2444.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/templates/registration/password_reset_form.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 342,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								197,
-								197
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1247.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/templates/registration/password_reset_done.html",
+					"buffer": 2,
+					"file": "static/scripts/choices.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 153,
+						"buffer_size": 3998,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								62,
-								62
+								638,
+								638
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "src/templates/map.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22701,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22701,
+								22701
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7176.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/templates/base.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7924,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 780.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -370,11 +413,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":

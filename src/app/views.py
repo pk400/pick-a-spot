@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import UserProfile, Friend, RoomInstance
 from django.contrib.auth.models import User
+from django.contrib.sessions.models import Session
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from registration.views import RegistrationView
@@ -10,9 +11,14 @@ from django.contrib.gis.geoip2 import GeoIP2
 from geopy import geocoders
 from registration.views import RegistrationView
 from django.core.mail import send_mail
+from lazysignup.utils import is_lazy_user
+from lazysignup.decorators import allow_lazy_user
+from django.template import RequestContext
+from django.shortcuts import render_to_response
 import json
 import ast
-
+import random
+import string
 mapapikey = ('<script src="https://maps.googleapis.com/maps/api/'
 	'js?key=AIzaSyAvDRB7PnQbIVNtRHf3x-MTB5y-3OXD1xg&libraries=places">async defer> </script>')
 
@@ -36,10 +42,21 @@ def home(request):
 
 
 
+def rename_lazyaccount(request):
+	user = request.user
+	username = user.username
+	# Makes random username
+	if is_lazy_user(user) and len(username) >= 30:
+		user = User.objects.get(username = username)
+		user.username = "Guest - " + ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(7))
+		user.save()
+		request.user = user
+
 """
 SPLASH
 """
 def splash(request):
+	#rename_lazyaccount(request)
 	context = {
 		'title': 'Splash'
 	}
@@ -53,7 +70,10 @@ def splash(request):
 """
 MAP
 """
+
+@allow_lazy_user
 def map(request):
+	rename_lazyaccount(request)
 	prefval = ""
 	friendlist = ""
 	if request.user.is_authenticated():
@@ -90,7 +110,11 @@ def map(request):
 	if request.method == 'POST':
 		result = json.loads(json.dumps(request.POST))
 		if result['type'] == "makeroom":
-			ri = RoomInstance(roomname=result['roomname'], listofpref=result['listofpref'], owner=result['owner'])
+			ri = RoomInstance(
+				roomname=result['roomname'], 
+				listofpref=result['listofpref'], 
+				owner=result['owner'],
+				expirydate=datetime.today() + timedelta(days=1))
 			ri.save()
 		elif result['type'] == "grabpref":
 			# Returns the list of preferences
@@ -123,11 +147,42 @@ def map(request):
 					user = User.objects.get((Q(id=friend.user1_id) | Q(id=friend.user2_id)) & ~Q(id=request.user.id))
 					for chosen in chosenfriends:
 						# Since all friends are grabbed, only sends email to those picked
-						if chosen == user.username and user.email not in emaillist:
-							emaillist.append(user.email)
+						if chosen.lower() == user.username.lower() and user.email.lower() not in emaillist:
+							emaillist.append(user.email.lower())
 				#TODO: Make this better					
 				send_mail('PickASpot Room', 'Hi, join my room!' + result['roomlink'], 'pickaspotmail@gmail.com', emaillist)
-
+		elif result['type'] == 'savechathistory':
+			# Saves all data to db
+			data = result['chathistory']
+			ri = RoomInstance.objects.filter(roomname=result['roomname'])
+			ri.update(chathistory=result['chathistory'])
+		elif result['type']	== 'grabchathistory':
+			# grabs and returns history
+			ri = RoomInstance.objects.get(roomname=result['roomname'])
+			return HttpResponse(ri.chathistory)
+		elif result['type'] == 'listofusers':
+			ri = RoomInstance.objects.get(roomname=result['roomname'])
+			return HttpResponse(ri.listofusers)
+		elif result['type'] == 'grabroomsettings':
+			ri = RoomInstance.objects.get(roomname=result['roomname'])
+			return HttpResponse(ri.roomsetting)
+		elif result['type'] == 'saveroomsettings':
+			onlineonly = result['onlineonly']
+			random = result['random']
+			setting = [onlineonly, random]
+			ri = RoomInstance.objects.filter(roomname=result['roomname'])
+			ri.update(roomsetting=json.dumps(setting))
+		elif result['type'] == 'savelastresult':
+			lastresults = result['results']
+			ri = RoomInstance.objects.filter(roomname=result['roomname'])
+			ri.update(lastresult=lastresults)
+		elif result['type'] == 'getlastresult':
+			ri = RoomInstance.objects.get(roomname=result['roomname'])
+			return HttpResponse(ri.lastresult)
+		elif result['type'] == 'updateuserpref':
+			user = UserProfile.objects.filter(user=request.user)
+			update = user.update(preferences=result['preferences'])
+	
 	return render(request, 'map.html', context)
 """
 Removes old entries
@@ -175,10 +230,7 @@ FRIENDS
 @login_required
 def friends(request):
 	user = User.objects.get(id=request.user.id)
-	friendlist = Friend.objects.filter(Q(user1=user) | Q(user2=user))
-	for x in friendlist:
-		print x
-
+	friendlist = Friend.objects.filter(Q(user1=user) | Q(user2=user)).order_by()
 	context = {
 		'title': 'Friends',
 		'friends': friendlist
@@ -186,18 +238,63 @@ def friends(request):
 
 	if request.method == 'POST':
 		result = json.loads(json.dumps(request.POST))
-		if result['addfriend']:
-			friend_user = User.objects.get(username=result['addfriend'])
-			
-			# If there is no relationship between users,
-			# create one
-			if not Friend.objects.filter(user1=user, user2=friend_user):
-				addfriend = Friend(user1=user, user2=friend_user)
-				addfriend.save()
-		elif result['delfriend']:
-			friend_user = User.objects.get(username=result['delfriend'])
+		if result['type'] == "sendinvite":
+			usernametext = result['newfriend']
+			originaluser = request.user.username
+			# Grabs needed user
+			try:
+				senttousername = User.objects.get(username__iexact=usernametext)
+				senttouser = UserProfile.objects.get(user=senttousername.id)
+				pendingfriendslist = json.loads(senttouser.pendingfriends)
+			except Exception as err:
+				senttouser = None
+			if not senttouser:
+				servermessage = {
+				"message" : "The user " + str(usernametext) + " does not exist.", 
+				"reason": "Wrong"}
+			elif senttousername == request.user:
+				servermessage = {
+				"message" : "You can not be friends with yourself. Sorry!", 
+				"reason": "Self"}
+			elif Friend.objects.filter(user1=senttousername, user2=request.user) or Friend.objects.filter(user1=request.user, user2=senttousername):
+				# check if already friends
+				servermessage = {
+				"message" : "Already a friend of " + str(senttousername) +"!", 
+				"reason": "Exists"}
+			else:
+				# checks if in list already
+				inlist = False
+				for friend in pendingfriendslist:
+					if friend['username'].lower() == originaluser.lower():
+						inlist = True
+						break
+				if inlist:
+					servermessage = {
+					"message" : "Invite already sent to " + str(senttousername) +"!", 
+					"reason": "Already"}
+				else:
+					# Grabs the json, appens to it
+					pendingfriend = {}
+					pendingfriend["username"] = originaluser
+					pendingfriendslist.append(pendingfriend)
+					newfriend = UserProfile.objects.filter(user=senttousername.id)	
+					# Updates the list with the new user object
+					newfriend.update(pendingfriends=json.dumps(pendingfriendslist))
+					servermessage = {
+					"message" : "You have sent a invite to " + str(senttousername), 
+					"reason": "Added"}
+			return HttpResponse(json.dumps(servermessage))
 
-			Friend.objects.get(user1=user, user2=friend_user).delete()
+
+		elif result['type'] == "deletefriend":
+			friend_user = User.objects.get(username=result['delfriend'])
+			try:
+				Friend.objects.get(user1=user, user2=friend_user).delete()
+			except Exception as err:
+				try:
+					Friend.objects.get(user1=friend_user, user2=user).delete()
+				except Exception as err:
+					pass
 
 	return render(request, 'friends.html', context)
 
@@ -222,3 +319,10 @@ def profile(request):
 		'title': 'Profile',
 	}
 	return render(request, 'profile.html', context)
+
+
+def resetpassword(request):
+	return render(request, 'resetpassword.html', {})
+
+def confirmreset(request):
+	return render(request, 'confirmreset.html', {})

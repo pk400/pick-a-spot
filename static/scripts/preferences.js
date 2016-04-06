@@ -103,27 +103,20 @@ function getCookie(name) {
 function updatePreferences() {
   var pref = JSON.stringify(return_pref_object());
   var csrftoken = getCookie('csrftoken');
-  
+
   $.ajax({
     url: window.location.href,
     type: "POST",
     data: {
+      type: "updateuserpref",
       csrfmiddlewaretoken : csrftoken,
       preferences : pref
-    },
-    success: function(json) {
-      console.log('success');
-      $('.hidden-post-json').val('');
-      console.log(json);
-    },
-    error: function(xhr,errmsg,err) {
-      console.log(xhr); // provide a bit more info about the error to the console
     }
   })
 }
 
 function fill_form(){
-  var jsonvalues = JSON.parse($(".hidden-post-json").text())
+  var jsonvalues = JSON.parse($("#preferences-obj").text());
   jsonvalues = jsonvalues.preferences;
 
   // Fill out price
@@ -140,7 +133,7 @@ function fill_form(){
   // Append all values
   $.each(jsonvalues.userchoices, function(key, value){
     create_node(value);
-  });    
+  });
 }
 
 $( document ).ready(function() {

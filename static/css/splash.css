@@ -1,22 +1,32 @@
+
+/*********************************
+  SPLASH-CONTENT
+*********************************/
 .splash-content {
-  padding-top: 50px;
-  height: 90vh;
-  /*background-image: url('../images/splash1.jpg');*/
-  background-image: url('../images/splashhires.jpeg');
+  background-image: url('../images/splashhires.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  overflow-y: hidden;
+  background-size: cover;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  vertical-align: middle;
   text-align: center;
+  display: table-cell;
 }
 
 
 
+/*********************************
+  SPLASH-BOX
+*********************************/
 .splash-box {
-  padding: 10px;
-  margin: 0 auto;
-  background: rgba(0, 0, 0, 0.5);
-  margin-top: 3%;
+  display: inline-block;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 .splash-box #title {
   padding: 15px;
@@ -26,34 +36,6 @@
   color: #BF2A23;
   text-shadow: 2px 2px #8A211D;
 }
-
-
-
-.splash-left {
-  display: inline-block;
-  width: 300px;
-  vertical-align: top;
-}
-.splash-left p {
-  font-family: 'Imprima', sans-serif;
-  color: #fff;
-  font-weight: bold;
-}
-
-
-
-.splash-right {
-  display: inline-block;
-  width: 300px;
-  vertical-align: top;
-  text-align: center;
-}
-.splash-right a {
-  color: #BF2A23;
-}
-
-
-
 .splash-box input{
   width: 100%;
   padding: 10px;
@@ -89,9 +71,43 @@
   color: #fff;
   font-weight: bold;
   font-size: 1em;
+  text-shadow: 1px 1px #333;
 }
 .splash-box .center {
   text-align: center;
   font-weight: bold;
   padding-top: 10px;
+}
+
+
+
+
+/*********************************
+  SPLASH-LEFT
+*********************************/
+.splash-left {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+}
+.splash-left p {
+  font-family: 'Imprima', sans-serif;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+
+/*********************************
+  SPLASH-RIGHT
+*********************************/
+.splash-right {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+  text-align: center;
+  text-shadow: 1px 1px #333;
+}
+.splash-right a {
+  color: #BF2A23;
 }

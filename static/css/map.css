@@ -14,18 +14,12 @@
 }
 
 .no-padding{
-    padding: 0px;
+    padding: 0px !important;
 }
 
 .panel-results, .panel-heading, .panel-chat{
     border-radius: 0em;
     margin: 0px;
-}
-
-#btn-ready-pick{
-    border-radius: 0em;
-    padding: 0px;
-    width: 100%;
 }
 
 #panel-results-box{
@@ -71,4 +65,88 @@ input[readonly] {
     display: block;
     height: 260px !important;
     overflow: scroll;
+}
+
+.share-panel{
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+.online-indicator{
+    color: #A6AD3C;
+}
+
+/* Hidding the radiobuttons & checkboxes */
+input[type="radio"]{
+    display: none;
+}
+/* Hidding the "check" status of inputs */
+input[type="radio"] + label .fa-check-circle-o{
+display: none;
+}
+/* Styling the "check" status */
+input[type="radio"]:checked + label .fa-check-circle-o{
+display: block;
+color: #F0CE4E;
+}
+/* Styling radiobuttons */
+input[type="radio"]:checked + label .fa-circle-o {
+display: none;
+}
+
+.panel {
+    border-radius: 0px;
+    margin: 0px;
+}
+
+.map-container .row {
+    border: 1px solid #BF2A23;
+    max-height: 500px;
+}
+
+.panel-results {
+    height: 455px;
+}
+
+.panel-footer {
+    height: 40px;
+    padding: 0;
+    margin-top: 1px;
+}
+
+.panel-footer .btn {
+    margin: 0;
+    border-radius: 0;
+}
+
+.panel-heading {
+    height: 40px;
+}
+
+#panel-results-box {
+    height: 420px;
+}
+
+#map-cell {
+    border-right: 1px solid #BF2A23;
+}
+
+.panel-body {
+    padding: 0;
+}
+
+#chat-cell {
+    border-right: 1px solid #BF2A23;
+}
+
+.map-container .input-group-btn button {
+    padding: 5px 10px;
+}
+
+#chat-cell .panel-footer {
+    height: 0px !important;
+}
+
+.modal-content .row {
+    border: 0;
 }

@@ -11,45 +11,68 @@
 {% endblock %}
 
 {% block content %}
-    <form class="form-horizontal col-md-12">
-		<div class="col-md-8">
+    <form class="form-horizontal col-md-12 col-xs-12">
+		<div class="col-md-12 col-xs-12">
 			<label for="friend-name">Add Friend</label>
 		</div>
-		<div class="col-md-8 horizontal-addfriend">
-			<div class="col-md-4 addfriend-input">
-				<input id="friend-name" class="form-control" type="text" placeholder="Friend's Username" autofocus>
+		<div class="col-md-6 col-xs-6 horizontal-addfriend">
+			<div class="col-md-8 col-xs-8 addfriend-input">
+				<input maxlength="15" id="friend-name" class="form-control" type="text" placeholder="Friend's Username" autofocus>
 			</div>
-			<input id="btn-add" class="btn btn-default" type="submit" value="&#x2b;">
+			<input id="btn-add" class="btn btn-default" type="submit" value="&#x2b;">		
 		</div>
+		<div id="friend-notification-label" class="col-md-6 col-xs-6">
+
+		</div>			
 	</form>
 
 
-	<div class="list-content col-md-12">
-	    <ul id="friendlist" class="list-group">
-			<li href="#" class="list-group-item title">
-			Your friend zone
-			</li>
-			<div class="scrollable">
-				{% for x in friends|dictsort:"user2.username" %}
+	<div class="list-content col-md-12 col-xs-12">
+		<div class="panel panel-primary">
+		    <div class="panel-heading">
+		        <i class="fa fa-users"></i> Your Friend List
+		        <div class="btn-group pull-right"></div>
+		    </div>
+            <div class="panel-body scrollable" style="padding:0px;">
+            <ul lass="list-group" style="padding-left: 0;">
+   				{% for x in friends|dictsort:"user2.username.lower"|dictsort:"user1.username.lower" %}
 					{% if x.user2 != user %}
-					<li href="#" class="list-group-item text-left col-md-12">
-						<label class="name col-md-2">
-						    <span class="glyphicon glyphicon-user"></span> {{ x.user2 }}
-						</label>
-						<div class="col-md-2">
+					<li class="list-group-item text-left col-md-12 col-xs-12">
+						<i class="pull-left fa fa-user fa-2x"></i>
+						<div class="col-md-3 col-xs-3">
+							<label class="name wordwrap">{{ x.user2 }}</label>
+						</div>
+						<div class="col-md-3 col-xs-3 wordwrap">
 							<a href="mailto:{{ x.user2.email }}?Subject=PickASpot" target="_top">{{ x.user2.email }}</a>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3 col-xs-3 wordwrap">
 							Last Login: {{ x.user2.last_login }}
 						</div>
 						<label class="pull-right">
-						    <a id="delete-{{ x.user2 }}" class="btn btn-danger btn-xs glyphicon glyphicon-trash btn-delete" title="Delete" del="{{ x.user2 }}"></a>
+							<i id="delete-{{ x.user2 }}" class="btn btn-danger btn-xs fa fa-trash fa-2x btn-delete" title="Delete" del="{{ x.user2 }}"></i>
 						</label>
 					</li>
-					{% endif %}
+					{% else %}
+					<li class="list-group-item text-left col-md-12 col-xs-12">
+						<i class="pull-left fa fa-user fa-2x"></i>
+						<div class="col-md-3 col-xs-3">
+							<label class="name wordwrap">{{ x.user1 }}</label>
+						</div>
+						<div class="col-md-3 col-xs-3 wordwrap">
+							<a href="mailto:{{ x.user1.email }}?Subject=PickASpot" target="_top">{{ x.user1.email }}</a>
+						</div>
+						<div class="col-md-4 col-xs-4 wordwrap">
+							Last Login: {{ x.user1.last_login }}
+						</div>
+						<label class="pull-right">
+							<i id="delete-{{ x.user1 }}" class="btn btn-danger btn-xs fa fa-trash fa-2x btn-delete" title="Delete" del="{{ x.user1 }}"></i>
+						</label>
+					</li>
+					{% endif %}					
 				{% endfor %}
-			</div>
-	    </ul>
+			</ul>
+            </div>		     
+		</div>		
 	</div>
 {% endblock %}
 

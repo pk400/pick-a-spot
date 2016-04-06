@@ -1,0 +1,61 @@
+.o-wrapper {
+	position: absolute;
+	left: 0;
+	top: 300px;
+	z-index: 99;
+}
+
+
+.c-menu--slide-left.is-active {
+	width: auto;
+}
+
+#c-button--slide-left {
+	background: #BF2A23;
+	color: #fff;
+	border: 0;
+	margin: 0;
+	border-radius: 100px;
+    transition: 0.5s;
+    vertical-align: middle;
+    width: 200px;
+    text-align: right;
+	margin-left: -150px;
+}
+
+#c-button--slide-left i {
+	margin-left: 25px;
+}
+
+#c-button--slide-left:hover {
+	margin-left: -25px;
+	transition: 0.5s;
+	content: "test";
+}
+
+#c-menu--slide-left {
+	margin-top: 5vh;
+	overflow-x: hidden;
+}
+
+#quickpick-modal {
+	min-width: 20vw;
+	width: 30vw;
+	height: 75vh;
+	overflow-y: auto;
+}
+
+#quickpick-modal .modal-content {
+	border-radius: 0px;
+}
+
+@media screen and (max-width: 768px) {
+	#c-menu--slide-left {
+		margin: 0;
+		height: 100vh;
+	}
+
+	#quickpick-modal {
+		width: 100vw;
+	}
+}

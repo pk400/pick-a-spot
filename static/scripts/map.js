@@ -70,7 +70,7 @@ function initMap() {
   });
 }
 
-function pickaspotmap(parseobj) {
+function pickaspotmap(parseobj, random) {
   clearMarkers();
   $("#table-body-results").empty();
   // rewrite over so that the parseobj is the same for all clients
@@ -85,20 +85,44 @@ function pickaspotmap(parseobj) {
   if (distance <= 1500)
     zoom = 12;
 
-  // Creats map
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lng: cords[0], lat: cords[1]},
-    zoom: zoom,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-  
+  // Creates map
+  if (random == false || typeof(random) == "undefined"){
+    // Only remakes map if not random
+    // random is only for getting the value
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lng: cords[0], lat: cords[1]},
+      zoom: zoom,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    search.location = map.getCenter();
+    centerMarker = new google.maps.Marker({
+          position: search.location,
+          animation: google.maps.Animation.DROP,
+          map: map
+    });
+    
+    if(typeof(parseobj.singleresult) != 'undefined'){
+      // Displays the single result that was randomly chosen
+      var result = parseobj.singleresult;
+      var icon = 'http://gmaps-samples-v3.googlecode.com/svn/trunk/places/icons/number_'+ (1) + '.png';
+      markers.push(new google.maps.Marker({
+        position: result.geometry.location,
+        animation: google.maps.Animation.DROP,
+        icon : icon
+      }));
+      google.maps.event.addListener(markers[0], 'click', getDetails(result, 1));
+      window.setTimeout(dropMarker(0), 1 * 100);
+      addResult(result, 0);
+      // don't do anything else
+      return;
+    }    
+  }
+  else{
+    map.center = {lng: cords[0], lat: cords[1]};
+    map.zoom = zoom;
+  }
   // Sets center
   search.location = map.getCenter();
-  centerMarker = new google.maps.Marker({
-        position: search.location,
-        animation: google.maps.Animation.DROP,
-        map: map
-  });    
 
   // set up search
   search.minprice = 0
@@ -109,48 +133,75 @@ function pickaspotmap(parseobj) {
 
   places = new google.maps.places.PlacesService(map);
 
-  // keeps track of IDs so the resturant isn't added twice
+  // keeps track of IDs so the restaurant isn't added twice
   var trackid = [];
-
+  var resultslist = [];
   var i = 0;
-
-  var loopkeywords = function(arr){
+  var displaydeffered = $.Deferred();
+  var loopkeywords = function(keywords){
     // call itself
-    callbacksearch(arr[i], function(){
+    callbacksearch(keywords[i], function(){
       // set i to next item
       i++;
-      if (i < arr.length || markers.length > 19){
-        loopkeywords(arr);
+      if (i < keywords.length || markers.length > 19){
+        loopkeywords(keywords);
+      }
+      else{
+        // displays the results after everything is chosen
+        displaydeffered.resolve();
       }
     })
   }
+
+  displaydeffered.done(function(){
+    if (random == true){
+      // only one result is needed
+      var randomnumber = ~~(Math.random() * (resultslist.length));
+      parseobj.singleresult = resultslist[randomnumber];
+      // sends the single result to everyone
+      socket.send(JSON.stringify(parseobj));
+      var csrftoken = getCookie('csrftoken');
+      $.ajax({
+        url: window.location.href,
+        type: "POST",
+        data: {
+          csrfmiddlewaretoken : csrftoken,
+          type : "savelastresult",
+          roomname : location.search.split('?room=')[1],
+          results : JSON.stringify(parseobj)
+        }
+      });   
+    }else{
+      $.each(resultslist, function(i){
+        var icon = 'http://gmaps-samples-v3.googlecode.com/svn/trunk/places/icons/number_'+ (i+1) + '.png';
+        markers.push(new google.maps.Marker({
+          position: resultslist[i].geometry.location,
+          animation: google.maps.Animation.DROP,
+          icon : icon
+        }));
+        google.maps.event.addListener(markers[i], 'click', getDetails(resultslist[i], i));
+        window.setTimeout(dropMarker(i), i * 100);
+        addResult(resultslist[i], i);
+      });
+    }
+
+  })  
   loopkeywords(keywords);
+  var found = markers.length;
   function callbacksearch(keyword, callback){
     // do callback when ready
     var deferred = $.Deferred();
     search.keyword = keyword;
-    console.log(keyword)
     places.search(search, function(results, status){
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var j = 0; j < results.length; j++) {
-          console.log(results[j]);
-          // stops adding results after 20
-          var found = markers.length;
           if (found>19){
             break;
-          }
-          // Only adds if not already included or if resturant is in the types
+          }          
           if( $.inArray(results[j].place_id, trackid) == -1 && results[j].types.indexOf("restaurant") != -1){
             trackid.push(results[j].place_id);
-            var icon = 'http://gmaps-samples-v3.googlecode.com/svn/trunk/places/icons/number_'+ (found+1) + '.png';
-            markers.push(new google.maps.Marker({
-              position: results[j].geometry.location,
-              animation: google.maps.Animation.DROP,
-              icon: icon
-            }));
-            google.maps.event.addListener(markers[found], 'click', getDetails(results[j], found));
-            window.setTimeout(dropMarker(found), found * 100);
-            addResult(results[j], found);
+            // used later
+            resultslist.push(results[j]);
           }
         }
         deferred.resolve();
@@ -161,6 +212,35 @@ function pickaspotmap(parseobj) {
       callback()
     });
   }
+
+  function parseresults(results, j){
+    // Only adds if not already included or if restaurant is in the types
+    if( $.inArray(results[j].place_id, trackid) == -1 && results[j].types.indexOf("restaurant") != -1){
+      trackid.push(results[j].place_id);
+      var icon = 'http://gmaps-samples-v3.googlecode.com/svn/trunk/places/icons/number_'+ (found+1) + '.png';
+      markers.push(new google.maps.Marker({
+        position: results[j].geometry.location,
+        animation: google.maps.Animation.DROP,
+        icon: icon
+      }));
+      google.maps.event.addListener(markers[found], 'click', getDetails(results[j], found));
+      window.setTimeout(dropMarker(found), found * 100);
+      addResult(results[j], found);
+    }    
+  }
+
+  function restaurants_only(results){
+    var i = results.length -1;
+    var tempresultsobj = [];
+    while(i > 0){
+      if(results[i].types.indexOf("restaurant") != -1){
+        tempresultsobj.push(results[i]);
+      }      
+      i--;  
+    }
+    return tempresultsobj;
+  }
+
   // Clear results for next search
   keywords = [];    
 }
@@ -209,7 +289,7 @@ function addResult(result, i) {
 }
 
 /*
-Details for the resturant markers
+Details for the restaurant markers
 */
 function getDetails(result, i) {
   return function() {

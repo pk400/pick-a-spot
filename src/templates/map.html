@@ -7,36 +7,147 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/preferences.css' %}"> 
 <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/slideoutmenu.css' %}">
 {% endblock %}
 {% block content %}
 {% csrf_token %}
-<label style="display: none;" id="preferences-obj">{% if user.is_authenticated and preferences %}{ "user" : "{{ user }}", "preferences" : {{ preferences }} }{% endif %}</label>
+<label style="display: none;" id="preferences-obj">{% if user.is_authenticated and preferences %}{"user":"{{ user }}","preferences":{{ preferences }}}{% endif %}</label>
 <label style="display: none;" id="lonlat-obj">[ {{ lon }}, {{lat}} ]</label>
-<div>
-<!-- OPTIONS -->
-<div class="row optionschoice">
-    {% if user.is_authenticated %}
-    <div id="pickoption" class="col-xs-5 map-option">
-        <h1>Pick-A-Spot</h1>
-        <ul class="row ">
-            <li><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit</small></li>
-            <li><small>veniam quis nostrud exercitation ullamco</small></li>
-            <li><small>aboris nisi ut aliquip ex ea commodo consequat</small></li>
-        </ul>
-    </div>
-    {% endif %}
-    <div id="quickoption" class="col-xs-5 map-option">
-        <h1>Quick-Pick</h1>
-        <ul  class="row">
-            <li><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit</small></li>
-            <li><small>veniam quis nostrud exercitation ullamco</small></li>
-            <li><small>aboris nisi ut aliquip ex ea commodo consequat</small></li>
-        </ul>
-    </div>
+
+
+
+<!-- CREATE ROOM BUTTON -->
+<div class="col-md-12 text-center optionschoice" style="padding: 50px;">
+	<button type="button" id="createroom-btn" class="btn btn-default btn-danger col-md-4" style="display: inline-block; float: none; font-weight: bold; padding: 20px; margin: 0 auto;">Create Room</button>
 </div>
+
+
+
+<!-- SLIDE-OUT MENU NAVIGATION -->
+<div id="o-wrapper" class="o-wrapper">
+	<div class="c-buttons">
+		<button id="c-button--slide-left" class="c-button" data-toggle="modal" data-target="#quickpick-modal"><span>Set Preferences</span><i class="fa fa-cog"></i></button>
+	</div>
+</div>
+
+
+
+<!-- SLIDE-OUT MENU -->
+<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
+  	<button class="c-menu__close">&larr; Close Menu</button>
+	<!-- PREFERENCES -->
+	<div id="quickpick-modal" data-backdrop="static" data-keyboard="false" >
+	    <div class="">
+	        <div class="modal-content">
+                    <div class="form-group col-md-6">
+                        <button id="btn-save" class="btn btn-default" type="button" data-dismiss="modal">Save</button> 
+                    </div>                              
+	            <div class="modal-header">
+	                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+	                <h4 class="modal-title">Set your preferences</h4>      
+	            </div>
+	            <div class="modal-body form-container col-md-12">
+                        {% csrf_token %}
+    	                <div class="form-group col-md-4">
+    	                	Price:
+    	                    <br>
+    	                    <div class="input-group">
+    	                        <div class="btn-group btn-group-vertical" data-toggle="buttons">
+    	                            <label class="btn">
+    	                            	<input type="radio" name='pricerad' value="low"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Low</span>
+    	                            </label>
+    	                            <label class="btn">
+    	                            	<input type="radio" name='pricerad' value="high"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> High</span>
+    	                            </label>
+    	                        </div>
+    	                    </div>
+    	                </div><!-- form-group -->
+    	                <div class="form-group col-md-4">
+    	                	Distance:
+    	                    <br>
+    	                    <div class="input-group">
+    	                        <div class="btn-group btn-group-vertical" data-toggle="buttons">
+    	                            <label class="btn">
+    	                                <input type="radio" name='distance' value="walking"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span> Walking</span>
+    	                            </label>
+    	                            <label class="btn">
+    	                                <input type="radio" name='distance' value="driving"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Driving</span>
+    	                            </label>
+    	                        </div>
+    	                    </div>
+    	                </div><!-- form-group -->
+    	                <div class="form-group col-md-4">
+    	                    <div id="default-food-options" class="btn-group btn-group-vertical" data-toggle="buttons">
+    	                        <hr>
+    	                        Cuisine Examples:
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='caribbeanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Caribbean Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='chinesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Chinese Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='frenchfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> French Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='greekfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Greek Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='indianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Indian Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='italianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Italian Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='japanesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Japanese Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='koreanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Korean Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='middleeasternfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Middle Eastern Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='spanishfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Spanish Eastern Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='thaifood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Thai Food</span>
+    	                        </label>
+    	                        <label class="btn">
+    	                           <input type="checkbox" name='vietnamesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Vietnamese Food</span>
+    	                        </label>
+    	                    </div>
+    	                </div>
+    	                <div class="form-group col-md-6">
+    	                    <div class="input-group">
+    	                        <br> Types of Cuisine:
+    	                        <br>
+    	                        <div class="form-inline">
+    	                          <div class="icon-addon addon-lg form-group">
+    	                            <input id="search-add" type="text" placeholder="Example: Steak, Donut, etc" class="form-control" maxlength="40">
+    	                            <i class="fa fa-cutlery fa-2x"></i>
+    	                          </div>
+    	                          <button id="btn-add" class="btn btn-default" type="button">Add Choice</button>     
+    	                        </div>
+    	                    </div>
+    	                    <div id="user-food-options" class="btn-group btn-group-vertical" data-toggle="buttons">
+    	                        <hr> User Choices:    
+    	                    </div>
+    	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+	            </div><!-- modal-body -->
+	        </div>
+	    </div>
+	</div>
+</nav>
+<div id="c-mask" class="c-mask"></div>
+
+<!-- MAP-CONTAINER -->
 <div style="display: none;" class="map-container">
     <i data-toggle="modal" data-target="#location-modal" id="set-location" title="Set Your Own Location" class="fa fa-compass fa-2x"></i>
-    <i data-toggle="modal" data-target="#share-modal" id="share-link" title="Share This Room" class="fa fa-link fa-2x"></i>
     <div class="row">
         <!-- ADDRESS MODAL -->
         <div style="display: none;" class="modal fade" id="location-modal" tabindex="-1" role="dialog" aria-labelledby="location-modallabel">
@@ -72,7 +183,7 @@
               <div class="modal-body">
                 <h5>Give this URL to the people you want to invite (valid for 24 hours after creation): </h5>
                 <input type="text" class="form-control" id="share-link-url" readonly>
-                <i href="mailto:?subject=Pick%20A%20Spot&amp;body=Pick%20A%20Spot%20To%20Eat%20With%20Me%20"id="email-link" title="Share This Room With Friends" class="fa fa-envelope-o fa-2x"> Email To Others</i>
+                <i href="mailto:?subject=Pick%20A%20Spot&amp;body=Pick%20A%20Spot%20To%20Eat%20With%20Me%20" id="email-link" title="Share This Room With Friends" class="fa fa-envelope-o fa-2x"> Email To Others</i>
                 <script>
                     document.getElementById("share-link-url").value = window.location.href;
                     document.getElementById("email-link").setAttribute("href", document.getElementById("email-link").getAttribute("href") + window.location.href)
@@ -109,11 +220,11 @@
           </div>
         </div>        
 	    <!-- MAP -->
-        <div class="col-md-8 no-padding">
+        <div id="map-cell" class="col-xs-8 col-md-8 no-padding">
             <div id="map" style="height:500px;"></div>
         </div>
         <!-- RESULTS -->
-        <div class="col-md-4 no-padding">
+        <div class="col-xs-4 col-md-4 no-padding">
             <div class="panel panel-primary panel-results">
                 <div class="panel-heading">
                     <h3 class="panel-title"><b>Results</b></h3>
@@ -124,16 +235,86 @@
 
                 		</tbody>
                 	</table>
-                </div>           
+                </div>       
             </div>
-    		<button id="btn-ready-pick" type="button" class="btn btn-info">Ready!</button>     
+            <div class="panel-footer">
+                <button id="btn-ready-pick" type="button" class="btn btn-warning col-md-6">Run Results</button>
+                <button data-toggle="modal" data-target="#ready-modal" id="btn-options-room" type="button" class="btn btn-warning col-md-6">Room Options</button>
+                <!--<button id="btn-ready-pick" type="button" class="btn btn-warning col-xs-8 col-md-8">Run Results</button>         
+                <button data-toggle="modal" data-target="#ready-modal" id="btn-options-room" type="button" class="btn btn-warning col-xs-4 col-md-4 no-padding">Room Options</button>-->
+            </div>  
         </div>
+        <!-- PICK-A-SPOT-MODAL-->
+        <div style="display: none;" class="modal fade" id="ready-modal" tabindex="-1" role="dialog" aria-labelledby="ready-modallabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ready-modallabel">Room Options</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                    <div class="row">
+                    <div class="col-xs-6 col-md-6" style="border-right: 1px dashed #B3A9A9;">
+                        <div class="form-group">
+                            <h4 for="managepreferences">Manage Room Preferences</h4>
+                            <input type="radio" name="managepreferences" id="preferences-everyone" checked/>
+                            <label for="preferences-everyone">
+                                <span class="fa-stack">
+                                    <i class="fa fa-circle-o fa-2x"></i>
+                                    <i class="fa fa-check-circle-o fa-2x"></i>
+                                </span> Include Everyone
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" name="managepreferences" id="preferences-online" />     
+                            <label for="preferences-online">
+                                <span class="fa-stack">
+                                    <i class="fa fa-circle-o fa-2x"></i>
+                                    <i class="fa fa-check-circle-o fa-2x"></i>
+                                </span> Include Only Those Online In The Room
+                            </label>
+                        </div>                         
+                    </div>                        
+                    <div class="col-xs-6 col-md-6">
+                        <div class="form-group">
+                            <h4 for="numberpick">Manage Room Results</h4>
+                            <input type="radio" name="numberpick" id="numberpick-twenty" checked/>                               
+                            <label for="numberpick-twenty">
+                                <span class="fa-stack">
+                                    <i class="fa fa-circle-o fa-2x"></i>
+                                    <i class="fa fa-check-circle-o fa-2x"></i>
+                                </span> Show Up To 20 Results
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" name="numberpick" id="numberpick-one" />     
+                            <label for="numberpick-one">
+                                <span class="fa-stack">
+                                    <i class="fa fa-circle-o fa-2x"></i>
+                                    <i class="fa fa-check-circle-o fa-2x"></i>
+                                </span> Show Only One Random Result
+                            </label>
+                        </div>                    
+                    </div>
+                    </div>
+                </form>                
+              </div>
+              <div class="modal-footer">
+                <button id="btn-save-run-options" type="button" class="btn btn-default run-results" data-dismiss="modal">Save Options &amp; Run Results</button>
+                <button id="btn-save-options" type="button" class="btn btn-default" data-dismiss="modal">Save Options</button>
+                <button id="btn-close-options" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>         
     </div>
     <div class="row">
         <!-- CHAT -->
+            <div id="chat-cell" class="col-xs-8 col-md-8 no-padding">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <i class="fa fa-comment"></i> Chat
                     <div class="btn-group pull-right">
                     </div>
                 </div>
@@ -143,115 +324,107 @@
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input id="comment-box" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <input id="comment-box" type="text" class="form-control input-sm" placeholder="Type your message here and press enter..." maxlength="500"/>
                         <span class="input-group-btn">
                             <button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
                         </span>
                     </div>
                 </div>
             </div>
-    </div>
-</div>
-<!-- PREFERENCES -->
-<div style="display: none;" class="container preferences-container">
-    <div class=" form-group">
-        <div class="row">
-            <div class="col-xs-12">
-                <br> Price:
-                <br>
-                <div class="btn-group btn-group-vertical" data-toggle="buttons">
-                    <label class="btn">
-                    <input type="radio" name='pricerad' value="low"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Low</span>
-                    </label>
-                    <label class="btn">
-                    <input type="radio" name='pricerad' value="high"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> High</span>
-                    </label>
-                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <br> Distance:
-                <br>
-                <div class="btn-group btn-group-vertical" data-toggle="buttons">
-                    <label class="btn">
-                    <input type="radio" name='distance' value="walking"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span>  Walking</span>
-                    </label>
-                    <label class="btn">
-                    <input type="radio" name='distance' value="driving"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Driving</span>
-                    </label>
+        <!-- IN-ROOM -->
+            <div class="col-xs-4 col-md-4 no-padding">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-users"></i> Users That Have Joined The Room
+                    <small class="pull-right">Online?</small>
+                </div>     
+                <div class="panel-body no-padding">               
+                    <ul id="online-list" class="scrollable no-padding">                   
+                    </ul>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <hr>
-                Types of Cuisine:
-                <br>
-                <div class="form-inline">
-                    <div class="icon-addon addon-lg form-group">
-                        <input id="search-add" type="text" placeholder="Example: Steak, Donut, etc" class="form-control">
-                        <i class="fa fa-cutlery fa-2x"></i>
-                    </div>
-                    <button id="btn-add" class="btn btn-default" type="button">Add Choice</button>     
+                <div title="Share This Room" data-toggle="modal" data-target="#share-modal" id="share-link" class="panel-footer no-padding share-panel">
+                    <i class="fa fa-link fa-2x"></i> Share This Room With Others
                 </div>
-                <div id="default-food-options" class="btn-group btn-group-vertical col-xs-6" data-toggle="buttons">
-                    <hr>
-                    Cuisine Examples:
-                    <label class="btn">
-                    <input type="checkbox" name='caribbeanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Caribbean Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='chinesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Chinese Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='frenchfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> French Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='greekfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Greek Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='indianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Indian Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='italianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Italian Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='japanesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Japanese Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='koreanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Korean Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='middleeasternfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Middle Eastern Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='spanishfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Spanish Eastern Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='thaifood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Thai Food</span>
-                    </label>
-                    <label class="btn">
-                    <input type="checkbox" name='vietnamesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Vietnamese Food</span>
-                    </label>           
-                </div>
-                <div id="user-food-options" class="btn-group btn-group-vertical col-xs-6" data-toggle="buttons">
-                    <hr>
-                    User Choices:    
-                </div>
-                <div class="col-xs-12">
-                    <button id="btn-preferences" class="btn btn-default" type="button">Ready</button>   
-                </div>
-            </div>
+            </div>        
         </div>
     </div>
 </div>
+
+
+
+
 {% endblock %}
 {% block custom-scripts %}
 <script src="{% static 'scripts/map.js' %}"></script>
 {{ mapapi|safe }}
 <script src="{% static 'scripts/friendlist.js' %}"></script>
 <script src="{% static 'scripts/chat.js' %}"></script>
-<script src="{% static 'scripts/choices.js' %}"></script>
 <script src="{% static 'scripts/preferences.js' %}"></script>
+<script src="{% static 'scripts/choices.js' %}"></script>
+<script src="{% static 'scripts/menu.js' %}"></script>
+<script src="{% static 'scripts/validator.min.js' %}"></script>
+<script>
+var slideLeftBtn = document.querySelector('#c-button--slide-left');
+var slideLeftBtn = document.querySelector('#c-button--slide-left');
+var slideRightBtn = document.querySelector('#c-button--slide-right');
+var pushRightBtn = document.querySelector('#c-button--push-right');
+
+//-------------------------------------
+// SLIDE LEFT
+var slideLeft = new Menu({
+	wrapper: '#o-wrapper',
+	type: 'slide-left',
+	menuOpenerClass: '.c-button',
+	maskId: '#c-mask'
+});
+
+slideLeftBtn.addEventListener('click', function(e) {
+	e.preventDefault;
+	slideLeft.open();
+});
+
+//-------------------------------------
+// PUSH LEFT
+var pushLeft = new Menu({
+    wrapper: '#o-wrapper',
+    type: 'push-left',
+    menuOpenerClass: '.c-button',
+    maskId: '#c-mask'
+});
+
+
+pushLeftBtn.addEventListener('click', function(e) {
+    e.preventDefault;
+    pushLeft.open();
+});
+
+//-------------------------------------
+// SLIDE RIGHT
+var slideRight = new Menu({
+    wrapper: '#o-wrapper',
+    type: 'slide-right',
+    menuOpenerClass: '.c-button',
+    maskId: '#c-mask'
+});
+
+slideRightBtn.addEventListener('click', function(e) {
+    e.preventDefault;
+    slideRight.open();
+});
+
+//-------------------------------------
+// PUSH RIGHT
+var pushRight = new Menu({
+    wrapper: '#o-wrapper',
+    type: 'push-right',
+    menuOpenerClass: '.c-button',
+    maskId: '#c-mask'
+});
+
+pushRightBtn.addEventListener('click', function(e) {
+    e.preventDefault;
+    pushRight.open();
+});
+</script>
 {% endblock %}
