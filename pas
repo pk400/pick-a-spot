@@ -3,7 +3,7 @@
 # Clear screen
 clear
 
-# Run server
+# Show help display
 if [ $1 == 'help' ]
 	then
 	echo "How to run this script: ./pas [option]"
@@ -15,8 +15,16 @@ if [ $1 == 'help' ]
 	echo "    runserver [port]"
 	echo "        Runs the server with an option to use a port"
 	echo ""
+
+# Run server
 elif [ $1 == 'runserver' ]
-	then port=
+	then virtualenv install
+
+	source install/bin/activate
+
+	trap "echo Server shutting down...; exit 0" SIGINT
+	
+	port=
 
 	if [ $# == 2 ]
 		then port=$2
@@ -26,9 +34,13 @@ elif [ $1 == 'runserver' ]
 
 	./manage.py runserver $port 2> ../logs/server.log
 
+	deactivate
+
 # Install PickASpot
 elif [ $1 == 'install' ]
-	then source installenv/bin/activate
+	then virtualenv install
+
+	source install/bin/activate
 
 	printf "\nPickASpot Installation Script"
 	printf "\n-----------------------------\n"
@@ -44,7 +56,7 @@ elif [ $1 == 'install' ]
 
 	printf "\n%s\n\n" "Installing dependencies . . ."
 
-	sudo pip install -r requirements.txt &>logs/install.log
+	pip install -r requirements.txt &>logs/install.log
 	if [ $? == 0 ]
 		then echo "$(pip freeze)" | while read line
 		do
@@ -54,4 +66,6 @@ elif [ $1 == 'install' ]
 	else
 		echo "[ Failure ] Dependencies were not installed. Please check logs/install.log for more details."
 	fi
+	
+	deactivate
 fi
