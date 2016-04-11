@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import UserProfile, Friend, RoomInstance
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.sessions.models import Session
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
@@ -49,6 +49,10 @@ def rename_lazyaccount(request):
 	if is_lazy_user(user) and len(username) >= 30:
 		user = User.objects.get(username = username)
 		user.username = "Guest - " + ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(7))
+
+		group = Group.objects.get(name="Guest")
+		group.user_set.add(user)
+
 		user.save()
 		request.user = user
 
@@ -90,23 +94,30 @@ def map(request):
 	except Exception as err:
 		# Private network
 		lonlat = [-79.4163000, 43.7001100]
+
 	context = {
 		'title': 'Map',
 		'mapapi': mapapikey,
 		'preferences' : prefval,
 		"lon": lonlat[0], 
 		"lat": lonlat[1],
-		"friends" : friendlist
+		"friends" : friendlist,
+		"listofusers" : []
 	}
 
 	check_expiry()
 	getrequest = request.GET.get('room','')
-
 	if getrequest:
 		ri = RoomInstance.objects.filter(roomname=getrequest)
 		if not ri:
 			return HttpResponseRedirect('/')
-
+		else:
+			ri = RoomInstance.objects.get(roomname=getrequest)
+			users = json.loads(ri.listofusers)
+			listofusers = []
+			for user in users:
+				listofusers.append(user['username'])
+			context['listofusers'] = listofusers
 	if request.method == 'POST':
 		result = json.loads(json.dumps(request.POST))
 		if result['type'] == "makeroom":
@@ -134,23 +145,52 @@ def map(request):
 			except Exception as err:
 				value = "Error"
 			return HttpResponse(value)
-		elif result['type'] == 'sendemails' and request.user.is_authenticated():
-				# Chosen users to send email to
-				chosenfriends = result['friends'].split()[0]
-				chosenfriends = ast.literal_eval(chosenfriends)
-				user = User.objects.get(id=request.user.id)
-				friendlist = Friend.objects.filter(Q(user1=user) | Q(user2=user)).order_by()
-				emaillist = []
-				for friend in friendlist:
-					# Grabs only one person
-					# If match exists and it's not the user sending the request
-					user = User.objects.get((Q(id=friend.user1_id) | Q(id=friend.user2_id)) & ~Q(id=request.user.id))
-					for chosen in chosenfriends:
-						# Since all friends are grabbed, only sends email to those picked
-						if chosen.lower() == user.username.lower() and user.email.lower() not in emaillist:
-							emaillist.append(user.email.lower())
-				#TODO: Make this better					
-				send_mail('PickASpot Room', 'Hi, join my room!' + result['roomlink'], 'pickaspotmail@gmail.com', emaillist)
+		elif result['type'] == 'sendinvites' and request.user.is_authenticated():
+			"""
+			# Chosen users to send email to
+			chosenfriends = result['friends'].split()[0]
+			chosenfriends = ast.literal_eval(chosenfriends)
+			user = User.objects.get(id=request.user.id)
+			friendlist = Friend.objects.filter(Q(user1=user) | Q(user2=user)).order_by()
+			emaillist = []
+			for friend in friendlist:
+				# Grabs only one person
+				# If match exists and it's not the user sending the request
+				user = User.objects.get((Q(id=friend.user1_id) | Q(id=friend.user2_id)) & ~Q(id=request.user.id))
+				for chosen in chosenfriends:
+					# Since all friends are grabbed, only sends email to those picked
+					if chosen.lower() == user.username.lower() and user.email.lower() not in emaillist:
+						emaillist.append(user.email.lower())
+			#TODO: Make this better					
+			send_mail('PickASpot Room', 'Hi, join my room!' + result['roomlink'], 'pickaspotmail@gmail.com', emaillist)
+			"""
+			ri = RoomInstance.objects.get(roomname=result['roomname'])
+			listofusers = json.loads(ri.listofusers)
+			listofpref = json.loads(ri.listofpref)
+			friends = json.loads(result['friends'])
+			for friend in friends:
+				newuserinroom = {"username": friend, "online" : "false"}
+				listofusers.append(newuserinroom)
+				userid = User.objects.get(username__iexact=friend)
+				user = UserProfile.objects.get(user=userid.id)
+				try:
+					newuserpref = {"user" : friend, "preferences" : json.loads(user.preferences)}
+				except Exception as err:
+					newuserpref = {"user" : friend, "preferences" : "[]"}
+				listofpref.append(newuserpref)
+
+				# Includes into notification
+				pendingnotifications = json.loads(user.pendingnotifications)
+				message = {
+					'message' : "You have been added into room " + str(result['roomname']) + " by your friend " + str(request.user),
+					"reason": "NewRoom",
+					"notificationid": ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(7))}		
+				pendingnotifications.insert(0,message)
+				user.pendingnotifications = json.dumps(pendingnotifications)
+				user.save()
+			ri.listofusers = json.dumps(listofusers)
+			ri.listofpref = json.dumps(listofpref)
+			ri.save()
 		elif result['type'] == 'savechathistory':
 			# Saves all data to db
 			data = result['chathistory']
@@ -168,8 +208,8 @@ def map(request):
 			return HttpResponse(ri.roomsetting)
 		elif result['type'] == 'saveroomsettings':
 			onlineonly = result['onlineonly']
-			random = result['random']
-			setting = [onlineonly, random]
+			randomrslt = result['random']
+			setting = [onlineonly, randomrslt]
 			ri = RoomInstance.objects.filter(roomname=result['roomname'])
 			ri.update(roomsetting=json.dumps(setting))
 		elif result['type'] == 'savelastresult':

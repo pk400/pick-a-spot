@@ -36,17 +36,43 @@
 #c-menu--slide-left {
 	margin-top: 5vh;
 	overflow-x: hidden;
+	padding: 15px;
+	border-radius: 5px;
+	background: #fff;
+	margin-left: -5px;
 }
 
 #quickpick-modal {
 	min-width: 20vw;
-	width: 30vw;
+	width: 35vw;
 	height: 75vh;
 	overflow-y: auto;
 }
 
 #quickpick-modal .modal-content {
 	border-radius: 0px;
+}
+
+#error-container {
+	background: #8A211D;
+	padding: 10px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.error-msg {
+	color: #fff;
+	font-weight: bold;
+}
+
+#btn-save {
+	width: 100%;
+	background: #BF2A23;
+	color: #fff;
+}
+
+.c-menu__close {
+	background: #B3A9A9;
 }
 
 @media screen and (max-width: 768px) {

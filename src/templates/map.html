@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load i18n lazysignup_tags %}
 {% load staticfiles %}
 {% block title %}{{ title }}
 {% endblock %}
@@ -36,112 +37,100 @@
 <!-- SLIDE-OUT MENU -->
 <nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
   	<button class="c-menu__close">&larr; Close Menu</button>
-	<!-- PREFERENCES -->
-	<div id="quickpick-modal" data-backdrop="static" data-keyboard="false" >
-	    <div class="">
-	        <div class="modal-content">
-                    <div class="form-group col-md-6">
-                        <button id="btn-save" class="btn btn-default" type="button" data-dismiss="modal">Save</button> 
-                    </div>                              
-	            <div class="modal-header">
-	                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-	                <h4 class="modal-title">Set your preferences</h4>      
-	            </div>
-	            <div class="modal-body form-container col-md-12">
-                        {% csrf_token %}
-    	                <div class="form-group col-md-4">
-    	                	Price:
-    	                    <br>
-    	                    <div class="input-group">
-    	                        <div class="btn-group btn-group-vertical" data-toggle="buttons">
-    	                            <label class="btn">
-    	                            	<input type="radio" name='pricerad' value="low"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Low</span>
-    	                            </label>
-    	                            <label class="btn">
-    	                            	<input type="radio" name='pricerad' value="high"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> High</span>
-    	                            </label>
-    	                        </div>
-    	                    </div>
-    	                </div><!-- form-group -->
-    	                <div class="form-group col-md-4">
-    	                	Distance:
-    	                    <br>
-    	                    <div class="input-group">
-    	                        <div class="btn-group btn-group-vertical" data-toggle="buttons">
-    	                            <label class="btn">
-    	                                <input type="radio" name='distance' value="walking"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span> Walking</span>
-    	                            </label>
-    	                            <label class="btn">
-    	                                <input type="radio" name='distance' value="driving"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Driving</span>
-    	                            </label>
-    	                        </div>
-    	                    </div>
-    	                </div><!-- form-group -->
-    	                <div class="form-group col-md-4">
-    	                    <div id="default-food-options" class="btn-group btn-group-vertical" data-toggle="buttons">
-    	                        <hr>
-    	                        Cuisine Examples:
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='caribbeanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Caribbean Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='chinesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Chinese Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='frenchfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> French Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='greekfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Greek Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='indianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Indian Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='italianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Italian Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='japanesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Japanese Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='koreanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Korean Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='middleeasternfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Middle Eastern Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='spanishfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Spanish Eastern Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='thaifood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Thai Food</span>
-    	                        </label>
-    	                        <label class="btn">
-    	                           <input type="checkbox" name='vietnamesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Vietnamese Food</span>
-    	                        </label>
-    	                    </div>
-    	                </div>
-    	                <div class="form-group col-md-6">
-    	                    <div class="input-group">
-    	                        <br> Types of Cuisine:
-    	                        <br>
-    	                        <div class="form-inline">
-    	                          <div class="icon-addon addon-lg form-group">
-    	                            <input id="search-add" type="text" placeholder="Example: Steak, Donut, etc" class="form-control" maxlength="40">
-    	                            <i class="fa fa-cutlery fa-2x"></i>
-    	                          </div>
-    	                          <button id="btn-add" class="btn btn-default" type="button">Add Choice</button>     
-    	                        </div>
-    	                    </div>
-    	                    <div id="user-food-options" class="btn-group btn-group-vertical" data-toggle="buttons">
-    	                        <hr> User Choices:    
-    	                    </div>
-    	                </div>
-	            </div>
-	            <div class="modal-footer">
-	                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-	            </div><!-- modal-body -->
-	        </div>
-	    </div>
+	<!-- PREFERENCES -->                      
+	<div id="quickpick-modal"> 
+        <div class="form-container col-md-12">
+            <h4 class="modal-title">Set your preferences</h4>
+            {% csrf_token %}
+            <div id="error-container" class="col-md-12" style="display: none;"></div>
+            <div class="form-group col-md-5">
+            	Price:
+                <br>
+                <div class="input-group">
+                    <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                        <label class="btn">
+                        	<input type="radio" name='pricerad' value="low"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Low</span>
+                        </label>
+                        <label class="btn">
+                        	<input type="radio" name='pricerad' value="high"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> High</span>
+                        </label>
+                    </div>
+                </div>
+            </div><!-- form-group -->
+            <div class="form-group col-md-4">
+            	Distance:
+                <br>
+                <div class="input-group">
+                    <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                        <label class="btn">
+                            <input type="radio" name='distance' value="walking"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i> <span> Walking</span>
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name='distance' value="driving"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span> Driving</span>
+                        </label>
+                    </div>
+                </div>
+            </div><!-- form-group -->
+            <div class="form-group col-md-5">
+                <div id="default-food-options" class="btn-group btn-group-vertical" data-toggle="buttons">
+                    Cuisine Examples:
+                    <label class="btn">
+                       <input type="checkbox" name='caribbeanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Caribbean Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='chinesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Chinese Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='frenchfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> French Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='greekfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Greek Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='indianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Indian Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='italianfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Italian Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='japanesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Japanese Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='koreanfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Korean Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='middleeasternfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Middle Eastern Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='spanishfood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Spanish Eastern Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='thaifood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Thai Food</span>
+                    </label>
+                    <label class="btn">
+                       <input type="checkbox" name='vietnamesefood'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Vietnamese Food</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="input-group">
+                    Types of Cuisine:
+                    <br>
+                    <div class="form-inline">
+                      <div class="icon-addon addon-lg form-group">
+                        <input id="search-add" type="text" placeholder="Example: Steak, Donut, etc" class="form-control" maxlength="40">
+                        <i class="fa fa-cutlery fa-2x"></i>
+                      </div>
+                      <button id="btn-add" class="btn btn-default" type="button">Add Choice</button>     
+                    </div>
+                </div>
+                <div id="user-food-options" class="btn-group btn-group-vertical" data-toggle="buttons">
+                    <hr> User Choices:    
+                </div>
+            </div>
+        </div>
 	</div>
+        <button id="btn-save" class="btn btn-default" type="button" data-dismiss="modal">Save</button>
 </nav>
 <div id="c-mask" class="c-mask"></div>
 
@@ -188,31 +177,37 @@
                     document.getElementById("share-link-url").value = window.location.href;
                     document.getElementById("email-link").setAttribute("href", document.getElementById("email-link").getAttribute("href") + window.location.href)
                 </script>                
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and not user|is_lazy_user  %}
                 <i id="email-link-auth" title="Share This Room With Friends" class="fa fa-envelope-o fa-2x"> Share This Room With PickASpot Friends</i>
                 <table id="friend-list-share" style="display: none;" class="table table-striped">
                     <thead>
                       <tr>
                         <th>Friends</th>
-                        <th>Send Email?</th>
+                        <th>Send Invite?</th>
                       </tr>
                     </thead>
                     <tbody>
-                    {% for x in friends %}
-                        {% if x.user2 != user %}
+                    {% for x in friends|dictsort:"user2.username.lower"%}
+                        {% if x.user2 != user and x.user2.username not in listofusers %}
                         <tr>
                             <td class="friend-name">{{ x.user2 }}</td>
                             <td><div class="checkbox"><label><input class="checkbox-friends" type="checkbox" value="{{ x.user2 }}"></label></div></td>      
                         </tr>
-                        {% endif %} 
+                        {% endif %}
+                        {% if x.user1 != user and x.user1.username not in listofusers %}
+                        <tr>
+                            <td class="friend-name">{{ x.user1 }}</td>
+                            <td><div class="checkbox"><label><input class="checkbox-friends" type="checkbox" value="{{ x.user1 }}"></label></div></td>      
+                        </tr>   
+                        {% endif %}                    
                     {% endfor %}                      
                     </tbody>
                 </table>
                 {% endif %}  
               </div>
               <div class="modal-footer">
-                {% if user.is_authenticated %}
-                <button style="display: none;" id="send-email-btn" type="button" class="btn btn-primary" data-dismiss="modal">Send Email</button>
+                {% if user.is_authenticated and not user|is_lazy_user  %}
+                <button style="display: none;" id="send-invites-btn" type="button" class="btn btn-primary" data-dismiss="modal">Send Invites</button>
                 {% endif %}                  
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
@@ -229,11 +224,12 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><b>Results</b></h3>
                 </div>
-                <div id="panel-results-box" class="panel-body" style="height: 414px; }">
+                <div id="panel-results-box" class="panel-body" style="height: 415px; }">
+                    <div id="instructions">
+                    testing
+                    </div>
                 	<table id="table-results" class="table table-striped">
-                		<tbody id="table-body-results">
-
-                		</tbody>
+                		<tbody id="table-body-results"></tbody>
                 	</table>
                 </div>       
             </div>

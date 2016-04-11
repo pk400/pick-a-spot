@@ -240,7 +240,7 @@ function pickaspotmap(parseobj, random) {
     }
     return tempresultsobj;
   }
-
+  
   // Clear results for next search
   keywords = [];    
 }
@@ -412,11 +412,11 @@ function setgeolocation(position){
 
 $("#email-link-auth").on("click", function(){
   $("#friend-list-share").css("display", "block");
-  $("#send-email-btn").css("display", "block");
+  $("#send-invites-btn").css("display", "block");
 
 });
 
-$("#send-email-btn").on("click", function(){
+$("#send-invites-btn").on("click", function(){
   var csrftoken = getCookie('csrftoken');
   var friendschecked = [];
   $(".checkbox-friends:checked").each(function(){
@@ -428,15 +428,43 @@ $("#send-email-btn").on("click", function(){
     type: "POST",
     data: {
       csrfmiddlewaretoken : csrftoken,
-      type : "sendemails",
-      roomlink : window.location.href,
+      type : "sendinvites",
+      roomname : location.search.split('?room=')[1],
       friends : JSON.stringify(friendschecked)
     },
     success : function(data){
-        $("#friend-list-share").css("display", "none");
-        $("#send-email-btn").css("display", "none");
-        alert("Emails Sent");
-    },
-  });  
+        $(".checkbox-friends:checked").each(function(){
+          var tr = $(this).parent().parent().parent().parent();
+          var username = $(this).val();
+          var li = $("<li>",{
+            class : "list-group-item text-left col-md-12",
+          });
 
+          var iuser = $("<i>", {
+            class : "pull-left fa fa-user fa-2x"
+          });
+
+          var labelname = $("<label>",{
+            class : "name",
+            text : username
+          });
+
+          var labelpullright = $("<label>",{
+            class : "pull-right"
+          });
+
+          var isquare = $("<i>", {
+            class : "online-indicator fa fa-square-o fa-2x"
+          });
+          li.append(iuser);
+          li.append(labelname);
+          li.append(labelpullright);
+          labelpullright.append(isquare);
+          var list = $("#online-list");
+          list.append(li);
+          tr.remove();
+        })
+        alert("Invites Sent");
+    },
+  });
 })
