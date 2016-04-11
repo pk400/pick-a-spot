@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: channels
+Version: 0.11.0
+Summary: Brings event-driven capabilities to Django with a channel system. Django 1.8 and up only.
+Home-page: http://github.com/andrewgodwin/channels
+Author: Andrew Godwin
+Author-email: andrew@aeracode.org
+License: BSD
+Description: UNKNOWN
+Platform: UNKNOWN
