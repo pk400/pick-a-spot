@@ -326,27 +326,37 @@ function join_chat(){
 		}
 		return prefobj;
 	}
+
+	$('#btn-chat').on("click", function() {
+		var value = $('#comment-box').val();
+		send_message(value);
+	})
+
 	$('#comment-box').on("keypress", function(e) {
-			var value = $(this).val();
-			if (e.keyCode == 13 && !e.shiftKey) {
-				e.preventDefault();
-				if( value != "" ){
-					var username = $(".username").text();
-					// Send out to all users
-					var sending = {
-						value: value,
-						user: username,
-						typesent: "chat",
-						originaltime: parseInt(new Date().getTime() / 1000),
-						room: room
-					}
-					socket.send(JSON.stringify(sending));
-					// Clear
-					$(this).val("");
-				}
-	            return false; 
-	        }
+		var value = $(this).val();
+		if (e.keyCode == 13 && !e.shiftKey) {
+			e.preventDefault();
+			send_message(value);
+            return false; 
+        }
 	});
+
+	function send_message(value) {
+		if( value != "" ){
+			var username = $(".username").text();
+			// Send out to all users
+			var sending = {
+				value: value,
+				user: username,
+				typesent: "chat",
+				originaltime: parseInt(new Date().getTime() / 1000),
+				room: room
+			}
+			socket.send(JSON.stringify(sending));
+			// Clear
+			$('#comment-box').val("");
+		}
+	}
 
 	function chat_box_append(stringinput, username, originaltime){
 		/*

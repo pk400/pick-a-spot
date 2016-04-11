@@ -21,31 +21,46 @@ $( document ).ready(function() {
 		var prefobject = {};
 		prefobject.user = $(".username").text();
 		prefobject.preferences = return_pref_object();
-		updatePreferences();
+		updatePreferences(prefobject.preferences);
 
-		$(".map-container").show();
-		make_room(JSON.stringify(prefobject));
-		$(".optionschoice").hide();
-		slideLeft.close();
+		var price = document.querySelector('input[name="pricerad"]:checked').value;
+		var distance = document.querySelector('input[name="distance"]:checked').value;
+
+		if(price != "" && distance != "") {
+			slideLeft.close();
+		}
 	})
 
 	if (checkpara == null){
 		$("#createroom-btn").on("click", function(){
 			var hiddenpref = $('#preferences-obj').text();
-			if(hiddenpref == "") {
-				slideLeft.open();
-			}
-			else {
-				var prefobject = {};
-				prefobject.user = $(".username").text();
-				prefobject.preferences = return_pref_object();
-				updatePreferences();
 
-				$(".map-container").show();
-				make_room(JSON.stringify(prefobject));
-				$(".optionschoice").hide();
-				slideLeft.close();
+			try {
+				var price = document.querySelector('input[name="pricerad"]:checked').value;
+				var distance = document.querySelector('input[name="distance"]:checked').value;
+
+				hiddenpref = return_pref_object();
+
+				if(hiddenpref == "") {
+					slideLeft.open();
+				}
+				else {
+					var prefobject = {};
+					prefobject.user = $(".username").text();
+					prefobject.preferences = return_pref_object();
+					updatePreferences(prefobject.preferences);
+
+					$(".map-container").show();
+					make_room(JSON.stringify(prefobject));
+					$(".optionschoice").hide();
+					slideLeft.close();
+				}
 			}
+			catch(err) {
+				slideLeft.open();
+				return_pref_object();
+			}
+
 		})
 	}
 	// if room exists, join with preferences

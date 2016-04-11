@@ -90,7 +90,9 @@
 						{% endif %}
 					</li>
 					{% endif %}
+					{% if user.is_authenticated %}
 					<li><a href="/map/"><i class="fa fa-cutlery"></i> Create Room</a></li>
+					{% endif %}
 					{% for group in user.groups.all %}
 					{% if group.name == 'Admin' %}
 					<li><a href="/admin/"><i class="fa fa-fw fa-lock"></i>Admin CP</a></li>
@@ -100,7 +102,9 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle username" data-toggle="dropdown" role="button" aria-expanded="false">{{user}}<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							{% if user.is_authenticated and not user|is_lazy_user  %}
 							<li><a href="/profile/">Manage Profile</a></li>
+							{% endif %}
 							<li><a href="{% url 'auth_logout' %}?next=/">Logout</a></li>
 						</ul>
 					</li>

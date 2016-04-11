@@ -63,9 +63,54 @@ function grab_all_user_choices(){
 
 function return_pref_object(){
   var preferences = {};
-  try{
+  var errlist = [];
+  var index = 0;
+
+  try {
+    preferences.price = document.querySelector('input[name="pricerad"]:checked').value;
+  }
+  catch(err) {
+    errlist[index++] = "Price";
+  }
+
+  try {
+    preferences.distance = document.querySelector('input[name="distance"]:checked').value;
+  }
+  catch(err) {
+    errlist[index++] = "Distance";
+  }
+
+  if(index > 0) {
+    var errmsg = "The following fields need to be filled:";
+    errmsg += "<ul>";
+    for (i = 0; i < index; i++) {
+      errmsg += '<li>' + errlist[i] + '</li>';
+    }
+    errmsg += "</ul>";
+
+    var errordiv = document.getElementById("error-container");
+    errordiv.innerHTML = "<span class=\"error-msg\">" + errmsg + "</span>";
+    
+    $('#error-container').show();
+  }
+  else {
+    $('#error-container').hide();
+
+    var preferencesdefault = [];
+    $("#default-food-options").find(".active>input").each(function(){
+      preferencesdefault.push(this.name);
+    })
+    preferences.preferencesdefault = preferencesdefault;
+    preferences.userchoices = grab_all_user_choices();
+    return preferences;
+  }
+
+
+
+  /*try{
     preferences.price = document.querySelector('input[name="pricerad"]:checked').value;
     preferences.distance = document.querySelector('input[name="distance"]:checked').value;
+
     var preferencesdefault = [];
     $("#default-food-options").find(".active>input").each(function(){
       preferencesdefault.push(this.name);
@@ -76,7 +121,7 @@ function return_pref_object(){
   }
   catch(err){
     alert("Fill out Price and/or Distance");
-  }
+  }*/
 }
 
 $("#btn-save").on("click", function(e){
@@ -87,9 +132,9 @@ $("#btn-save").on("click", function(e){
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
-          var cookies = document.cookie.split(';');
+      var cookies = document.cookie.split(';');
     for (var i = 0; i < cookies.length; i++) {
-         var cookie = jQuery.trim(cookies[i]);
+      var cookie = jQuery.trim(cookies[i]);
     // Does this cookie string begin with the name we want?
     if (cookie.substring(0, name.length + 1) == (name + '=')) {
       cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
@@ -100,8 +145,8 @@ function getCookie(name) {
  return cookieValue;
 }
 
-function updatePreferences() {
-  var pref = JSON.stringify(return_pref_object());
+function updatePreferences(preferences) {
+  var pref = JSON.stringify(preferences);
   var csrftoken = getCookie('csrftoken');
 
   $.ajax({
