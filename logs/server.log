@@ -1,0 +1,41 @@
+/usr/local/lib/python2.7/dist-packages/lazysignup/urls.py:9: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got convert). Pass the callable instead.
+  url(r'^$', 'convert', name='lazysignup_convert'),
+
+2016-04-11 18:17:41,500 - WARNING - __init__ - /usr/local/lib/python2.7/dist-packages/lazysignup/urls.py:9: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got convert). Pass the callable instead.
+  url(r'^$', 'convert', name='lazysignup_convert'),
+
+/usr/local/lib/python2.7/dist-packages/lazysignup/urls.py:12: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='lazysignup_convert_done'),
+
+2016-04-11 18:17:41,501 - WARNING - __init__ - /usr/local/lib/python2.7/dist-packages/lazysignup/urls.py:12: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='lazysignup_convert_done'),
+
+[32m[2016/04/11 18:17:46] HTTP GET / 302 [0.02, 127.0.0.1:51035]
+[0m[m[2016/04/11 18:17:46] HTTP GET /home 200 [0.05, 127.0.0.1:51035]
+[0m[36m[2016/04/11 18:17:46] HTTP GET /static/scripts/guestuser.js 304 [0.02, 127.0.0.1:51042]
+[0m[36m[2016/04/11 18:17:46] HTTP GET /static/css/bootstrap.min.css 304 [0.03, 127.0.0.1:51037]
+[0m[36m[2016/04/11 18:17:46] HTTP GET /static/scripts/base.js 304 [0.02, 127.0.0.1:51043]
+[0m[36m[2016/04/11 18:17:47] HTTP GET /static/css/font-awesome.min.css 304 [0.04, 127.0.0.1:51035]
+[0m[36m[2016/04/11 18:17:47] HTTP GET /static/scripts/bootstrap.min.js 304 [0.03, 127.0.0.1:51041]
+[0m[36m[2016/04/11 18:17:47] HTTP GET /static/css/base.css 304 [0.04, 127.0.0.1:51039]
+[0m[36m[2016/04/11 18:17:47] HTTP GET /static/scripts/ie10-viewport-bug-workaround.js 304 [0.01, 127.0.0.1:51042]
+[0m[36m[2016/04/11 18:17:47] HTTP GET /static/fonts/fontawesome-webfont.woff2 304 [0.04, 127.0.0.1:51035]
+[0m[32m[2016/04/11 18:17:49] HTTP GET /accounts/logout/ 302 [0.32, 127.0.0.1:51035]
+[0m[m[2016/04/11 18:17:49] HTTP GET / 200 [0.05, 127.0.0.1:51035]
+[0m[36m[2016/04/11 18:17:49] HTTP GET /static/css/splash.css 304 [0.02, 127.0.0.1:51035]
+[0m[36m[2016/04/11 18:17:49] HTTP GET /static/css/animate.css 304 [0.02, 127.0.0.1:51037]
+[0m[36m[2016/04/11 18:17:49] HTTP GET /static/images/splashhires.jpg 304 [0.03, 127.0.0.1:51035]
+[0m[m[2016/04/11 18:17:52] HTTP GET /map/ 200 [1.93, 127.0.0.1:51035]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/css/preferences.css 304 [0.03, 127.0.0.1:51043]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/scripts/map.js 304 [0.02, 127.0.0.1:51037]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/css/map.css 304 [0.03, 127.0.0.1:51035]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/css/chat.css 304 [0.03, 127.0.0.1:51041]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/scripts/chat.js 304 [0.01, 127.0.0.1:51037]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/scripts/friendlist.js 304 [0.01, 127.0.0.1:51043]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/scripts/choices.js 304 [0.01, 127.0.0.1:51041]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/css/style.css 304 [0.04, 127.0.0.1:51039]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/scripts/preferences.js 304 [0.02, 127.0.0.1:51035]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/css/slideoutmenu.css 304 [0.04, 127.0.0.1:51042]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/scripts/validator.min.js 304 [0.01, 127.0.0.1:51043]
+[0m[36m[2016/04/11 18:17:52] HTTP GET /static/scripts/menu.js 304 [0.01, 127.0.0.1:51037]
+[0m
