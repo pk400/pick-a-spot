@@ -1,0 +1,14 @@
+/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:9: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got convert). Pass the callable instead.
+  url(r'^$', 'convert', name='lazysignup_convert'),
+
+2016-04-11 22:22:12,253 - WARNING - __init__ - /home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:9: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got convert). Pass the callable instead.
+  url(r'^$', 'convert', name='lazysignup_convert'),
+
+/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:12: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='lazysignup_convert_done'),
+
+2016-04-11 22:22:12,253 - WARNING - __init__ - /home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:12: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='lazysignup_convert_done'),
+
+[m[2016/04/11 22:22:18] HTTP GET / 200 [0.05, 127.0.0.1:52469]
+[0m

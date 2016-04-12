@@ -9,6 +9,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # Application definition
 INSTALLED_APPS = [
     'registration',
+    'lazysignup',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -18,7 +19,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'app',
     'channels',
-    'lazysignup',
 ]
 
 AUTHENTICATION_BACKENDS = (

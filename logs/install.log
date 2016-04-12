@@ -1,0 +1,193 @@
+Downloading/unpacking Django==1.9.5 (from -r requirements.txt (line 1))
+Downloading/unpacking Twisted==16.1.1 (from -r requirements.txt (line 2))
+  Running setup.py (path:/home/joel/workspace/pas2/install/build/Twisted/setup.py) egg_info for package Twisted
+    
+    warning: no previously-included files matching '*.misc' found under directory 'twisted'
+    warning: no previously-included files matching '*.bugfix' found under directory 'twisted'
+    warning: no previously-included files matching '*.doc' found under directory 'twisted'
+    warning: no previously-included files matching '*.feature' found under directory 'twisted'
+    warning: no previously-included files matching '*.removal' found under directory 'twisted'
+    warning: no previously-included files matching 'NEWS' found under directory 'twisted'
+    warning: no previously-included files matching 'README' found under directory 'twisted'
+    warning: no previously-included files matching 'topfiles' found under directory 'twisted'
+    warning: no previously-included files found matching 'twisted/topfiles/CREDITS'
+    warning: no previously-included files found matching 'twisted/topfiles/ChangeLog.Old'
+    warning: no previously-included files found matching 'bin/_preamble.py'
+    warning: no previously-included files found matching 'admin'
+    warning: no previously-included files found matching 'bin/admin'
+    warning: no previously-included files matching '*' found under directory 'admin'
+    warning: no previously-included files matching '*' found under directory 'bin/admin'
+    warning: no previously-included files found matching 'docs/historic/2003'
+    warning: no previously-included files matching '*' found under directory 'docs/historic/2003'
+Requirement already satisfied (use --upgrade to upgrade): argparse==1.2.1 in /usr/lib/python2.7 (from -r requirements.txt (line 3))
+Downloading/unpacking asgi-redis==0.10.0 (from -r requirements.txt (line 4))
+  Downloading asgi_redis-0.10.0-py2.py3-none-any.whl
+Downloading/unpacking asgiref==0.11.2 (from -r requirements.txt (line 5))
+  Downloading asgiref-0.11.2-py2.py3-none-any.whl
+Downloading/unpacking autobahn==0.13.1 (from -r requirements.txt (line 6))
+  Running setup.py (path:/home/joel/workspace/pas2/install/build/autobahn/setup.py) egg_info for package autobahn
+    
+    package init file 'twisted/plugins/__init__.py' not found (or not a regular file)
+Downloading/unpacking channels==0.11.0 (from -r requirements.txt (line 7))
+  Downloading channels-0.11.0.tar.gz
+  Running setup.py (path:/home/joel/workspace/pas2/install/build/channels/setup.py) egg_info for package channels
+    
+Downloading/unpacking daphne==0.10.3 (from -r requirements.txt (line 8))
+  Downloading daphne-0.10.3.tar.gz
+  Running setup.py (path:/home/joel/workspace/pas2/install/build/daphne/setup.py) egg_info for package daphne
+    
+Downloading/unpacking django-lazysignup==1.0.2 (from -r requirements.txt (line 9))
+  Downloading django_lazysignup-1.0.2-py2.py3-none-any.whl
+Downloading/unpacking django-registration-redux==1.4 (from -r requirements.txt (line 10))
+  Running setup.py (path:/home/joel/workspace/pas2/install/build/django-registration-redux/setup.py) egg_info for package django-registration-redux
+    
+    warning: no files found matching 'INSTALL'
+    no previously-included directories found matching 'docs/_build'
+Downloading/unpacking geoip2==2.2.0 (from -r requirements.txt (line 11))
+  Downloading geoip2-2.2.0-py2.py3-none-any.whl
+Downloading/unpacking geopy==1.11.0 (from -r requirements.txt (line 12))
+Downloading/unpacking ipaddr==2.1.11 (from -r requirements.txt (line 13))
+  Downloading ipaddr-2.1.11.tar.gz
+  Running setup.py (path:/home/joel/workspace/pas2/install/build/ipaddr/setup.py) egg_info for package ipaddr
+    
+Downloading/unpacking maxminddb==1.2.0 (from -r requirements.txt (line 14))
+  Running setup.py (path:/home/joel/workspace/pas2/install/build/maxminddb/setup.py) egg_info for package maxminddb
+    
+    warning: no files found matching 'requirements.txt'
+Downloading/unpacking msgpack-python==0.4.7 (from -r requirements.txt (line 15))
+  Running setup.py (path:/home/joel/workspace/pas2/install/build/msgpack-python/setup.py) egg_info for package msgpack-python
+    
+Downloading/unpacking redis==2.10.5 (from -r requirements.txt (line 16))
+Downloading/unpacking requests==2.9.1 (from -r requirements.txt (line 17))
+Downloading/unpacking six==1.10.0 (from -r requirements.txt (line 18))
+  Downloading six-1.10.0-py2.py3-none-any.whl
+Downloading/unpacking txaio==2.3.1 (from -r requirements.txt (line 19))
+  Downloading txaio-2.3.1-py2.py3-none-any.whl
+Requirement already satisfied (use --upgrade to upgrade): wsgiref==0.1.2 in /usr/lib/python2.7 (from -r requirements.txt (line 20))
+Downloading/unpacking zope.interface==4.1.3 (from -r requirements.txt (line 21))
+  Running setup.py (path:/home/joel/workspace/pas2/install/build/zope.interface/setup.py) egg_info for package zope.interface
+    
+    warning: no previously-included files matching '*.dll' found anywhere in distribution
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
+    warning: no previously-included files matching '*.pyo' found anywhere in distribution
+    warning: no previously-included files matching '*.so' found anywhere in distribution
+    warning: no previously-included files matching 'coverage.xml' found anywhere in distribution
+    no previously-included directories found matching 'docs/_build'
+Requirement already satisfied (use --upgrade to upgrade): setuptools in ./install/lib/python2.7/site-packages (from django-lazysignup==1.0.2->-r requirements.txt (line 9))
+Installing collected packages: Django, Twisted, asgi-redis, asgiref, autobahn, channels, daphne, django-lazysignup, django-registration-redux, geoip2, geopy, ipaddr, maxminddb, msgpack-python, redis, requests, six, txaio, zope.interface
+  Running setup.py install for Twisted
+    
+    warning: no previously-included files matching '*.misc' found under directory 'twisted'
+    warning: no previously-included files matching '*.bugfix' found under directory 'twisted'
+    warning: no previously-included files matching '*.doc' found under directory 'twisted'
+    warning: no previously-included files matching '*.feature' found under directory 'twisted'
+    warning: no previously-included files matching '*.removal' found under directory 'twisted'
+    warning: no previously-included files matching 'NEWS' found under directory 'twisted'
+    warning: no previously-included files matching 'README' found under directory 'twisted'
+    warning: no previously-included files matching 'topfiles' found under directory 'twisted'
+    warning: no previously-included files found matching 'twisted/topfiles/CREDITS'
+    warning: no previously-included files found matching 'twisted/topfiles/ChangeLog.Old'
+    warning: no previously-included files found matching 'bin/_preamble.py'
+    warning: no previously-included files found matching 'admin'
+    warning: no previously-included files found matching 'bin/admin'
+    warning: no previously-included files matching '*' found under directory 'admin'
+    warning: no previously-included files matching '*' found under directory 'bin/admin'
+    warning: no previously-included files found matching 'docs/historic/2003'
+    warning: no previously-included files matching '*' found under directory 'docs/historic/2003'
+    x86_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c conftest.c -o conftest.o
+    building 'twisted.test.raiser' extension
+    x86_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c twisted/test/raiser.c -o build/temp.linux-x86_64-2.7/twisted/test/raiser.o
+    x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/twisted/test/raiser.o -o build/lib.linux-x86_64-2.7/twisted/test/raiser.so
+    building 'twisted.python._sendmsg' extension
+    x86_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c twisted/python/_sendmsg.c -o build/temp.linux-x86_64-2.7/twisted/python/_sendmsg.o
+    x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/twisted/python/_sendmsg.o -o build/lib.linux-x86_64-2.7/twisted/python/_sendmsg.so
+    building 'twisted.runner.portmap' extension
+    x86_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c twisted/runner/portmap.c -o build/temp.linux-x86_64-2.7/twisted/runner/portmap.o
+    x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/twisted/runner/portmap.o -o build/lib.linux-x86_64-2.7/twisted/runner/portmap.so
+    changing mode of build/scripts-2.7/mailmail from 664 to 775
+    changing mode of build/scripts-2.7/trial from 664 to 775
+    changing mode of build/scripts-2.7/twistd from 664 to 775
+    changing mode of build/scripts-2.7/pyhtmlizer from 664 to 775
+    changing mode of build/scripts-2.7/conch from 664 to 775
+    changing mode of build/scripts-2.7/manhole from 664 to 775
+    changing mode of build/scripts-2.7/tap2deb from 664 to 775
+    changing mode of build/scripts-2.7/tkconch from 664 to 775
+    changing mode of build/scripts-2.7/cftp from 664 to 775
+    changing mode of build/scripts-2.7/tap2rpm from 664 to 775
+    changing mode of build/scripts-2.7/ckeygen from 664 to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/mailmail to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/trial to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/twistd to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/pyhtmlizer to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/conch to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/manhole to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/tap2deb to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/tkconch to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/cftp to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/tap2rpm to 775
+    changing mode of /home/joel/workspace/pas2/install/bin/ckeygen to 775
+  Running setup.py install for autobahn
+    package init file 'twisted/plugins/__init__.py' not found (or not a regular file)
+    
+  Running setup.py install for channels
+    
+  Running setup.py install for daphne
+    
+    Installing daphne script to /home/joel/workspace/pas2/install/bin
+  Running setup.py install for django-registration-redux
+    
+    warning: no files found matching 'INSTALL'
+    no previously-included directories found matching 'docs/_build'
+  Running setup.py install for ipaddr
+    
+  Running setup.py install for maxminddb
+    
+    warning: no files found matching 'requirements.txt'
+    building 'maxminddb.extension' extension
+    x86_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c maxminddb/extension/maxminddb.c -o build/temp.linux-x86_64-2.7/maxminddb/extension/maxminddb.o -Wall -Wextra -fno-strict-aliasing
+    maxminddb/extension/maxminddb.c:2:23: fatal error: maxminddb.h: No such file or directory
+     #include <maxminddb.h>
+                           ^
+    compilation terminated.
+    ***************************************************************************
+    command 'x86_64-linux-gnu-gcc' failed with exit status 1
+    WARNING: The C extension could not be compiled, speedups are not enabled.
+    Failure information, if any, is above.
+    Retrying the build without the C extension now.
+    ***************************************************************************
+    
+    warning: no files found matching 'requirements.txt'
+    ***************************************************************************
+    WARNING: The C extension could not be compiled, speedups are not enabled.
+    Plain-Python build succeeded.
+    ***************************************************************************
+  Running setup.py install for msgpack-python
+    building 'msgpack._packer' extension
+    x86_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -D__LITTLE_ENDIAN__=1 -I. -I/usr/include/python2.7 -c msgpack/_packer.cpp -o build/temp.linux-x86_64-2.7/msgpack/_packer.o
+    cc1plus: warning: command line option ‘-Wstrict-prototypes’ is valid for C/ObjC but not for C++ [enabled by default]
+    c++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/msgpack/_packer.o -o build/lib.linux-x86_64-2.7/msgpack/_packer.so
+    building 'msgpack._unpacker' extension
+    x86_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -D__LITTLE_ENDIAN__=1 -I. -I/usr/include/python2.7 -c msgpack/_unpacker.cpp -o build/temp.linux-x86_64-2.7/msgpack/_unpacker.o
+    cc1plus: warning: command line option ‘-Wstrict-prototypes’ is valid for C/ObjC but not for C++ [enabled by default]
+    In file included from msgpack/_unpacker.cpp:253:0:
+    msgpack/unpack.h: In function ‘int unpack_callback_ext(unpack_user*, const char*, const char*, unsigned int, PyObject**)’:
+    msgpack/unpack.h:268:77: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+         py = PyObject_CallFunction(u->ext_hook, "(is#)", typecode, pos, length-1);
+                                                                                 ^
+    c++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/msgpack/_unpacker.o -o build/lib.linux-x86_64-2.7/msgpack/_unpacker.so
+    
+  Running setup.py install for zope.interface
+    
+    warning: no previously-included files matching '*.dll' found anywhere in distribution
+    warning: no previously-included files matching '*.pyc' found anywhere in distribution
+    warning: no previously-included files matching '*.pyo' found anywhere in distribution
+    warning: no previously-included files matching '*.so' found anywhere in distribution
+    warning: no previously-included files matching 'coverage.xml' found anywhere in distribution
+    no previously-included directories found matching 'docs/_build'
+    building 'zope.interface._zope_interface_coptimizations' extension
+    x86_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c src/zope/interface/_zope_interface_coptimizations.c -o build/temp.linux-x86_64-2.7/src/zope/interface/_zope_interface_coptimizations.o
+    x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86_64-2.7/src/zope/interface/_zope_interface_coptimizations.o -o build/lib.linux-x86_64-2.7/zope/interface/_zope_interface_coptimizations.so
+    Skipping installation of /home/joel/workspace/pas2/install/lib/python2.7/site-packages/zope/__init__.py (namespace package)
+    Installing /home/joel/workspace/pas2/install/lib/python2.7/site-packages/zope.interface-4.1.3-py2.7-nspkg.pth
+Successfully installed Django Twisted asgi-redis asgiref autobahn channels daphne django-lazysignup django-registration-redux geoip2 geopy ipaddr maxminddb msgpack-python redis requests six txaio zope.interface
+Cleaning up...

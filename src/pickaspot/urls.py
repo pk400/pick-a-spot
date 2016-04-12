@@ -19,7 +19,7 @@ urlpatterns = [
 	#url(r'^accounts/', 		include('registration.backends.simple.urls')),
 	url(r'^accounts/', 		include('registration.backends.default.urls')),
 	url(r'^profile/', 		profile),
-	url(r'^convert/', 			include('lazysignup.urls')),
+	url(r'^convert/', 		include('lazysignup.urls')),
 ]
 
 if settings.DEBUG:
