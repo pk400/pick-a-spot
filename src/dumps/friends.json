@@ -1,0 +1,42 @@
+[
+{
+    "model": "app.friend",
+    "pk": 1,
+    "fields": {
+        "user1": 3,
+        "user2": 2
+    }
+},
+{
+    "model": "app.friend",
+    "pk": 2,
+    "fields": {
+        "user1": 5,
+        "user2": 2
+    }
+},
+{
+    "model": "app.friend",
+    "pk": 3,
+    "fields": {
+        "user1": 6,
+        "user2": 2
+    }
+},
+{
+    "model": "app.friend",
+    "pk": 4,
+    "fields": {
+        "user1": 4,
+        "user2": 2
+    }
+},
+{
+    "model": "app.friend",
+    "pk": 5,
+    "fields": {
+        "user1": 7,
+        "user2": 2
+    }
+}
+]

@@ -1,0 +1,165 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$B6d8PItEinp6$QBRBwSTyR85JqP656a4DnKWNRHy48Y0/wm8KtRKvN9A=",
+        "last_login": "2016-04-13T13:08:24.757",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2016-04-13T13:07:13.028",
+        "groups": [
+            1,
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$LhexRv0JsCFV$4bNfPjmuHZSWHKgdy8mEtkgGUPhBtJnG+y5rKfRmq7g=",
+        "last_login": "2016-04-13T13:31:12.565",
+        "is_superuser": true,
+        "username": "joelaro",
+        "first_name": "Joel",
+        "last_name": "Aro",
+        "email": "joelaro@outlook.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2016-03-10T21:13:53",
+        "groups": [
+            1,
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$oUvU8fY1Pv3F$OE9XhDIim/ziPw+VmIPZDRKmHylRDh/ykz5QnD9LgWU=",
+        "last_login": "2016-04-13T13:29:45.446",
+        "is_superuser": false,
+        "username": "Cindy",
+        "first_name": "",
+        "last_name": "",
+        "email": "cindy@pickaspot.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-04-11T21:49:48.091",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$8OQaA7htlMLZ$JXFVt3dECF8ed7mnweyveKP+u5weUXeYSm9oobmusho=",
+        "last_login": "2016-04-13T13:30:37.412",
+        "is_superuser": false,
+        "username": "Tommy",
+        "first_name": "",
+        "last_name": "",
+        "email": "tom@pickaspot.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-04-11T21:50:35.465",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$BGD4nIMBwGgk$XxHcmHRIJeuABEj+Z14Hov/BbyX6fpZ8o6ge+TLq9cw=",
+        "last_login": "2016-04-13T13:30:07.421",
+        "is_superuser": false,
+        "username": "Amanda",
+        "first_name": "",
+        "last_name": "",
+        "email": "amanda@pickaspot.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-04-11T21:50:58.183",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$Rq73RjuV7AXD$bL3E4vhxWLBja/lTJ6/D/lz/lgu+yV+n8CycLharcK4=",
+        "last_login": "2016-04-13T13:30:22.227",
+        "is_superuser": false,
+        "username": "Mike",
+        "first_name": "",
+        "last_name": "",
+        "email": "mike@pickaspot.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-04-11T21:51:25.403",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$1QYPT3Hz2tHK$zy3kqrTBn59h4NazU+skYWoaDfEO5UzDk7yDq0tG34A=",
+        "last_login": "2016-04-13T13:30:53.540",
+        "is_superuser": false,
+        "username": "Alex",
+        "first_name": "",
+        "last_name": "",
+        "email": "alex@pickaspot.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-04-11T21:52:14.967",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+        "password": "!gmGRlMaXwhq9XcSsPUiyhjZp1sKY21r4zvV5LqCe",
+        "last_login": "2016-04-13T13:17:54.268",
+        "is_superuser": false,
+        "username": "Guest - iGjvA1d",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-04-13T13:17:53.602",
+        "groups": [
+            2,
+            3
+        ],
+        "user_permissions": []
+    }
+}
+]

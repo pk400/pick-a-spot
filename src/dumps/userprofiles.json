@@ -1,0 +1,82 @@
+[
+{
+    "model": "app.userprofile",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "preferences": "",
+        "pendingfriends": "[]",
+        "pendingnotifications": "[]"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "preferences": "{\"price\":\"low\",\"distance\":\"walking\",\"preferencesdefault\":[\"caribbeanfood\"],\"userchoices\":[]}",
+        "pendingfriends": "[]",
+        "pendingnotifications": "[{\"notificationid\": \"HnHRlYg\", \"message\": \"You are now friends with Alex\", \"reason\": \"Accepted\"}, {\"notificationid\": \"83KSbCb\", \"message\": \"You are now friends with Tommy\", \"reason\": \"Accepted\"}, {\"notificationid\": \"9o1xdxO\", \"message\": \"You are now friends with Mike\", \"reason\": \"Accepted\"}, {\"notificationid\": \"6Xd1DeE\", \"message\": \"You are now friends with Amanda\", \"reason\": \"Accepted\"}]"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "preferences": "{\"price\":\"low\",\"distance\":\"walking\",\"preferencesdefault\":[\"chinesefood\",\"italianfood\"],\"userchoices\":[]}",
+        "pendingfriends": "[]",
+        "pendingnotifications": "[]"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 4,
+    "fields": {
+        "user": 4,
+        "preferences": "{\"price\":\"low\",\"distance\":\"walking\",\"preferencesdefault\":[\"italianfood\"],\"userchoices\":[]}",
+        "pendingfriends": "[]",
+        "pendingnotifications": "[]"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 5,
+    "fields": {
+        "user": 5,
+        "preferences": "{\"price\":\"low\",\"distance\":\"walking\",\"preferencesdefault\":[\"frenchfood\"],\"userchoices\":[]}",
+        "pendingfriends": "[]",
+        "pendingnotifications": "[]"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 6,
+    "fields": {
+        "user": 6,
+        "preferences": "{\"price\":\"low\",\"distance\":\"walking\",\"preferencesdefault\":[\"koreanfood\"],\"userchoices\":[]}",
+        "pendingfriends": "[]",
+        "pendingnotifications": "[]"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 7,
+    "fields": {
+        "user": 7,
+        "preferences": "{\"price\":\"low\",\"distance\":\"walking\",\"preferencesdefault\":[\"chinesefood\",\"japanesefood\"],\"userchoices\":[]}",
+        "pendingfriends": "[]",
+        "pendingnotifications": "[]"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 8,
+    "fields": {
+        "user": 8,
+        "preferences": "",
+        "pendingfriends": "[]",
+        "pendingnotifications": "[]"
+    }
+}
+]
