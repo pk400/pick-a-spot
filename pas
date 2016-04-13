@@ -18,7 +18,8 @@ if [ $1 == 'help' ]
 
 # Run server
 elif [ $1 == 'runserver' ]
-	then virtualenv install
+	then
+	virtualenv install
 
 	source install/bin/activate
 
@@ -38,7 +39,8 @@ elif [ $1 == 'runserver' ]
 
 # Install PickASpot
 elif [ $1 == 'install' ]
-	then virtualenv install
+	then
+	virtualenv install
 
 	source install/bin/activate
 
@@ -68,4 +70,29 @@ elif [ $1 == 'install' ]
 	fi
 	
 	deactivate
+elif [ $1 == 'dumpdata' ]
+	then
+	cd src
+	mkdir dumps
+	
+	./manage.py dumpdata auth.User --indent 4 > dumps/users.json
+	./manage.py dumpdata auth.Group --indent 4 > dumps/groups.json
+	./manage.py dumpdata app.friend --indent 4 > dumps/friends.json
+	./manage.py dumpdata app.userprofile --indent 4 > dumps/userprofiles.json
+elif [ $1 == 'droptables' ]
+	then
+	cd src
+	
+	./manage.py flush 
+	./manage.py sqlflush
+
+	sqlite3 db.sqlite3 "DELETE FROM sqlite_sequence"
+elif [ $1 == 'loadtables' ]
+	then
+	cd src
+
+	./manage.py loaddata dumps/groups.json
+	./manage.py loaddata dumps/users.json
+	./manage.py loaddata dumps/friends.json
+	./manage.py loaddata dumps/userprofiles.json
 fi

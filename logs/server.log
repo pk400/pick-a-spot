@@ -1,14 +1,481 @@
 /home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:9: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got convert). Pass the callable instead.
   url(r'^$', 'convert', name='lazysignup_convert'),
 
-2016-04-11 22:22:12,253 - WARNING - __init__ - /home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:9: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got convert). Pass the callable instead.
+2016-04-13 13:34:03,386 - WARNING - __init__ - /home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:9: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got convert). Pass the callable instead.
   url(r'^$', 'convert', name='lazysignup_convert'),
 
 /home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:12: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
   name='lazysignup_convert_done'),
 
-2016-04-11 22:22:12,253 - WARNING - __init__ - /home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:12: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+2016-04-13 13:34:03,386 - WARNING - __init__ - /home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/urls.py:12: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
   name='lazysignup_convert_done'),
 
-[m[2016/04/11 22:22:18] HTTP GET / 200 [0.05, 127.0.0.1:52469]
+[32m[2016/04/13 13:34:07] HTTP POST /accounts/login/ 302 [0.76, 127.0.0.1:50392]
+[0m[32m[2016/04/13 13:34:07] HTTP GET / 302 [0.05, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:07] HTTP GET /home 200 [0.05, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:08] HTTP GET /map/ 200 [0.04, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:09] HTTP GET /admin/ 200 [0.06, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:11] HTTP GET /admin/app/friend/ 200 [0.06, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:11] HTTP GET /admin/jsi18n/ 200 [0.04, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:14] HTTP GET /admin/app/roominstance/ 200 [0.05, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:14] HTTP GET /admin/jsi18n/ 200 [0.04, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:16] HTTP GET /admin/app/userprofile/ 200 [0.06, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:16] HTTP GET /admin/jsi18n/ 200 [0.04, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:19] HTTP GET /admin/auth/group/ 200 [0.05, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:19] HTTP GET /admin/jsi18n/ 200 [0.03, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:19] HTTP GET /static/admin/img/search.svg 200 [0.05, 127.0.0.1:50399]
+[0m[m[2016/04/13 13:34:20] HTTP GET /admin/auth/user/ 200 [0.08, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:20] HTTP GET /admin/jsi18n/ 200 [0.02, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:20] HTTP GET /static/admin/img/icon-yes.svg 200 [0.05, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:20] HTTP GET /static/admin/img/icon-no.svg 200 [0.05, 127.0.0.1:50399]
+[0m[m[2016/04/13 13:34:21] HTTP GET /static/admin/img/sorting-icons.svg 200 [0.04, 127.0.0.1:50392]
+[0m[m[2016/04/13 13:34:27] HTTP GET /admin/logout/ 200 [0.20, 127.0.0.1:50392]
+[0m[36m[2016/04/13 13:34:27] HTTP GET /static/admin/css/base.css 304 [0.05, 127.0.0.1:50392]
+[0m[36m[2016/04/13 13:34:27] HTTP GET /static/admin/css/fonts.css 304 [0.03, 127.0.0.1:50392]
+[0m[32m[2016/04/13 13:40:46] HTTP GET /admin/ 302 [0.03, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:40:46] HTTP GET /admin/login/ 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:40:46] HTTP GET / 200 [0.02, 127.0.0.1:50403]
+[0m[32m[2016/04/13 13:40:52] HTTP POST /accounts/login/ 302 [0.86, 127.0.0.1:50403]
+[0m[32m[2016/04/13 13:40:52] HTTP GET / 302 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:40:52] HTTP GET /home 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:40:53] HTTP GET /admin/ 200 [0.05, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:40:53] HTTP GET /static/admin/css/dashboard.css 304 [0.03, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:40:53] HTTP GET /static/admin/css/base.css 304 [0.03, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:40:53] HTTP GET /static/admin/css/fonts.css 304 [0.05, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:40:53] HTTP GET /static/admin/fonts/Roboto-Light-webfont.woff 304 [0.03, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:40:53] HTTP GET /static/admin/img/icon-changelink.svg 304 [0.05, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:40:53] HTTP GET /static/admin/img/icon-addlink.svg 304 [0.05, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:40:53] HTTP GET /static/admin/fonts/Roboto-Bold-webfont.woff 304 [0.02, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:40:53] HTTP GET /static/admin/fonts/Roboto-Regular-webfont.woff 304 [0.04, 127.0.0.1:50407]
+[0m[m[2016/04/13 13:40:55] HTTP GET /admin/app/userprofile/ 200 [0.05, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/js/core.js 304 [0.02, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/css/changelists.css 304 [0.03, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/js/jquery.init.js 304 [0.02, 127.0.0.1:50407]
+[0m[m[2016/04/13 13:40:55] HTTP GET /admin/jsi18n/ 200 [0.04, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.04, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.01, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/js/actions.js 304 [0.02, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:40:55] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.03, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:40:59] HTTP GET /admin/ 200 [0.05, 127.0.0.1:50403]
+[0m[32m[2016/04/13 13:41:00] HTTP GET / 302 [0.02, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:00] HTTP GET /home 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:02] HTTP POST /home 200 [0.23, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:03] HTTP POST /home 200 [0.21, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:04] HTTP POST /home 200 [0.22, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:05] HTTP POST /home 200 [0.21, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:10] HTTP GET /map/ 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:16] HTTP POST /map/ 200 [0.63, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:16] HTTP POST /map/ 200 [0.04, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:16] HTTP POST /map/ 200 [0.76, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:16] HTTP POST /map/ 200 [0.04, 127.0.0.1:50409]
+[0m[m[2016/04/13 13:41:16] HTTP POST /map/ 200 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:16] HTTP POST /map/ 200 [0.04, 127.0.0.1:50403]
+[0mInternal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+2016-04-13 13:41:30,790 - ERROR - base - Internal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+[35;1m[2016/04/13 13:41:30] HTTP POST /map/ 500 [0.06, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:37] HTTP GET /map/ 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:39] HTTP POST /map/ 200 [0.38, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:39] HTTP POST /map/ 200 [0.55, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:39] HTTP POST /map/ 200 [0.02, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:39] HTTP POST /map/ 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:39] HTTP POST /map/ 200 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:39] HTTP POST /map/ 200 [0.04, 127.0.0.1:50409]
+[0m[m[2016/04/13 13:41:39] HTTP POST /map/ 200 [0.02, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:40] HTTP POST /map/ 200 [0.35, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:47] HTTP POST /map/ 200 [0.52, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:51] HTTP GET /map/ 200 [0.06, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:53] HTTP POST /map/ 200 [0.39, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:53] HTTP POST /map/ 200 [0.62, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:53] HTTP POST /map/ 200 [0.04, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:41:53] HTTP POST /map/ 200 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:41:53] HTTP POST /map/ 200 [0.04, 127.0.0.1:50409]
+[0m[m[2016/04/13 13:41:53] HTTP POST /map/ 200 [0.05, 127.0.0.1:50403]
+[0mInternal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+2016-04-13 13:42:00,165 - ERROR - base - Internal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+[35;1m[2016/04/13 13:42:00] HTTP POST /map/ 500 [0.06, 127.0.0.1:50408]
+[0m[32m[2016/04/13 13:42:08] HTTP GET /map 301 [0.04, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:08] HTTP GET /map/ 200 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:08] HTTP POST /map/ 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:09] HTTP POST /map/ 200 [0.04, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:09] HTTP POST /map/ 200 [0.05, 127.0.0.1:50409]
+[0m[m[2016/04/13 13:42:09] HTTP POST /map/ 200 [0.06, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:09] HTTP POST /map/ 200 [0.03, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:09] HTTP POST /map/ 200 [0.35, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:14] HTTP GET /admin/ 200 [0.04, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:15] HTTP GET /admin/app/roominstance/ 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:15] HTTP GET /admin/jsi18n/ 200 [0.02, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:42:15] HTTP GET /static/admin/img/icon-no.svg 304 [0.05, 127.0.0.1:50403]
+[0m[32m[2016/04/13 13:42:25] HTTP GET / 302 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:25] HTTP GET /home 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:27] HTTP GET /map/ 200 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:28] HTTP POST /map/ 200 [0.40, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:29] HTTP POST /map/ 200 [0.73, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:29] HTTP POST /map/ 200 [0.03, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:29] HTTP POST /map/ 200 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:29] HTTP POST /map/ 200 [0.05, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:29] HTTP POST /map/ 200 [0.05, 127.0.0.1:50409]
+[0mInternal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+2016-04-13 13:42:33,805 - ERROR - base - Internal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+[35;1m[2016/04/13 13:42:33] HTTP POST /map/ 500 [0.06, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:37] HTTP GET /admin/app/roominstance/ 200 [0.09, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:37] HTTP GET /admin/jsi18n/ 200 [0.03, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/css/base.css 304 [0.03, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.02, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/css/changelists.css 304 [0.04, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.01, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/js/core.js 304 [0.04, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/css/fonts.css 304 [0.01, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/js/jquery.init.js 304 [0.05, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/img/icon-no.svg 304 [0.00, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:42:37] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.04, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:42:45] HTTP GET / 200 [0.03, 127.0.0.1:50420]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/scripts/bootstrap.min.js 200 [0.01, 127.0.0.1:50427]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/scripts/base.js 200 [0.01, 127.0.0.1:50427]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/css/splash.css 200 [0.03, 127.0.0.1:50424]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/css/bootstrap.min.css 200 [0.04, 127.0.0.1:50421]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/css/base.css 200 [0.03, 127.0.0.1:50423]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/scripts/ie10-viewport-bug-workaround.js 200 [0.01, 127.0.0.1:50424]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/css/font-awesome.min.css 200 [0.04, 127.0.0.1:50420]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/scripts/guestuser.js 200 [0.02, 127.0.0.1:50420]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/css/animate.css 200 [0.03, 127.0.0.1:50425]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/images/splashhires.jpg 200 [0.01, 127.0.0.1:50421]
+[0m[m[2016/04/13 13:42:45] HTTP GET /static/images/favicon-128.png 200 [0.02, 127.0.0.1:50421]
+[0m[32m[2016/04/13 13:42:49] HTTP POST /accounts/login/ 302 [0.67, 127.0.0.1:50421]
+[0m[32m[2016/04/13 13:42:49] HTTP GET / 302 [0.05, 127.0.0.1:50421]
+[0m[m[2016/04/13 13:42:49] HTTP GET /home 200 [0.05, 127.0.0.1:50421]
+[0m[m[2016/04/13 13:42:49] HTTP GET /static/fonts/fontawesome-webfont.woff2 200 [0.02, 127.0.0.1:50421]
+[0m[m[2016/04/13 13:42:57] HTTP GET /admin/app/roominstance/ 200 [0.06, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/css/changelists.css 304 [0.03, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:42:57] HTTP GET /admin/jsi18n/ 200 [0.03, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/js/core.js 304 [0.03, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.03, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/css/base.css 304 [0.05, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.01, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.02, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/css/fonts.css 304 [0.01, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/img/icon-no.svg 304 [0.00, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:42:57] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.05, 127.0.0.1:50403]
+[0mInternal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+2016-04-13 13:43:02,753 - ERROR - base - Internal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+[35;1m[2016/04/13 13:43:02] HTTP POST /map/ 500 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:43:05] HTTP GET /admin/app/roominstance/ 200 [0.09, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/css/changelists.css 304 [0.02, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/js/core.js 304 [0.02, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.02, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/css/base.css 304 [0.03, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/js/jquery.init.js 304 [0.02, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.00, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/js/actions.js 304 [0.02, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.02, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:43:05] HTTP GET /admin/jsi18n/ 200 [0.05, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/js/prepopulate.js 304 [0.02, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/css/fonts.css 304 [0.05, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/img/icon-no.svg 304 [0.01, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:43:05] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.00, 127.0.0.1:50403]
+[0mInternal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+2016-04-13 13:43:11,758 - ERROR - base - Internal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+[35;1m[2016/04/13 13:43:11] HTTP POST /map/ 500 [0.06, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:43:14] HTTP GET /admin/app/roominstance/ 200 [0.05, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.03, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/js/jquery.init.js 304 [0.03, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/css/changelists.css 304 [0.04, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/js/core.js 304 [0.04, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/css/base.css 304 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:43:14] HTTP GET /admin/jsi18n/ 200 [0.05, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.02, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/css/fonts.css 304 [0.00, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/js/actions.js 304 [0.02, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.01, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.00, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:43:14] HTTP GET /static/admin/img/icon-no.svg 304 [0.01, 127.0.0.1:50403]
+[0mInternal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+2016-04-13 13:43:42,099 - ERROR - base - Internal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+[35;1m[2016/04/13 13:43:42] HTTP POST /map/ 500 [0.05, 127.0.0.1:50408]
+[0m[m[2016/04/13 13:43:44] HTTP GET /admin/app/roominstance/ 200 [0.05, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/css/changelists.css 304 [0.03, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/js/core.js 304 [0.03, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.03, 127.0.0.1:50406]
+[0m[m[2016/04/13 13:43:45] HTTP GET /admin/jsi18n/ 200 [0.04, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50407]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50406]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.02, 127.0.0.1:50410]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/css/base.css 304 [0.05, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.01, 127.0.0.1:50409]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/css/fonts.css 304 [0.05, 127.0.0.1:50403]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/img/icon-no.svg 304 [0.00, 127.0.0.1:50408]
+[0m[36m[2016/04/13 13:43:45] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.04, 127.0.0.1:50403]
+[0m[m[2016/04/13 13:46:29] HTTP GET /admin/app/roominstance/ 200 [0.05, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/css/base.css 304 [0.04, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/css/changelists.css 304 [0.03, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.02, 127.0.0.1:50435]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/js/jquery.init.js 304 [0.03, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/js/core.js 304 [0.04, 127.0.0.1:50434]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.01, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/css/fonts.css 304 [0.00, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50435]
+[0m[m[2016/04/13 13:46:29] HTTP GET /admin/jsi18n/ 200 [0.05, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/img/icon-no.svg 304 [0.01, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:29] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.00, 127.0.0.1:50433]
+[0m[m[2016/04/13 13:46:31] HTTP GET /admin/app/roominstance/ 200 [0.05, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:50435]
+[0m[m[2016/04/13 13:46:31] HTTP GET /admin/jsi18n/ 200 [0.03, 127.0.0.1:50434]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/js/core.js 304 [0.03, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:50435]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.03, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/css/base.css 304 [0.05, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/css/changelists.css 304 [0.05, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/js/actions.js 304 [0.02, 127.0.0.1:50434]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.01, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50435]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/js/urlify.js 304 [0.02, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/css/fonts.css 304 [0.01, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/img/icon-no.svg 304 [0.01, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:31] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.00, 127.0.0.1:50433]
+[0m[m[2016/04/13 13:46:35] HTTP GET /admin/app/roominstance/ 200 [0.06, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/js/jquery.init.js 304 [0.02, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/css/changelists.css 304 [0.03, 127.0.0.1:50434]
+[0m[m[2016/04/13 13:46:35] HTTP GET /admin/jsi18n/ 200 [0.03, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/js/core.js 304 [0.03, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/css/base.css 304 [0.04, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:50434]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.02, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.04, 127.0.0.1:50435]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/css/fonts.css 304 [0.01, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.01, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/img/icon-no.svg 304 [0.02, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:46:35] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.00, 127.0.0.1:50434]
+[0m[32m[2016/04/13 13:46:40] HTTP GET /accounts/logout/ 302 [0.20, 127.0.0.1:50431]
+[0m[m[2016/04/13 13:46:40] HTTP GET / 200 [0.05, 127.0.0.1:50431]
+[0m[32m[2016/04/13 13:46:46] HTTP POST /accounts/login/ 302 [0.78, 127.0.0.1:50431]
+[0m[32m[2016/04/13 13:46:46] HTTP GET / 302 [0.05, 127.0.0.1:50431]
+[0m[m[2016/04/13 13:46:46] HTTP GET /home 200 [0.05, 127.0.0.1:50431]
+[0m[m[2016/04/13 13:46:48] HTTP GET /map/ 200 [0.05, 127.0.0.1:50431]
+[0m[m[2016/04/13 13:46:50] HTTP POST /map/ 200 [0.34, 127.0.0.1:50431]
+[0m[m[2016/04/13 13:46:51] HTTP POST /map/ 200 [0.68, 127.0.0.1:50433]
+[0m[m[2016/04/13 13:46:51] HTTP POST /map/ 200 [0.04, 127.0.0.1:50431]
+[0m[m[2016/04/13 13:46:51] HTTP POST /map/ 200 [0.05, 127.0.0.1:50433]
+[0m[m[2016/04/13 13:46:51] HTTP POST /map/ 200 [0.08, 127.0.0.1:50434]
+[0m[m[2016/04/13 13:46:51] HTTP POST /map/ 200 [0.09, 127.0.0.1:50431]
+[0mInternal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+2016-04-13 13:46:57,618 - ERROR - base - Internal Server Error: /map/
+Traceback (most recent call last):
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/channels/handler.py", line 224, in process_exception_by_middleware
+    return super(AsgiHandler, self).process_exception_by_middleware(exception, request)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/joel/workspace/pas2/install/local/lib/python2.7/site-packages/lazysignup/decorators.py", line 47, in wrapped
+    return func(request, *args, **kwargs)
+  File "/home/joel/workspace/pas2/src/app/views.py", line 180, in map
+    listofpref.append(newuserpref)
+AttributeError: 'dict' object has no attribute 'append'
+[35;1m[2016/04/13 13:46:57] HTTP POST /map/ 500 [0.06, 127.0.0.1:50433]
+[0m[m[2016/04/13 13:47:00] HTTP GET /admin/app/roominstance/ 200 [0.06, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/css/base.css 304 [0.02, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/js/core.js 304 [0.02, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/js/jquery.init.js 304 [0.01, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.01, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/js/actions.js 304 [0.01, 127.0.0.1:50436]
+[0m[m[2016/04/13 13:47:00] HTTP GET /admin/jsi18n/ 200 [0.03, 127.0.0.1:50434]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.03, 127.0.0.1:50435]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/css/changelists.css 304 [0.04, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/css/fonts.css 304 [0.01, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.02, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/img/icon-no.svg 304 [0.03, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:47:00] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.01, 127.0.0.1:50433]
+[0m[m[2016/04/13 13:47:01] HTTP GET /admin/app/roominstance/ 200 [0.07, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/js/core.js 304 [0.03, 127.0.0.1:50435]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/js/vendor/jquery/jquery.js 304 [0.02, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/js/jquery.init.js 304 [0.02, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/css/base.css 304 [0.04, 127.0.0.1:50433]
+[0m[m[2016/04/13 13:47:01] HTTP GET /admin/jsi18n/ 200 [0.04, 127.0.0.1:50434]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/js/urlify.js 304 [0.01, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/js/prepopulate.js 304 [0.01, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/js/actions.js 304 [0.02, 127.0.0.1:50432]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/js/admin/RelatedObjectLookups.js 304 [0.02, 127.0.0.1:50435]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/js/vendor/xregexp/xregexp.min.js 304 [0.01, 127.0.0.1:50434]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/css/fonts.css 304 [0.01, 127.0.0.1:50436]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/css/changelists.css 304 [0.06, 127.0.0.1:50431]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/img/icon-no.svg 304 [0.01, 127.0.0.1:50433]
+[0m[36m[2016/04/13 13:47:01] HTTP GET /static/admin/img/tooltag-add.svg 304 [0.05, 127.0.0.1:50431]
 [0m
