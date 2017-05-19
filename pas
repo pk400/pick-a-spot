@@ -40,36 +40,34 @@ elif [ $1 == 'runserver' ]
 # Install PickASpot
 elif [ $1 == 'install' ]
 	then
-	virtualenv install
+		checkpackage() {
+			local toinstall_=
 
-	source install/bin/activate
+			for i in $@
+			do
+				printf "\t $i\t"
+				dpkg-query -L $i > /dev/null 2>&1
 
-	printf "\nPickASpot Installation Script"
-	printf "\n-----------------------------\n"
+				if [ $1 == 1 ]
+				then
+						printf "[NOT FOUND]\n"
+						toinstall_=("${toinstall_[@]}" "$i")
+				else
+						printf "[FOUND]\n"
+				fi
+			done
 
-	compos="$(uname -o)"
-	pyver="$(python -V 2>&1 | awk '{print $2}')"
+			for k in "${toinstall_[@]}"
+			do
+					printf "$k"
+			done
+		}
+		# Check if virtualenv is installed
+		printf "Checking packages ...\n"
+		checkpackage virtualenv python-pip
 
-	printf "\nSystem Information"
-	printf "\n%-25s%s" "Linux Distro:" "$compos"
-	printf "\n%-25s%s" "Python Version:" "$pyver"
-	printf "\n%-25s%s" "Virtual Environment:" "$VIRTUAL_ENV"
-	printf "\n"
 
-	printf "\n%s\n\n" "Installing dependencies . . ."
-
-	pip install -r requirements.txt &>logs/install.log
-	if [ $? == 0 ]
-		then echo "$(pip freeze)" | while read line
-		do
-			echo $line | awk -F'==' '{ printf "%s-%s   ",$1,$2 }'
-		done
-		printf "\n\n%s\n\n" "[ Success ] Dependencies installed"
-	else
-		echo "[ Failure ] Dependencies were not installed. Please check logs/install.log for more details."
-	fi
-	
-	deactivate
+		# Check if python-pip is installed
 elif [ $1 == 'dumpdata' ]
 	then
 	cd src
