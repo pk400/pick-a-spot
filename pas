@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Clear screen
-clear
-
 # Show help display
 if [ $1 == 'help' ]
 then
@@ -19,72 +16,33 @@ then
 		# Run server
 elif [ $1 == 'runserver' ]
 then
-		virtualenv install
-
 		source install/bin/activate
-
 		trap "echo Server shutting down...; exit 0" SIGINT
-
-		port=
-
-		if [ $# == 2 ]
-		then port=$2
-		fi
-
 		cd src
-
-		./manage.py runserver $port 2> ../logs/server.log
-
+		./manage.py runserver ${2}
 		deactivate
 
-		# Install PickASpot
 elif [ $1 == 'install' ]
 then
+	# Install PickASpot
+    echo "Checking dependencies"
+    let foundpip_=false
+    pip -V > /dev/null
+    if [ $? == 0 ]
+    then
+        foundpip_=true
+        echo "pip installed!"
+    else
+        echo "pip not installed!"
+    fi
 
-		checkpackage() {
-				# Determine which packages are installed/missing
-				local toinstall_=
+    if [ foundpip_ == true ]
+    then
+        pip install virtualenv
+    fi
 
-				for i in $@
-				do
-						printf "\t $i\t"
-						dpkg-query -L $i > /dev/null 2>&1
-
-						if [ $? == 1 ]
-						then
-								printf "[NOT FOUND]\n"
-								toinstall_=("${toinstall_[@]}" "$i")
-						else
-								printf "[FOUND]\n"
-						fi
-				done
-
-				# Install missing packages with root privileges
-				nopackages=${#toinstall_[@]}
-				echo $#
-				if [ $nopackages -gt 1 ]
-				then
-						while [ 1 ]
-						do
-								read -p "Install missing packages? [y/n] " yninstall
-								case $yninstall in
-										[Yy]* )
-												for k in "${toinstall_[@]}"
-												do
-														sudo apt-get install $k -y
-												done
-												exit;;
-										[Nn]* ) exit;;
-								esac
-						done
-				elif [ $nopackages -eq $# ]
-				then
-						printf "All packages are installed! Okay to continue."
-				fi
-		}
-
-		printf "Checking packages ...\n"
-		checkpackage virtualenv python-pip
+    echo "Checking python packages"
+    pip install -r requirements.txt
 elif [ $1 == 'dumpdata' ]
 then
 		cd src
