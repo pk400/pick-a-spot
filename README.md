@@ -1,5 +1,8 @@
 **Pick A Spot** - *Less thinking, more eating*
 
+![Pick A Spot Splash Page](https://raw.githubusercontent.com/pk400/pick-a-spot/master/img/pas1.png)
+![Pick A Spot Rooms Page](https://raw.githubusercontent.com/pk400/pick-a-spot/master/img/pas2.png)
+
 ## About
 Going to lunch with coworkers and don't want to spend precious lunch-time deciding where to eat? How about going out to the city with friends but no one can make up their minds on where to eat and you are starving? Don't you wish you could yell at them to simply *pick a spot*? Well now you can!
 
