@@ -1,0 +1,8 @@
+# OSX Files
+.DS_STORE
+
+# Temp files
+*.swp
+
+# Virtual environment
+env
